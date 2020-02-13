@@ -1,5 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.yz.sophia.bsf.core.config.BsfConfiguration,\
-com.yz.sophia.bsf.core.config.WebConfiguration
-org.springframework.context.ApplicationContextInitializer=\
-com.yz.sophia.bsf.core.initializer.CoreApplicationContextInitializer
