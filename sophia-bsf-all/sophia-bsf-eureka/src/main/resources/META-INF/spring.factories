@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.yz.sophia.bsf.eureka.client.EurekaClientConfiguration
+org.springframework.context.ApplicationContextInitializer=\
+com.yz.sophia.bsf.eureka.client.EurekaApplicationContextInitializer

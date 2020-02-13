@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.yz.sophia.bsf.elk.ElkConfiguration,\
+com.yz.sophia.bsf.elk.ElkWebConfiguration

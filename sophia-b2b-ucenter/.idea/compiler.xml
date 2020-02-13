@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sophia-b2b-ucenter-dao" />
+        <module name="sophia-b2b-ucenter-core" />
+        <module name="sophia-b2b-ucenter-task" />
+        <module name="sophia-b2b-ucenter-service" />
+        <module name="sophia-b2b-ucenter-provider" />
+        <module name="sophia-b2b-ucenter-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sophia-b2b-ucenter" target="1.8" />
+      <module name="sophia-b2b-ucenter-api" target="1.8" />
+      <module name="sophia-b2b-ucenter-core" target="1.8" />
+      <module name="sophia-b2b-ucenter-dao" target="1.8" />
+      <module name="sophia-b2b-ucenter-provider" target="1.8" />
+      <module name="sophia-b2b-ucenter-service" target="1.8" />
+      <module name="sophia-b2b-ucenter-task" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="sophia-b2b-ucenter-api" options="-parameters" />
+      <module name="sophia-b2b-ucenter-core" options="-parameters" />
+      <module name="sophia-b2b-ucenter-dao" options="-parameters" />
+      <module name="sophia-b2b-ucenter-provider" options="-parameters" />
+      <module name="sophia-b2b-ucenter-service" options="-parameters" />
+      <module name="sophia-b2b-ucenter-task" options="-parameters" />
+    </option>
+  </component>
+</project>

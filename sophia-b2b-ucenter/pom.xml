@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.yz.sophia.business</groupId>
+		<artifactId>sophia-business-dependencies</artifactId>
+		<version>1.5.9.2-SNAPSHOT</version>
+		<relativePath />
+	</parent>
+
+	<groupId>com.yz.sophia</groupId>
+	<artifactId>sophia-b2b-ucenter</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<modules>
+		<module>sophia-b2b-ucenter-api</module>
+		<module>sophia-b2b-ucenter-service</module>
+		<module>sophia-b2b-ucenter-dao</module>
+		<module>sophia-b2b-ucenter-core</module>
+		<module>sophia-b2b-ucenter-task</module>
+		<module>sophia-b2b-ucenter-provider</module>
+	</modules>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<business.version>1.5.9.2-SNAPSHOT</business.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!--bsf 内部依赖-->
+			<dependency>
+				<groupId>com.yz.sophia.business</groupId>
+				<artifactId>sophia-business-starter</artifactId>
+				<version>${business.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.yz.sophia.business</groupId>
+				<artifactId>sophia-business-api</artifactId>
+				<version>${business.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>http://10.252.193.13:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>uc-repository</name>
+			<url>http://10.252.193.13:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+<target>${java.version}</target>
+		</configuration>
+		</plugin>
+		</plugins>
+		</build>
+
+
+		</project>

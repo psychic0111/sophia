@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.yz.sophia.business</groupId>
+        <artifactId>sophia-business-dependencies</artifactId>
+        <version>1.5.9.2-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>sophia-business-all</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>sophia-business-api</module>
+        <module>sophia-business-core</module>
+        <module>sophia-business-dependencies</module>
+        <module>sophia-business-demo</module>
+        <module>sophia-business-starter</module>
+        <module>sophia-business-extend</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.yz.sophia.bsf</groupId>
+                <artifactId>sophia-bsf-starter</artifactId>
+                <version>${bsf.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-source-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
+</project>
