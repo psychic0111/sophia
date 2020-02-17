@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "api")
 public class ApiConfig {
 
+    private String version;
+
+    private String key;
+
     private String searchArticlesByKeyword;
 
     private String searchArticlesByWebsite;

@@ -3,6 +3,7 @@ package com.yz.sophia.insight.provider;
 import com.yz.sophia.business.api.entity.CommonResponse;
 import com.yz.sophia.insight.model.request.CustomerAddReq;
 import com.yz.sophia.insight.model.response.CustomerDetailsResp;
+import com.yz.sophia.insight.model.response.LzSearchBodyResp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -24,13 +25,13 @@ public interface LzSearchProvider {
 	// 服务中方法的映射路径,确保参数一致
 	@GetMapping("/searchArticlesByKeyword")
 	@ApiOperation("按关键词获取文章接口")
-	CommonResponse<CustomerDetailsResp> searchArticlesByKeyword(@RequestParam("customerId") Long customerId);
+	CommonResponse<LzSearchBodyResp> searchArticlesByKeyword(@RequestParam("keyword") String keyword, @RequestParam("emotion") Integer emotion, @RequestParam("position") Integer position, @RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime, @RequestParam("pageIndex") int pageIndex, @RequestParam("pageRows") int pageRows);
 
 	@GetMapping("/searchArticlesByWebsite")
 	@ApiOperation("按网站获取文章接口")
-	CommonResponse searchArticlesByWebsite(@RequestParam("customerId") Long customerId, @RequestParam("enable") Boolean enable);
+	CommonResponse<LzSearchBodyResp> searchArticlesByWebsite(@RequestParam("domain") String domain, @RequestParam("emotion") Integer emotion, @RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime, @RequestParam("pageIndex") int pageIndex, @RequestParam("pageRows") int pageRows);
 
 	@GetMapping("/searchArticlesBySource")
 	@ApiOperation("按媒体类型获取文章接口")
-	CommonResponse searchArticlesBySource(@RequestBody CustomerAddReq req);
+	CommonResponse<LzSearchBodyResp> searchArticlesBySource(@RequestParam("sourceType") String sourceType, @RequestParam("emotion") Integer emotion, @RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime, @RequestParam("pageIndex") int pageIndex, @RequestParam("pageRows") int pageRows);
 }
