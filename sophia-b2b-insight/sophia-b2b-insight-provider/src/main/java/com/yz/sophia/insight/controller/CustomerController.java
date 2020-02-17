@@ -31,6 +31,7 @@ public class CustomerController extends BaseController implements CustomerProvid
 	@Autowired
 	private CustomerService customerService;
 
+	@Override
 	public CommonResponse<CustomerDetailsResp> getCustomer(Long customerId) {
 		return super.visit(() -> {
 			log.info("aaaa");
@@ -50,6 +51,7 @@ public class CustomerController extends BaseController implements CustomerProvid
 	}
 
 
+	@Override
 	public CommonResponse enable(Long customerId, Boolean enable) {
 		return super.visit(() -> {
 			customerService.enable(super.getUserName(), customerId, enable);

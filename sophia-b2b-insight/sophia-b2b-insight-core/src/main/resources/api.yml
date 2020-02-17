@@ -1,6 +1,0 @@
-
-insight:
-  api:
-    searchArticlesByKeyword: http://106.12.221.99/api/service/search/searchArticlesByKeyword
-    searchArticlesByWebsite: http://106.12.221.99/api/service/search/searchArticlesByWebsite
-    searchArticlesBySource: http://106.12.221.99/api/service/search/searchArticlesBySource
