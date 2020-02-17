@@ -23,6 +23,7 @@ import com.yz.sophia.insight.util.RSAUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -33,6 +34,7 @@ import java.util.Objects;
 @Service
 public class LzSearchService {
 
+    @Autowired
     private InsightConfig config;
 
     public LzSearchBodyResp searchArticlesByWebsite(String domain, Integer emotion, String startTime, String endTime, int pageIndex, int pageRows) throws Exception {

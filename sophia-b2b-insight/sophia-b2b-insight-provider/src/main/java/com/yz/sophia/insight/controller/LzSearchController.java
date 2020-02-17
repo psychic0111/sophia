@@ -91,7 +91,7 @@ public class LzSearchController extends BaseController implements LzSearchProvid
 	}
 
 	@RequestMapping(
-			value = {"/searchArticlesByWebsite"},
+			value = {"/searchArticlesBySource"},
 			method = {RequestMethod.GET},
 			produces = {"application/json;charset=UTF-8"}
 	)
