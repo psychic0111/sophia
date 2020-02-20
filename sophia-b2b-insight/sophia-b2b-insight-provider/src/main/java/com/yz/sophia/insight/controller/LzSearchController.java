@@ -52,7 +52,12 @@ public class LzSearchController extends BaseController implements LzSearchProvid
 	)
 	@ResponseBody
 	@Override
-	public CommonResponse<LzSearchBodyResp> searchArticlesByKeyword(String keyword, Integer emotion, Integer position, String startTime, String endTime, int pageIndex, int pageRows) {
+	public CommonResponse<LzSearchBodyResp> searchArticlesByKeyword(@ApiParam(name="keyword", value="关键词, 例如：北京+(汽车|尾气|排放)-(蓝天)", defaultValue="北京+(汽车|尾气|排放)-(蓝天)", required=true) String keyword,
+																	@ApiParam(name="emotion", value="情感值：1 正，2 中，-1 负", defaultValue="1") Integer emotion,
+																	@ApiParam(name="position", value="关键词位置：0 标题，1 全文；默认：全文", defaultValue="1") Integer position,
+																	@ApiParam(name="startTime", value="开始时间", defaultValue="2020-02-02", required=true) String startTime,
+																	@ApiParam(name="endTime", value="结束时间", defaultValue="2020-02-03", required=true) String endTime,
+																	int pageIndex, int pageRows) {
 		CommonResponse<LzSearchBodyResp> resp = null;
 		try {
 			resp = super.visit(() -> {
@@ -77,7 +82,11 @@ public class LzSearchController extends BaseController implements LzSearchProvid
 	)
 	@ResponseBody
 	@Override
-	public CommonResponse<LzSearchBodyResp> searchArticlesByWebsite(String domain, Integer emotion, String startTime, String endTime, int pageIndex, int pageRows) {
+	public CommonResponse<LzSearchBodyResp> searchArticlesByWebsite(@ApiParam(name="domain", value="一级域名", defaultValue="fang.com", required=true) String domain,
+																	@ApiParam(name="emotion", value="情感值：1 正，2 中，-1 负", defaultValue="1") Integer emotion,
+																	@ApiParam(name="startTime", value="开始时间", defaultValue="2020-02-02", required=true) String startTime,
+																	@ApiParam(name="endTime", value="结束时间", defaultValue="2020-02-03", required=true) String endTime,
+																	int pageIndex, int pageRows) {
 		CommonResponse<LzSearchBodyResp> resp = null;
 		try {
 			resp = super.visit(() -> {
@@ -101,7 +110,11 @@ public class LzSearchController extends BaseController implements LzSearchProvid
 	)
 	@ResponseBody
 	@Override
-	public CommonResponse<LzSearchBodyResp> searchArticlesBySource(String sourceType, Integer emotion, String startTime, String endTime, int pageIndex, int pageRows) {
+	public CommonResponse<LzSearchBodyResp> searchArticlesBySource(@ApiParam(name="sourceType", value="素材类型：0:图文,1:图集,2:视频", defaultValue="0", required=true) String sourceType,
+																   @ApiParam(name="emotion", value="情感值：1 正，2 中，-1 负", defaultValue="1") Integer emotion,
+																   @ApiParam(name="startTime", value="开始时间", defaultValue="2020-02-02", required=true) String startTime,
+																   @ApiParam(name="endTime", value="结束时间", defaultValue="2020-02-03", required=true) String endTime,
+																   int pageIndex, int pageRows) {
 		CommonResponse<LzSearchBodyResp> resp = null;
 		try {
 			resp = super.visit(() -> {
