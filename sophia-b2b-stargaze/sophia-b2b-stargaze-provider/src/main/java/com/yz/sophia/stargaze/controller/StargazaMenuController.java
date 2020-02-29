@@ -34,7 +34,7 @@ public class StargazaMenuController extends BaseController implements StargazaMe
 	@ResponseBody
 	@ApiOperation(value = "观星台查询二级菜单列表")
 	@RequestMapping(value="/getMenuList",method = RequestMethod.POST)
-	public CommonResponse<List<CockpitNavigationMenu>> getMenuList(@ApiParam(name="parentTitle", value="父菜单编号，1=文化类；2=政治类；3=社会类；4=经济类", defaultValue="1", required=true) int parentTitle) {
+	public CommonResponse<List<CockpitNavigationMenu>> getMenuList(@ApiParam(name="parentTitle", value="父菜单编号，1=文化类；2=政治类；3=民生类；4=经济类", defaultValue="1", required=true) int parentTitle) {
 		log.info("查询二级菜单的接口数为，parentTitle："+parentTitle);
 		CommonResponse<List<CockpitNavigationMenu>> respData = null;
 		try {

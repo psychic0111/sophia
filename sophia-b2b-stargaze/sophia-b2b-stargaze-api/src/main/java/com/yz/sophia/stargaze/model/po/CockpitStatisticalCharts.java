@@ -43,9 +43,9 @@ public class CockpitStatisticalCharts {
     private int chartLocation;
 
     /**
-     * 图标一级菜单（1=文化类，2=政治类，3=社会类，4=经济类）
+     * 图标一级菜单（1=文化类，2=政治类，3=民生类，4=经济类）
      */
-    @ApiModelProperty("图标一级菜单（1=文化类，2=政治类，3=社会类，4=经济类）")
+    @ApiModelProperty("图标一级菜单（1=文化类，2=政治类，3=民生类，4=经济类）")
     private int parentTitle;
 
     /**

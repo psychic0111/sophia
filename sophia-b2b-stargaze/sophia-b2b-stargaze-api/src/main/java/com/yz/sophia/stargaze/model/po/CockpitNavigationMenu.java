@@ -13,9 +13,9 @@ public class CockpitNavigationMenu {
     private Long id;
 
     /**
-     * 一级菜单（1=文化类，2=政治类，3=社会类，4=经济类）
+     * 一级菜单（1=文化类，2=政治类，3=民生类，4=经济类）
      */
-    @ApiModelProperty("一级菜单（1=文化类，2=政治类，3=社会类，4=经济类）")
+    @ApiModelProperty("一级菜单（1=文化类，2=政治类，3=民生类，4=经济类）")
     private int parentTitle;
 
     /**
