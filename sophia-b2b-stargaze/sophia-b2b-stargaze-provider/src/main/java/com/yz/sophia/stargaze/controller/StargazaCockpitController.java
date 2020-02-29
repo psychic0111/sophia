@@ -7,10 +7,7 @@ import com.yz.sophia.stargaze.model.response.StargazeCockpitResp;
 import com.yz.sophia.stargaze.provider.StargazaCockpitProvider;
 import com.yz.sophia.stargaze.service.CustomerService;
 import com.yz.sophia.stargaze.service.StargazaCockpitService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -35,7 +32,13 @@ public class StargazaCockpitController extends BaseController implements Stargaz
     @ResponseBody
     @ApiOperation(value = "查询驾驶舱统计数据")
     @RequestMapping(value="/getCockpitData",method = RequestMethod.POST)
-    public CommonResponse<StargazeCockpitResp> getCockpitData(@RequestBody @Validated StargazeQueryReq stargazeQueryReq) {
+    public CommonResponse<StargazeCockpitResp> getCockpitData(@RequestBody
+                                                              @Validated
+                                                              @ApiParam(
+                                                                      name="观星台图表数据请求对象",
+                                                                      value="{\"chartLocation\": 3,\"chartType\": 1,\"parentTitle\": 4,\"statisticsYear\": \"\",\"subTitleCode\": \"465342\"}",
+                                                                      required=true)
+                                                              StargazeQueryReq stargazeQueryReq) {
         CommonResponse<StargazeCockpitResp> respData = null;
         try {
             respData = super.visit(() -> {

@@ -16,7 +16,7 @@ import java.util.List;
 @ApiModel("观星台图表数据请求vo")
 public class StargazeQueryReq {
 
-    @ApiModelProperty("一级菜单")
+    @ApiModelProperty("一级菜单（1=文化类，2=政治类，3=社会类，4=经济类）")
     private int parentTitle;
 
     @ApiModelProperty("二级菜单code")
