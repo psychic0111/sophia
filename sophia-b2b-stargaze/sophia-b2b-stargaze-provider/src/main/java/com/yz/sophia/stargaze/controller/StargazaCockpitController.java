@@ -21,6 +21,7 @@ import java.util.List;
  * 观星台驾驶舱数据
  */
 @Slf4j
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController("/stargazaCockpit")
 public class StargazaCockpitController extends BaseController implements StargazaCockpitProvider {
 

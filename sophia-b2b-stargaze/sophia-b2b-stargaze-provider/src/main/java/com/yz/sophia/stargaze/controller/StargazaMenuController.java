@@ -22,6 +22,7 @@ import java.util.List;
  * 观星台菜单
  */
 @Slf4j
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RestController("/stargazaMenu")
 public class StargazaMenuController extends BaseController implements StargazaMenuprovider {
 
