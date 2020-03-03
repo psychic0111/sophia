@@ -16,10 +16,17 @@ public class SophiaOpenDataService {
     @Autowired
     private SophiaOpenServiceMapper sophiaOpenServiceMapper;
 
-    public Page<SophiaOpenService> listOpenServiceDataByKeyword(String keyword, int pageIndex, int pageSize){
+    public Page<SophiaOpenService> listOpenServiceDataByKeyword(String keyword, String orderField, String orderType, Integer pageIndex, Integer pageSize){
         SophiaOpenServiceExample example = new SophiaOpenServiceExample();
         SophiaOpenServiceExample.Criteria criteria = example.createCriteria();
-        if(StringUtils.isNotBlank(keyword)){
+
+        pageIndex = pageIndex == null ? 1 : pageIndex;
+        pageSize = pageSize == null ? 10 : pageSize;
+        // 前端不输入关键词，只返回前10条记录
+        if(!StringUtils.isNotBlank(keyword)){
+            pageSize = 10;
+            pageIndex = 1;
+        }else {
             criteria.andDescriptionLike("%" + keyword + "%");
             example.or(new SophiaOpenServiceExample().createCriteria().andChildModuleLike("%" + keyword + "%"));
             example.or(new SophiaOpenServiceExample().createCriteria().andProductModuleLike("%" + keyword + "%"));
@@ -29,6 +36,13 @@ public class SophiaOpenDataService {
         int offset = (pageIndex - 1) * pageSize;
         example.setOffset(offset);
         example.setPageSize(pageSize);
+        if(StringUtils.isEmpty(orderField)){
+            orderField = "create_time";
+        }
+        if(StringUtils.isEmpty(orderType)){
+            orderType = "desc";
+        }
+        example.setOrderByClause(orderField + " " + orderType);
         List<SophiaOpenService> list = sophiaOpenServiceMapper.selectPageByExample(example);
 
         Page<SophiaOpenService> pageInfo = new Page<SophiaOpenService>(pageIndex, pageSize, totalCount, list);
