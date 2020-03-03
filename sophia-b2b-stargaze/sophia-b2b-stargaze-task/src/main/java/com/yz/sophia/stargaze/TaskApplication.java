@@ -2,12 +2,8 @@ package com.yz.sophia.stargaze;
 
 //import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 //import com.alibaba.dubbo.spring.boot.context.event.DubboBannerApplicationListener;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
@@ -16,10 +12,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * 兼容旧dubbo使用
  */
 //@EnableDubboConfiguration
-@MapperScan(basePackages = "com.yz.sophia.stargaze.dao")
+/*@MapperScan(basePackages = "com.yz.sophia.stargaze.dao")
 @ComponentScan(basePackages = "com.yz.sophia.stargaze")
 @EnableEurekaClient
-@EnableFeignClients
+@EnableFeignClients*/
 public class TaskApplication {
 	public static void main(String[] args) {
 		/**
