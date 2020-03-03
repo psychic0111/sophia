@@ -24,9 +24,14 @@ public class SophiaOpenDataService {
             example.or(new SophiaOpenServiceExample().createCriteria().andChildModuleLike("%" + keyword + "%"));
             example.or(new SophiaOpenServiceExample().createCriteria().andProductModuleLike("%" + keyword + "%"));
         }
+        int totalCount = sophiaOpenServiceMapper.countByExample(example);
 
-        List<SophiaOpenService> list = sophiaOpenServiceMapper.selectByExample(example);
-        Page<SophiaOpenService> page = new Page<>(pageIndex, pageSize, list.size(), list);
-        return page;
+        int offset = (pageIndex - 1) * pageSize;
+        example.setOffset(offset);
+        example.setPageSize(pageSize);
+        List<SophiaOpenService> list = sophiaOpenServiceMapper.selectPageByExample(example);
+
+        Page<SophiaOpenService> pageInfo = new Page<SophiaOpenService>(pageIndex, pageSize, totalCount, list);
+        return pageInfo;
     }
 }

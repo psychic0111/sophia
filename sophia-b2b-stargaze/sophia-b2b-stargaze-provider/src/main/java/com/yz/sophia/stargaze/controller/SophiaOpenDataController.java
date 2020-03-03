@@ -9,8 +9,8 @@ import com.yz.sophia.stargaze.service.SophiaOpenDataService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -30,19 +30,16 @@ public class SophiaOpenDataController extends BaseController implements SophiaOp
     @ResponseBody
     @ApiOperation(value = "查询服务检索数据")
     @RequestMapping(value="/listSophiaOpenData",method = RequestMethod.POST)
-    public CommonResponse<SophiaOpenDataResp> listSophiaOpenData(@RequestBody
-                                                              @Validated
-                                                              @ApiParam(
-                                                                      name="服务搜索关键词",
-                                                                      value="",
-                                                                      defaultValue="",
-                                                                      required=true)
-                                                              String keyword, int pageIndex, int pageSize) {
-        CommonResponse<SophiaOpenDataResp> respData = null;
+    public CommonResponse<SophiaOpenDataResp> listSophiaOpenData(@ApiParam(name="keyword", value="关键词, 例如：语音", defaultValue="语音", required=false) String keyword, int pageIndex, int pageSize) {
+        CommonResponse<SophiaOpenDataResp> respData = new CommonResponse<>();
+        if(StringUtils.isEmpty(keyword)){
+            return respData;
+        }
+
         try {
             respData = super.visit(() -> {
                 Page<SophiaOpenService> page = sophiaOpenDataService.listOpenServiceDataByKeyword(keyword, pageIndex, pageSize);
-                log.info("查询服务检索数据结果：menuList:", page.getTotalNum());
+                log.info("查询服务检索数据结果:", page.toString());
                 SophiaOpenDataResp resp = new SophiaOpenDataResp();
                 resp.setSophiaOpenData(page);
                 return resp;
