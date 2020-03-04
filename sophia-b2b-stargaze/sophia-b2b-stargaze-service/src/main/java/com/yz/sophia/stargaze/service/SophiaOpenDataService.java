@@ -22,11 +22,8 @@ public class SophiaOpenDataService {
 
         pageIndex = pageIndex == null ? 1 : pageIndex;
         pageSize = pageSize == null ? 10 : pageSize;
-        // 前端不输入关键词，只返回前10条记录
-        if(!StringUtils.isNotBlank(keyword)){
-            pageSize = 10;
-            pageIndex = 1;
-        }else {
+
+        if(StringUtils.isNotBlank(keyword)){
             criteria.andDescriptionLike("%" + keyword + "%");
             example.or(new SophiaOpenServiceExample().createCriteria().andChildModuleLike("%" + keyword + "%"));
             example.or(new SophiaOpenServiceExample().createCriteria().andProductModuleLike("%" + keyword + "%"));
