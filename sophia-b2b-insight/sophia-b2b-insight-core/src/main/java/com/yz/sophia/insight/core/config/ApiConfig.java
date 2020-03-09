@@ -50,4 +50,8 @@ public class ApiConfig {
     private String clientSentenceMoney;
     /**当事人判决胜诉率*/
     private String clientSentenceRate;
+    /**律师查询*/
+    private String lawyerSearch;
+    /**当事人查询*/
+    private String clientSearch;
 }

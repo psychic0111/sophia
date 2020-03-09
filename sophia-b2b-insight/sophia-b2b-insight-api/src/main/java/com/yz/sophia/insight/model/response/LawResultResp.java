@@ -20,6 +20,6 @@ public class LawResultResp {
     private String rspMsg;
 
     /** 业务参数集合 */
-    private Map<String, Object> map = null;
+    private Map<String, Object> map;
 
 }
