@@ -14,6 +14,7 @@
     <artifactId>sophia-bsf-all</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>sophia-bsf-utils</module>
         <module>sophia-bsf-core</module>
         <module>sophia-bsf-elk</module>
         <module>sophia-bsf-demo</module>

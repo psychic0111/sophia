@@ -79,5 +79,10 @@
             <artifactId>sophia-bsf-health</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.yz.sophia.bsf</groupId>
+            <artifactId>sophia-bsf-utils</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 </project>
