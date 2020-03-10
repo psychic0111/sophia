@@ -359,7 +359,7 @@ public class LawQueryService {
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
         String url = config.getApi().getClientSearch();
         req.put("fullName", fullName);
-        String result = HttpUtils.post(url, req.toJSONString());
+        String result = HttpClientUtils.sendxwwwform(url, req);
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
             resp.setRspMsg(LawResultEnum.FAIL.getName());
