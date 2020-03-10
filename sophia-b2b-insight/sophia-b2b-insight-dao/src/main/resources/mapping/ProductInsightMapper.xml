@@ -116,7 +116,7 @@
     </if>
         limit ${offset}, ${pageSize}
   </select>
-  <select id="lineChartByExampleDay" resultMap="BaseResultMap" parameterType="com.yz.sophia.insight.model.po.ProductInsightExample" >
+  <select id="lineChartByExampleDay" resultType="com.yz.sophia.insight.model.vo.LineChartDataVo" parameterType="com.yz.sophia.insight.model.po.ProductInsightExample" >
     SELECT date_format(t.evaluate_time, '%Y-%m-%d') axisX, count(*) axisY FROM (
       select
       <if test="distinct">
@@ -127,11 +127,9 @@
       <if test="_parameter != null">
         <include refid="Example_Where_Clause"/>
       </if>
-      <if test="orderByClause != null">
-        order by ${orderByClause}
-      </if>
+        order by evaluate_time
       ) t
-    GROUP BY date_format(t.evaluate_time, '%Y-%m-%d')
+    GROUP BY date_format(t.evaluate_time, '%Y-%m-%d') limit 30
   </select>
   <select id="lineChartByExampleHour" resultType="com.yz.sophia.insight.model.vo.LineChartDataVo" parameterType="com.yz.sophia.insight.model.po.ProductInsightExample" >
     SELECT date_format(t.evaluate_time, '%Y-%m-%d %H:00:00') axisX, count(*) axisY FROM (
@@ -144,9 +142,7 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause"/>
     </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
+       order by evaluate_time
     ) t
     GROUP BY date_format(t.evaluate_time, '%Y-%m-%d %H:00:00')
   </select>
