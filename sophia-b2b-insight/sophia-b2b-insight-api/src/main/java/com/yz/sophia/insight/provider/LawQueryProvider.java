@@ -25,79 +25,69 @@ import javax.servlet.http.HttpServletRequest;
 public interface LawQueryProvider {
 
     // 服务中方法的映射路径,确保参数一致
-
-    @GetMapping("/lawyerSearch")
-    @ApiOperation("律师查询")
-    CommonResponse<LawResultResp> lawyerSearch(@RequestParam("keyword") String keyword, @RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize);
-
-    @GetMapping("/clientSearch")
-    @ApiOperation("当事人查询")
-    CommonResponse<LawResultResp> clientSearch(@RequestParam("fullName") String fullName);
-
     @GetMapping("/lawyerCaseDistribute")
     @ApiOperation("律师案由分布")
-    CommonResponse<LawResultResp> lawyerCaseDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> lawyerCaseDistribute(HttpServletRequest request);
 
     @GetMapping("/lawyerCaseTypeDistribute")
     @ApiOperation("律师案件类型分布")
-    CommonResponse<LawResultResp> lawyerCaseTypeDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> lawyerCaseTypeDistribute(HttpServletRequest request);
 
     @GetMapping("/lawCourtLevelDistribute")
     @ApiOperation("律师法院层级分布")
-    CommonResponse<LawResultResp> lawCourtLevelDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> lawCourtLevelDistribute(HttpServletRequest request);
 
     @GetMapping("/lawCaseTimeDistribute")
     @ApiOperation("律师案件时间分布")
-    CommonResponse<LawResultResp> lawCaseTimeDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> lawCaseTimeDistribute(HttpServletRequest request);
 
     @GetMapping("/lawCaseAreaDistribute")
     @ApiOperation("律师案件地区分布")
-    CommonResponse<LawResultResp> lawCaseAreaDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> lawCaseAreaDistribute(HttpServletRequest request);
 
     @GetMapping("/lawLitigationStepDistribute")
     @ApiOperation("律师诉讼阶段分布")
-    CommonResponse<LawResultResp> lawLitigationStepDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> lawLitigationStepDistribute(HttpServletRequest request);
 
     @GetMapping("/lawCustomerTypeDistribute")
     @ApiOperation("律师客户类型分布")
-    CommonResponse<LawResultResp> lawCustomerTypeDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> lawCustomerTypeDistribute(HttpServletRequest request);
 
     @GetMapping("/lawSentenceRate")
     @ApiOperation("律师判决胜诉率")
-    CommonResponse<LawResultResp> lawSentenceRate(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> lawSentenceRate(HttpServletRequest request);
 
     @GetMapping("/lawSentenceMoney")
     @ApiOperation("律师判决标的额分布")
-    CommonResponse<LawResultResp> lawSentenceMoney(@RequestParam("paramCode") String paramCode);
-
+    CommonResponse<LawResultResp> lawSentenceMoney(HttpServletRequest request);
 
     @GetMapping("/clientCaseDistribute")
     @ApiOperation("当事人案由分布")
-    CommonResponse<LawResultResp> clientCaseDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> clientCaseDistribute(HttpServletRequest request);
 
     @GetMapping("/clientCaseTypeDistribute")
     @ApiOperation("当事人案件类型分布")
-    CommonResponse<LawResultResp> clientCaseTypeDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> clientCaseTypeDistribute(HttpServletRequest request);
 
     @GetMapping("/clientCourtLevelDistribute")
     @ApiOperation("当事人法院层级分布")
-    CommonResponse<LawResultResp> clientCourtLevelDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> clientCourtLevelDistribute(HttpServletRequest request);
 
     @GetMapping("/clientCaseTimeDistribute")
     @ApiOperation("当事人案件时间分布")
-    CommonResponse<LawResultResp> clientCaseTimeDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> clientCaseTimeDistribute(HttpServletRequest request);
 
     @GetMapping("/clientCaseAreaDistribute")
     @ApiOperation("当事人案件地区分布")
-    CommonResponse<LawResultResp> clientCaseAreaDistribute(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> clientCaseAreaDistribute(HttpServletRequest request);
 
     @GetMapping("/clientSentenceMoney")
     @ApiOperation("当事人判决标的额分布")
-    CommonResponse<LawResultResp> clientSentenceMoney(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> clientSentenceMoney(HttpServletRequest request);
 
     @GetMapping("/clientSentenceRate")
     @ApiOperation("当事人判决胜诉率")
-    CommonResponse<LawResultResp> clientSentenceRate(@RequestParam("paramCode") String paramCode);
+    CommonResponse<LawResultResp> clientSentenceRate(HttpServletRequest request);
 
 }
 
