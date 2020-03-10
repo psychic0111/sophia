@@ -47,8 +47,8 @@ public class ProductInsightController extends BaseController implements ProductI
                                                                    @ApiParam(name = "platForm", value = "平台", defaultValue = "苏宁", required = false) @RequestParam(name = "platForm", required = false) String platForm,
                                                                    @ApiParam(name = "store", value = "店铺", defaultValue = "荣耀苏宁自营旗舰店", required = false) @RequestParam(name = "store", required = false) String store,
                                                                    @ApiParam(name = "productModel", value = "系列", defaultValue = "荣耀20 PRO", required = false) @RequestParam(name = "productModel", required = false) String productModel,
-                                                                   @ApiParam(name = "evaluateType", value = "评论情感值：0-中性 1-正面 2-负面", defaultValue = "", required = false) @RequestParam(name = "evaluateType", required = false) Integer evaluateType,
-                                                                   @ApiParam(name = "evaluateCategory", value = "评论类型：产品 运营 物流 其他", defaultValue = "", required = false) @RequestParam(name = "evaluateCategory", required = false) String evaluateCategory,
+                                                                   @ApiParam(name = "evaluateCategory", value = "评论情感值：0-中性 1-正面 2-负面", defaultValue = "", required = false) @RequestParam(name = "evaluateCategory", required = false) Integer evaluateCategory,
+                                                                   @ApiParam(name = "evaluateDimension", value = "评论维度：产品 运营 物流 其他", defaultValue = "", required = false) @RequestParam(name = "evaluateDimension", required = false) String evaluateDimension,
                                                                    @ApiParam(name = "beginDate", value = "评论时间-起始时间，格式：2020-03-08 13:00:00", defaultValue = "", required = false) @RequestParam(name = "beginDate", required = false) String beginDate,
                                                                    @ApiParam(name = "endDate", value = "评论时间-截止时间，格式：2020-03-08 23:00:00", defaultValue = "", required = false) @RequestParam(name = "endDate", required = false) String endDate,
                                                                    @ApiParam(name = "orderField", value = "排序字段, 例如：评论时间=evaluate_time", defaultValue = "evaluate_time", required = false) @RequestParam(name = "orderField", required = false) String orderField,
@@ -66,7 +66,7 @@ public class ProductInsightController extends BaseController implements ProductI
                 if(!StringUtils.isBlank(endDate)){
                     end = fmt.parse(endDate);
                 }
-                Page<ProductInsight> page = productInsightService.listProductInsight(productCategory, productBrand, platForm, productModel, store, evaluateType, evaluateCategory, begin, end, orderField, orderType, pageIndex, pageSize);
+                Page<ProductInsight> page = productInsightService.listProductInsight(productCategory, productBrand, platForm, productModel, store, evaluateCategory, evaluateDimension, begin, end, orderField, orderType, pageIndex, pageSize);
 
                 return page;
             });
@@ -93,8 +93,8 @@ public class ProductInsightController extends BaseController implements ProductI
                                                                          @ApiParam(name = "platForm", value = "平台", defaultValue = "苏宁", required = false) @RequestParam(name = "platForm", required = false) String platForm,
                                                                          @ApiParam(name = "store", value = "店铺", defaultValue = "荣耀苏宁自营旗舰店", required = false) @RequestParam(name = "store", required = false) String store,
                                                                          @ApiParam(name = "productModel", value = "系列", defaultValue = "荣耀20 PRO", required = false) @RequestParam(name = "productModel", required = false) String productModel,
-                                                                         @ApiParam(name = "evaluateType", value = "评论情感值：0-中性 1-正面 2-负面", defaultValue = "", required = false) @RequestParam(name = "evaluateType", required = false) Integer evaluateType,
-                                                                         @ApiParam(name = "evaluateCategory", value = "评论类型：产品 运营 物流 其他", defaultValue = "", required = false) @RequestParam(name = "evaluateCategory", required = false) String evaluateCategory,
+                                                                         @ApiParam(name = "evaluateCategory", value = "评论情感值：0-中性 1-正面 2-负面", defaultValue = "", required = false) @RequestParam(name = "evaluateCategory", required = false) Integer evaluateCategory,
+                                                                         @ApiParam(name = "evaluateDimension", value = "评论维度：产品 运营 物流 其他", defaultValue = "", required = false) @RequestParam(name = "evaluateDimension", required = false) String evaluateDimension,
                                                                          @ApiParam(name = "beginDate", value = "评论时间-起始时间，格式：2020-03-08 13:00:00", defaultValue = "", required = false) @RequestParam(name = "beginDate", required = false) String beginDate,
                                                                          @ApiParam(name = "endDate", value = "评论时间-截止时间，格式：2020-03-08 23:00:00", defaultValue = "", required = false) @RequestParam(name = "endDate", required = false) String endDate) {
         CommonResponse<List<LineChartDataVo>> respData = null;
@@ -109,10 +109,10 @@ public class ProductInsightController extends BaseController implements ProductI
                 if(!StringUtils.isBlank(endDate)){
                     end = fmt.parse(endDate);
                 }
-                List<LineChartDataVo> dataList = productInsightService.productInsightLineChart(productCategory, productBrand, platForm, productModel, store, evaluateType, evaluateCategory, begin, end, TimeUnit.DAYS.name());
+                List<LineChartDataVo> dataList = productInsightService.productInsightLineChart(productCategory, productBrand, platForm, productModel, store, evaluateCategory, evaluateDimension, begin, end, TimeUnit.DAYS.name());
 
                 if(dataList != null && dataList.size() == 1){
-                    dataList = productInsightService.productInsightLineChart(productCategory, productBrand, platForm, productModel, store, evaluateType, evaluateCategory, begin, end, TimeUnit.HOURS.name());
+                    dataList = productInsightService.productInsightLineChart(productCategory, productBrand, platForm, productModel, store, evaluateCategory, evaluateDimension, begin, end, TimeUnit.HOURS.name());
                 }
 
                 return dataList;

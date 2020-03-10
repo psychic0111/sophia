@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 		比如/api/customer
  */
 @Api("用户相关接口")
-@FeignClient(name = "sophia-b2b-stargaze-provider",path = "/api/user")
+@FeignClient(name = "sophia-b2b-insight-provider",path = "/api/user")
 @RequestMapping("/user")
 public interface SysUserProvider {
 

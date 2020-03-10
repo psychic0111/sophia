@@ -22,11 +22,10 @@ import java.util.List;
  * 		比如/api/customer
  */
 @Api("品牌检索服务")
-@FeignClient(name = "sophia-b2b-stargaze-provider",path = "/api/product")
+@FeignClient(name = "sophia-b2b-insight-provider",path = "/api/product")
 @RequestMapping("/product")
 public interface ProductInsightProvider {
-
-	// 服务中方法的映射路径,确保参数一致
+	
 	@GetMapping("/listProductInsight")
 	@ApiOperation("检索品牌数据")
 	CommonResponse<Page<ProductInsight>> listProductInsight(@ApiParam(name = "productCategory", value = "品类", defaultValue = "手机", required = false) String productCategory,

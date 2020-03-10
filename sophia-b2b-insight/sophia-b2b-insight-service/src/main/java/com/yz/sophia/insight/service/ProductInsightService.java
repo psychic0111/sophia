@@ -19,7 +19,7 @@ public class ProductInsightService {
     @Autowired
     private ProductInsightMapper productInsightMapper;
 
-    public Page<ProductInsight> listProductInsight(String productCategory, String productBrand, String platForm, String productModel, String store, Integer evaluateType, String evaluateCategory, Date beginDate, Date endDate, String orderField, String orderType, Integer pageIndex, Integer pageSize){
+    public Page<ProductInsight> listProductInsight(String productCategory, String productBrand, String platForm, String productModel, String store, Integer evaluateCategory, String evaluateDimension, Date beginDate, Date endDate, String orderField, String orderType, Integer pageIndex, Integer pageSize){
         ProductInsightExample example = new ProductInsightExample();
         ProductInsightExample.Criteria criteria = example.createCriteria();
 
@@ -48,7 +48,20 @@ public class ProductInsightService {
         if(endDate != null){
             criteria.andEvaluateTimeLessThanOrEqualTo(endDate);
         }
-
+        if(evaluateCategory != null){
+            criteria.andEvaluateCategoryEqualTo(evaluateCategory.byteValue());
+        }
+        if(StringUtils.isNotBlank(evaluateDimension)){
+            if(evaluateDimension.equals("产品")){
+                criteria.andEvaluateDimensionOneEqualTo(evaluateDimension);
+            }else if(evaluateDimension.equals("运营")){
+                criteria.andEvaluateDimensionThreeEqualTo(evaluateDimension);
+            }else if(evaluateDimension.equals("物流")){
+                criteria.andEvaluateDimensionTwoEqualTo(evaluateDimension);
+            }else {
+                criteria.andEvaluateDimensionFireEqualTo(evaluateDimension);
+            }
+        }
 
         int totalCount = productInsightMapper.countByExample(example);
 
@@ -68,7 +81,7 @@ public class ProductInsightService {
         return pageInfo;
     }
 
-    public List<LineChartDataVo> productInsightLineChart(String productCategory, String productBrand, String platForm, String productModel, String store, Integer evaluateType, String evaluateCategory, Date beginDate, Date endDate, String timeUnit){
+    public List<LineChartDataVo> productInsightLineChart(String productCategory, String productBrand, String platForm, String productModel, String store, Integer evaluateCategory, String evaluateDimension, Date beginDate, Date endDate, String timeUnit){
         ProductInsightExample example = new ProductInsightExample();
         ProductInsightExample.Criteria criteria = example.createCriteria();
 
@@ -94,6 +107,21 @@ public class ProductInsightService {
         if(endDate != null){
             criteria.andEvaluateTimeLessThanOrEqualTo(endDate);
         }
+        if(evaluateCategory != null){
+            criteria.andEvaluateCategoryEqualTo(evaluateCategory.byteValue());
+        }
+        if(StringUtils.isNotBlank(evaluateDimension)){
+            if(evaluateDimension.equals("产品")){
+                criteria.andEvaluateDimensionOneEqualTo(evaluateDimension);
+            }else if(evaluateDimension.equals("运营")){
+                criteria.andEvaluateDimensionThreeEqualTo(evaluateDimension);
+            }else if(evaluateDimension.equals("物流")){
+                criteria.andEvaluateDimensionTwoEqualTo(evaluateDimension);
+            }else {
+                criteria.andEvaluateDimensionFireEqualTo(evaluateDimension);
+            }
+        }
+
 
         List<LineChartDataVo> dataList = null;
         if(timeUnit.equalsIgnoreCase(TimeUnit.DAYS.name())){
