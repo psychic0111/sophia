@@ -25,7 +25,7 @@ import java.util.List;
 @FeignClient(name = "sophia-b2b-insight-provider",path = "/api/product")
 @RequestMapping("/product")
 public interface ProductInsightProvider {
-	
+
 	@GetMapping("/listProductInsight")
 	@ApiOperation("检索品牌数据")
 	CommonResponse<Page<ProductInsight>> listProductInsight(@ApiParam(name = "productCategory", value = "品类", defaultValue = "手机", required = false) String productCategory,
