@@ -47,7 +47,7 @@ public class AlgorithmDatasetController extends BaseController implements Algori
             notes = "算法训练数据集检索"
     )
     @ResponseBody
-    public CommonResponse<Page<AlgorithmDataset>> listAlgorithmDataset(@ApiParam(name = "category", value = "类别", defaultValue = "手机", required = false) @RequestParam(name = "category", required = false) String category,
+    public CommonResponse<Page<AlgorithmDataset>> listAlgorithmDataset(@ApiParam(name = "category", value = "类别", defaultValue = "文本", required = false) @RequestParam(name = "category", required = false) String category,
                                                                        Integer pageIndex, Integer pageSize) {
         CommonResponse<Page<AlgorithmDataset>> respData = new CommonResponse<Page<AlgorithmDataset>>();
         try {
