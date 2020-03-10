@@ -1,8 +1,8 @@
-package com.yz.sophia.stargaze.service;
+package com.yz.sophia.insight.service;
 
 import com.yz.sophia.bsf.utils.SnowflakeIdWorker;
-import com.yz.sophia.stargaze.dao.SysUserMapper;
-import com.yz.sophia.stargaze.model.po.SysUser;
+import com.yz.sophia.insight.dao.SysUserMapper;
+import com.yz.sophia.insight.model.po.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
-package com.yz.sophia.stargaze.controller;
+package com.yz.sophia.insight.controller;
 
 import com.yz.sophia.business.api.entity.CommonResponse;
-import com.yz.sophia.stargaze.model.po.SysUser;
-import com.yz.sophia.stargaze.provider.SysUserProvider;
-import com.yz.sophia.stargaze.service.SysUserService;
+import com.yz.sophia.insight.model.po.SysUser;
+import com.yz.sophia.insight.provider.SysUserProvider;
+import com.yz.sophia.insight.service.SysUserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

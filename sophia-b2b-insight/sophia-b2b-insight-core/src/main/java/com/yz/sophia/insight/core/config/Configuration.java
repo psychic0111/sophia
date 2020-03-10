@@ -1,4 +1,4 @@
-package com.yz.sophia.stargaze.core.config;
+package com.yz.sophia.insight.core.config;
 
 import com.yz.sophia.bsf.utils.SnowflakeIdWorker;
 import org.springframework.context.annotation.Bean;

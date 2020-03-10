@@ -1,7 +1,7 @@
-package com.yz.sophia.stargaze.dao;
+package com.yz.sophia.insight.dao;
 
-import com.yz.sophia.stargaze.model.po.SysUser;
-import com.yz.sophia.stargaze.model.po.SysUserExample;
+import com.yz.sophia.insight.model.po.SysUser;
+import com.yz.sophia.insight.model.po.SysUserExample;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

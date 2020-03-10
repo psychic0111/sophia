@@ -10,7 +10,6 @@ import com.yz.sophia.insight.model.response.LawResultResp;
 import com.yz.sophia.insight.model.response.LzSearchBodyResp;
 import com.yz.sophia.insight.model.response.LzSearchResp;
 import com.yz.sophia.insight.util.ApiSignUtils;
-import com.yz.sophia.insight.util.HttpClientUtils;
 import com.yz.sophia.insight.util.HttpUtils;
 import com.yz.sophia.insight.util.RSAUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -31,12 +30,12 @@ public class LawQueryService {
     @Autowired
     private InsightConfig config;
 
-    public LawResultResp lawyerCaseDistribute(String paramCode) throws Exception {
+    public LawResultResp lawyerCaseDistribute() throws Exception {
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getLawyerCaseDistribute()+"/"+paramCode;
+        String url = config.getApi().getLawyerCaseDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -50,12 +49,12 @@ public class LawQueryService {
     }
 
 
-    public LawResultResp lawyerCaseTypeDistribute(String paramCode) throws Exception {
+    public LawResultResp lawyerCaseTypeDistribute() throws Exception {
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getLawyerCaseTypeDistribute()+"/"+paramCode;
+        String url = config.getApi().getLawyerCaseTypeDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -69,12 +68,12 @@ public class LawQueryService {
     }
 
 
-    public LawResultResp lawCourtLevelDistribute(String paramCode) throws Exception{
+    public LawResultResp lawCourtLevelDistribute() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getLawCourtLevelDistribute()+"/"+paramCode;
+        String url = config.getApi().getLawCourtLevelDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -87,12 +86,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp lawCaseTimeDistribute(String paramCode) throws Exception{
+    public LawResultResp lawCaseTimeDistribute() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getLawCaseTimeDistribute()+"/"+paramCode;
+        String url = config.getApi().getLawCaseTimeDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -105,12 +104,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp lawCaseAreaDistribute(String paramCode) throws Exception{
+    public LawResultResp lawCaseAreaDistribute() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getLawCaseAreaDistribute()+"/"+paramCode;
+        String url = config.getApi().getLawCaseAreaDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -123,12 +122,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp lawLitigationStepDistribute(String paramCode) throws Exception{
+    public LawResultResp lawLitigationStepDistribute() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getLawLitigationStepDistribute()+"/"+paramCode;
+        String url = config.getApi().getLawLitigationStepDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -141,12 +140,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp lawCustomerTypeDistribute(String paramCode) throws Exception{
+    public LawResultResp lawCustomerTypeDistribute() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getLawCustomerTypeDistribute()+"/"+paramCode;
+        String url = config.getApi().getLawCustomerTypeDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -159,12 +158,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp lawSentenceRate(String paramCode) throws Exception{
+    public LawResultResp lawSentenceRate() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getLawSentenceRate()+"/"+paramCode;
+        String url = config.getApi().getLawSentenceRate();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -177,12 +176,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp lawSentenceMoney(String paramCode) throws Exception{
+    public LawResultResp lawSentenceMoney() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getLawSentenceMoney()+"/"+paramCode;
+        String url = config.getApi().getLawSentenceMoney();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -195,12 +194,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp clientCaseDistribute(String paramCode) throws Exception{
+    public LawResultResp clientCaseDistribute() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getClientCaseDistribute()+"/"+paramCode;
+        String url = config.getApi().getClientCaseDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -214,12 +213,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp clientCaseTypeDistribute(String paramCode) throws Exception{
+    public LawResultResp clientCaseTypeDistribute() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getClientCaseTypeDistribute()+"/"+paramCode;
+        String url = config.getApi().getClientCaseTypeDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -233,12 +232,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp clientCourtLevelDistribute(String paramCode) throws Exception{
+    public LawResultResp clientCourtLevelDistribute() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getClientCourtLevelDistribute()+"/"+paramCode;
+        String url = config.getApi().getClientCourtLevelDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -252,12 +251,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp clientCaseTimeDistribute(String paramCode) throws Exception{
+    public LawResultResp clientCaseTimeDistribute() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getClientCaseTimeDistribute()+"/"+paramCode;
+        String url = config.getApi().getClientCaseTimeDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -270,12 +269,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp clientCaseAreaDistribute(String paramCode) throws Exception{
+    public LawResultResp clientCaseAreaDistribute() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getClientCaseAreaDistribute()+"/"+paramCode;
+        String url = config.getApi().getClientCaseAreaDistribute();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -288,12 +287,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp clientSentenceMoney(String paramCode) throws Exception{
+    public LawResultResp clientSentenceMoney() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getClientSentenceMoney()+"/"+paramCode;
+        String url = config.getApi().getClientSentenceMoney();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());
@@ -306,59 +305,12 @@ public class LawQueryService {
         return resp;
     }
 
-    public LawResultResp clientSentenceRate(String paramCode) throws Exception{
+    public LawResultResp clientSentenceRate() throws Exception{
         JSONObject req = new JSONObject();
         LawResultResp resp = new LawResultResp();
         resp.setRspCode(LawResultEnum.SUCCESS.getCode());
         resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getClientSentenceRate()+"/"+paramCode;
-        String result = HttpUtils.post(url, req.toJSONString());
-        if (null == result || "".equals(result)) {
-            resp.setRspCode(LawResultEnum.FAIL.getCode());
-            resp.setRspMsg(LawResultEnum.FAIL.getName());
-        }
-        Gson gson = new Gson();
-        Map<String, Object> map = new HashMap<String, Object>();
-        List list = gson.fromJson(result,new TypeToken<List<Map<String, Object>>>() {}.getType());
-        map.put("list",list);
-        resp.setMap(map);
-        return resp;
-    }
-
-    public LawResultResp lawyerSearch(String keyword, int pageNo, int pageSize) throws Exception{
-        Map req = new HashMap<String,Object>();
-        LawResultResp resp = new LawResultResp();
-        resp.setRspCode(LawResultEnum.SUCCESS.getCode());
-        resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getLawyerSearch();
-        req.put("keyword1", keyword);
-        req.put("pageNo", pageNo-1);//由于此接口分页是从0开始，所以需要减一做处理
-        req.put("pageSize", pageSize);
-        String result = HttpClientUtils.sendxwwwform(url, req);
-        if (null == result || "".equals(result)) {
-            resp.setRspCode(LawResultEnum.FAIL.getCode());
-            resp.setRspMsg(LawResultEnum.FAIL.getName());
-        }
-        Gson gson = new Gson();
-        Map<String, Object> map = new HashMap<String, Object>();
-        List list = gson.fromJson(result,new TypeToken<List<Map<String, Object>>>() {}.getType());
-        map.put("pageNo",pageNo);
-        map.put("pageSize",pageSize);
-        if (list != null ) {
-            map.put("pageNum",list.size());
-        }
-        map.put("list",list);
-        resp.setMap(map);
-        return resp;
-    }
-
-    public LawResultResp clientSearch(String fullName) throws Exception{
-        JSONObject req = new JSONObject();
-        LawResultResp resp = new LawResultResp();
-        resp.setRspCode(LawResultEnum.SUCCESS.getCode());
-        resp.setRspMsg(LawResultEnum.SUCCESS.getName());
-        String url = config.getApi().getClientSearch();
-        req.put("fullName", fullName);
+        String url = config.getApi().getClientSentenceRate();
         String result = HttpUtils.post(url, req.toJSONString());
         if (null == result || "".equals(result)) {
             resp.setRspCode(LawResultEnum.FAIL.getCode());

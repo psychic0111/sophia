@@ -28,47 +28,13 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 
 	@Override
 	@ResponseBody
-	@ApiOperation(value = "律师查询")
-	@RequestMapping(value="/lawyer_search",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> lawyerSearch(@ApiParam(name="keyword", value="律师姓名", defaultValue="燕霞")String keyword, int pageNo, int pageSize) {
-		CommonResponse<LawResultResp> lawResp = null;
-		try {
-			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.lawyerSearch(keyword,pageNo,pageSize);
-				return bodyResp;
-			});
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return lawResp;
-	}
-
-	@Override
-	@ResponseBody
-	@ApiOperation(value = "当事人查询")
-	@RequestMapping(value="/client_search",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> clientSearch(@ApiParam(name="fullName", value="当事人姓名", defaultValue="小明")String fullName) {
-		CommonResponse<LawResultResp> lawResp = null;
-		try {
-			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.clientSearch(fullName);
-				return bodyResp;
-			});
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return lawResp;
-	}
-
-	@Override
-	@ResponseBody
 	@ApiOperation(value = "律师案由分布")
 	@RequestMapping(value="/lawyer_case_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> lawyerCaseDistribute(@ApiParam(name="paramCode", value="律师code", defaultValue="74525") String paramCode) {
+	public CommonResponse<LawResultResp> lawyerCaseDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.lawyerCaseDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.lawyerCaseDistribute();
 				return bodyResp;
 			});
 		} catch (Exception e) {
@@ -81,11 +47,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "律师案件类型分布")
 	@RequestMapping(value="/lawyer_caseType_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> lawyerCaseTypeDistribute(@ApiParam(name="paramCode", value="律师code", defaultValue="74525") String paramCode) {
+	public CommonResponse<LawResultResp> lawyerCaseTypeDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.lawyerCaseTypeDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.lawyerCaseTypeDistribute();
 				return bodyResp;
 			});
 
@@ -99,11 +65,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "律师法院层级分布")
 	@RequestMapping(value="/law_courtLevel_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> lawCourtLevelDistribute(@ApiParam(name="paramCode", value="律师code", defaultValue="74525") String paramCode) {
+	public CommonResponse<LawResultResp> lawCourtLevelDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.lawCourtLevelDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.lawCourtLevelDistribute();
 				return bodyResp;
 			});
 
@@ -117,11 +83,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "律师案件时间分布")
 	@RequestMapping(value="/law_caseTime_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> lawCaseTimeDistribute(@ApiParam(name="paramCode", value="律师code", defaultValue="74525") String paramCode) {
+	public CommonResponse<LawResultResp> lawCaseTimeDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.lawCaseTimeDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.lawCaseTimeDistribute();
 				return bodyResp;
 			});
 
@@ -135,11 +101,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "律师案件地区分布")
 	@RequestMapping(value="/law_caseArea_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> lawCaseAreaDistribute(@ApiParam(name="paramCode", value="律师code", defaultValue="74525") String paramCode) {
+	public CommonResponse<LawResultResp> lawCaseAreaDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.lawCaseAreaDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.lawCaseAreaDistribute();
 				return bodyResp;
 			});
 
@@ -153,11 +119,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "律师诉讼阶段分布")
 	@RequestMapping(value="/law_litigationStep_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> lawLitigationStepDistribute(@ApiParam(name="paramCode", value="律师code", defaultValue="74525") String paramCode) {
+	public CommonResponse<LawResultResp> lawLitigationStepDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.lawLitigationStepDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.lawLitigationStepDistribute();
 				return bodyResp;
 			});
 
@@ -171,11 +137,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "律师客户类型分布")
 	@RequestMapping(value="/law_customerType_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> lawCustomerTypeDistribute(@ApiParam(name="paramCode", value="律师code", defaultValue="74525") String paramCode) {
+	public CommonResponse<LawResultResp> lawCustomerTypeDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.lawCustomerTypeDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.lawCustomerTypeDistribute();
 				return bodyResp;
 			});
 
@@ -189,11 +155,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "律师判决胜诉率")
 	@RequestMapping(value="/law_sentence_rate",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> lawSentenceRate(@ApiParam(name="paramCode", value="律师code", defaultValue="74525") String paramCode) {
+	public CommonResponse<LawResultResp> lawSentenceRate(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.lawSentenceRate(paramCode);
+				LawResultResp bodyResp = lawQueryService.lawSentenceRate();
 				return bodyResp;
 			});
 
@@ -207,11 +173,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "律师判决标的额分布")
 	@RequestMapping(value="/law_sentence_money",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> lawSentenceMoney(@ApiParam(name="paramCode", value="律师code", defaultValue="74525") String paramCode) {
+	public CommonResponse<LawResultResp> lawSentenceMoney(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.lawSentenceMoney(paramCode);
+				LawResultResp bodyResp = lawQueryService.lawSentenceMoney();
 				return bodyResp;
 			});
 
@@ -225,11 +191,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "当事人案由分布")
 	@RequestMapping(value="/client_case_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> clientCaseDistribute(@ApiParam(name="paramCode", value="当事人code", defaultValue="51167") String paramCode) {
+	public CommonResponse<LawResultResp> clientCaseDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.clientCaseDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.clientCaseDistribute();
 				return bodyResp;
 			});
 
@@ -243,11 +209,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "当事人案件类型分布")
 	@RequestMapping(value="/client_caseType_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> clientCaseTypeDistribute(@ApiParam(name="paramCode", value="当事人code", defaultValue="51167") String paramCode) {
+	public CommonResponse<LawResultResp> clientCaseTypeDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.clientCaseTypeDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.clientCaseTypeDistribute();
 				return bodyResp;
 			});
 
@@ -261,11 +227,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "当事人法院层级分布")
 	@RequestMapping(value="/client_courtLevel_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> clientCourtLevelDistribute(@ApiParam(name="paramCode", value="当事人code", defaultValue="51167") String paramCode) {
+	public CommonResponse<LawResultResp> clientCourtLevelDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.clientCourtLevelDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.clientCourtLevelDistribute();
 				return bodyResp;
 			});
 
@@ -279,11 +245,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "当事人案件时间分布")
 	@RequestMapping(value="/client_caseTime_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> clientCaseTimeDistribute(@ApiParam(name="paramCode", value="当事人code", defaultValue="51167") String paramCode) {
+	public CommonResponse<LawResultResp> clientCaseTimeDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.clientCaseTimeDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.clientCaseTimeDistribute();
 				return bodyResp;
 			});
 
@@ -297,11 +263,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "当事人案件地区分布")
 	@RequestMapping(value="/client_caseArea_distribute",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> clientCaseAreaDistribute(@ApiParam(name="paramCode", value="当事人code", defaultValue="51167") String paramCode) {
+	public CommonResponse<LawResultResp> clientCaseAreaDistribute(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.clientCaseAreaDistribute(paramCode);
+				LawResultResp bodyResp = lawQueryService.clientCaseAreaDistribute();
 				return bodyResp;
 			});
 
@@ -315,11 +281,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "当事人判决标的额分布")
 	@RequestMapping(value="/client_sentence_money",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> clientSentenceMoney(@ApiParam(name="paramCode", value="当事人code", defaultValue="51167") String paramCode) {
+	public CommonResponse<LawResultResp> clientSentenceMoney(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.clientSentenceMoney(paramCode);
+				LawResultResp bodyResp = lawQueryService.clientSentenceMoney();
 				return bodyResp;
 			});
 
@@ -333,11 +299,11 @@ public class LawQueryController extends BaseController implements LawQueryProvid
 	@ResponseBody
 	@ApiOperation(value = "当事人判决胜诉率")
 	@RequestMapping(value="/client_sentence_rate",method = RequestMethod.GET)
-	public CommonResponse<LawResultResp> clientSentenceRate(@ApiParam(name="paramCode", value="当事人code", defaultValue="51167") String paramCode) {
+	public CommonResponse<LawResultResp> clientSentenceRate(HttpServletRequest request) {
 		CommonResponse<LawResultResp> lawResp = null;
 		try {
 			lawResp = super.visit(() -> {
-				LawResultResp bodyResp = lawQueryService.clientSentenceRate(paramCode);
+				LawResultResp bodyResp = lawQueryService.clientSentenceRate();
 				return bodyResp;
 			});
 

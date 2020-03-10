@@ -1,7 +1,7 @@
-package com.yz.sophia.stargaze.provider;
+package com.yz.sophia.insight.provider;
 
 import com.yz.sophia.business.api.entity.CommonResponse;
-import com.yz.sophia.stargaze.model.po.SysUser;
+import com.yz.sophia.insight.model.po.SysUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -27,14 +27,14 @@ public interface SysUserProvider {
 	@PostMapping("/add")
 	//@ApiOperation("添加用户")
 	CommonResponse<Integer> addUser(@ApiParam(name = "username", value = "用户名", defaultValue = "", required = true) String username,
-										  @ApiParam(name = "password", value = "密码", defaultValue = "", required = true) String password,
-										  @ApiParam(name = "nickname", value = "呢称", defaultValue = "", required = false) String nickname,
-										  @ApiParam(name = "headImgUrl", value = "头像", defaultValue = "", required = false) String headImgUrl,
-										  @ApiParam(name = "mobile", value = "手机", defaultValue = "", required = true) String mobile,
-										  @ApiParam(name = "sex", value = "性别：0-男，1-女", defaultValue = "0", required = true) String sex,
-										  @ApiParam(name = "enabled", value = "是否启用：0-禁用, 1-启用", defaultValue = "1", required = false) String enabled,
-										  @ApiParam(name = "type", value = "用户类型", defaultValue = "web", required = false) String type,
-										  @ApiParam(name = "company", value = "合生科技", defaultValue = "合生科技", required = false) String company);
+                                    @ApiParam(name = "password", value = "密码", defaultValue = "", required = true) String password,
+                                    @ApiParam(name = "nickname", value = "呢称", defaultValue = "", required = false) String nickname,
+                                    @ApiParam(name = "headImgUrl", value = "头像", defaultValue = "", required = false) String headImgUrl,
+                                    @ApiParam(name = "mobile", value = "手机", defaultValue = "", required = true) String mobile,
+                                    @ApiParam(name = "sex", value = "性别：0-男，1-女", defaultValue = "0", required = true) String sex,
+                                    @ApiParam(name = "enabled", value = "是否启用：0-禁用, 1-启用", defaultValue = "1", required = false) String enabled,
+                                    @ApiParam(name = "type", value = "用户类型", defaultValue = "web", required = false) String type,
+                                    @ApiParam(name = "company", value = "合生科技", defaultValue = "合生科技", required = false) String company);
 
 	@PostMapping("/addUser")
 	@ApiOperation("添加用户")
