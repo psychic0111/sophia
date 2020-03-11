@@ -43,6 +43,11 @@
 				<artifactId>sophia-business-api</artifactId>
 				<version>${business.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.social</groupId>
+				<artifactId>spring-social-security</artifactId>
+				<version>1.1.6.RELEASE</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

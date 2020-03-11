@@ -38,5 +38,10 @@ public interface SysUserProvider {
 
 	@PostMapping("/addUser")
 	@ApiOperation("添加用户")
-	CommonResponse<Integer> addUserModel(@ModelAttribute SysUser user);
+	CommonResponse<SysUser> addUserModel(@ModelAttribute SysUser user);
+
+	@PostMapping("/login")
+	@ApiOperation("用户登录")
+	CommonResponse<SysUser> userLogin(@ApiParam(name = "username", value = "用户名", defaultValue = "", required = true) String username,
+										 @ApiParam(name = "password", value = "密码", defaultValue = "", required = true) String password);
 }

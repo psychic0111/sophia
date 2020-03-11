@@ -94,7 +94,7 @@ public class SysUser {
      *
      * @mbggenerated
      */
-    //@ApiModelProperty("注册时间")
+    @ApiModelProperty(value = "注册时间", hidden = true)
     private Date createTime;
 
     /**
@@ -103,7 +103,7 @@ public class SysUser {
      *
      * @mbggenerated
      */
-    //@ApiModelProperty("更新时间")
+    @ApiModelProperty(value = "更新时间", hidden = true)
     private Date updateTime;
 
     /**
@@ -121,7 +121,7 @@ public class SysUser {
      *
      * @mbggenerated
      */
-    //@ApiModelProperty("第三方登录openid")
+    @ApiModelProperty(value = "第三方登录openid", hidden = true)
     private String openId;
 
     /**
@@ -130,7 +130,7 @@ public class SysUser {
      *
      * @mbggenerated
      */
-    //@ApiModelProperty(value = "删除标记：0-未删除，1-已删除")
+    @ApiModelProperty(value = "删除标记：0-未删除，1-已删除", hidden = true)
     private Boolean isDel;
 
     /**
