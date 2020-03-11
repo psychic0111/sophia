@@ -34,11 +34,11 @@
             <artifactId>sophia-bsf-shardingjdbc</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.yz.sophia.bsf</groupId>
-            <artifactId>sophia-bsf-elk</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.yz.sophia.bsf</groupId>-->
+            <!--<artifactId>sophia-bsf-elk</artifactId>-->
+            <!--<version>${project.parent.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.yz.sophia.bsf</groupId>
             <artifactId>sophia-bsf-job</artifactId>
@@ -64,11 +64,11 @@
             <artifactId>sophia-bsf-redis</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-        <dependency>
-           <groupId>com.yz.sophia.bsf</groupId>
-           <artifactId>sophia-bsf-elasticsearch</artifactId>
-           <version>${project.parent.version}</version>
-        </dependency>
+        <!--<dependency>-->
+           <!--<groupId>com.yz.sophia.bsf</groupId>-->
+           <!--<artifactId>sophia-bsf-elasticsearch</artifactId>-->
+           <!--<version>${project.parent.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.yz.sophia.bsf</groupId>
             <artifactId>sophia-bsf-file</artifactId>
