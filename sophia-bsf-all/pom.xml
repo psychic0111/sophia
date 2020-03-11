@@ -16,7 +16,7 @@
     <modules>
         <module>sophia-bsf-utils</module>
         <module>sophia-bsf-core</module>
-        <module>sophia-bsf-elk</module>
+        <!--<module>sophia-bsf-elk</module>-->
         <module>sophia-bsf-demo</module>
         <module>sophia-bsf-starter</module>
         <module>sophia-bsf-dependencies</module>
@@ -27,7 +27,7 @@
         <module>sophia-bsf-mq</module>
         <module>sophia-bsf-shardingjdbc</module>
         <module>sophia-bsf-eureka</module>
-        <module>sophia-bsf-elasticsearch</module>
+        <!--<module>sophia-bsf-elasticsearch</module>-->
         <module>sophia-bsf-redis</module>
         <module>sophia-bsf-file</module>
         <module>sophia-bsf-health</module>
