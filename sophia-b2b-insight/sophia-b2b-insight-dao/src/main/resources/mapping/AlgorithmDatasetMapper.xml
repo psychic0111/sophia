@@ -102,7 +102,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from product_insight
+    from algorithm_dataset
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
