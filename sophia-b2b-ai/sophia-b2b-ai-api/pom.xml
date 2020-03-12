@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>sophia-b2b-ai</artifactId>
+		<groupId>com.yz.sophia</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>sophia-b2b-ai-api</artifactId>
+	<dependencies>
+		<!--只允许使用business-api,不要再使用其他的bsf或business框架，保证其他业务不会产生大量依赖-->
+		<!--业务协议定义-->
+		<dependency>
+			<groupId>com.yz.sophia.business</groupId>
+			<artifactId>sophia-business-api</artifactId>
+		</dependency>
+		<!--feginclient-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-openfeign-core</artifactId>
+		</dependency>
+		<!--swagger注释-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<!--用于代码简写,注意provided-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>
