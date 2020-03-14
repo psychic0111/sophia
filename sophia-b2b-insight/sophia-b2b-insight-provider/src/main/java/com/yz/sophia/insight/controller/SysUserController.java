@@ -42,14 +42,36 @@ public class SysUserController extends BaseController implements SysUserProvider
 
     @Override
     @ResponseBody
-    @RequestMapping(value="/login",method = RequestMethod.POST)
+    @RequestMapping(value="/loginByUsername",method = RequestMethod.POST)
     @ApiOperation("用户登录")
-    public CommonResponse<SysUser> userLogin(@ApiParam(name = "username", value = "用户名, 测试账号: admin,user,guest,test", defaultValue = "", required = true) @RequestParam(name = "username", required = true) String username,
+    public CommonResponse<SysUser> loginByUsername(@ApiParam(name = "username", value = "用户名, 测试账号: admin,user,guest,test", defaultValue = "", required = true) @RequestParam(name = "username", required = true) String username,
                                              @ApiParam(name = "password", value = "密码, 测试账号密码和用户名一样", defaultValue = "", required = true) @RequestParam(name = "password", required = true) String password) {
 
         CommonResponse<SysUser> resp = null;
         resp = super.visit(() -> {
             SysUser user = sysUserService.queryByUserName(username);
+            return user;
+        });
+        if(resp.getData() == null) {
+            resp = CommonResponse.error("用户不存在");
+        }else {
+            if(!resp.getData().getPassword().equals(password)){
+                resp = CommonResponse.error("密码错误");
+            }
+        }
+        return resp;
+    }
+
+    @Override
+    @ResponseBody
+    @RequestMapping(value="/loginByMobile",method = RequestMethod.POST)
+    @ApiOperation("用户登录")
+    public CommonResponse<SysUser> loginByMobile(@ApiParam(name = "mobile", value = "用户手机", defaultValue = "", required = true) @RequestParam(name = "mobile", required = true) String mobile,
+                                             @ApiParam(name = "password", value = "密码, 测试账号密码和用户名一样", defaultValue = "", required = true) @RequestParam(name = "password", required = true) String password) {
+
+        CommonResponse<SysUser> resp = null;
+        resp = super.visit(() -> {
+            SysUser user = sysUserService.queryByMobile(mobile);
             return user;
         });
         if(resp.getData() == null) {

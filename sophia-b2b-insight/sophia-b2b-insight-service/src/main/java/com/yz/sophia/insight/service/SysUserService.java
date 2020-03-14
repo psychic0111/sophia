@@ -46,4 +46,14 @@ public class SysUserService {
             return null;
         }
     }
+    public SysUser queryByMobile(String mobile){
+        SysUserExample example = new SysUserExample();
+        example.createCriteria().andMobileEqualTo(mobile);
+        List<SysUser> sysUserList = userMapper.selectByExample(example);
+        if(sysUserList != null && !sysUserList.isEmpty()){
+            return sysUserList.get(0);
+        }else {
+            return null;
+        }
+    }
 }

@@ -40,8 +40,13 @@ public interface SysUserProvider {
 	@ApiOperation("添加用户")
 	CommonResponse<SysUser> addUserModel(@ModelAttribute SysUser user);
 
-	@PostMapping("/login")
+	@PostMapping("/loginByUsername")
 	@ApiOperation("用户登录")
-	CommonResponse<SysUser> userLogin(@ApiParam(name = "username", value = "用户名", defaultValue = "", required = true) String username,
-										 @ApiParam(name = "password", value = "密码", defaultValue = "", required = true) String password);
+	CommonResponse<SysUser> loginByUsername(@ApiParam(name = "username", value = "用户名", defaultValue = "", required = true) String username,
+											@ApiParam(name = "password", value = "密码", defaultValue = "", required = true) String password);
+
+	@PostMapping("/loginByMobile")
+	@ApiOperation("用户登录")
+	CommonResponse<SysUser> loginByMobile(@ApiParam(name = "mobile", value = "用户名", defaultValue = "", required = true) String mobile,
+											@ApiParam(name = "password", value = "密码", defaultValue = "", required = true) String password);
 }
