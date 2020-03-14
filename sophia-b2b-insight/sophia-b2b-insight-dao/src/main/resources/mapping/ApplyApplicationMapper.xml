@@ -333,6 +333,9 @@
       <if test="record.applicationCode != null" >
         application_code = #{record.applicationCode,jdbcType=VARCHAR},
       </if>
+      <if test="record.applicationService != null" >
+        application_service = #{record.applicationService,jdbcType=VARCHAR},
+      </if>
       <if test="record.applicationName != null" >
         application_name = #{record.applicationName,jdbcType=VARCHAR},
       </if>

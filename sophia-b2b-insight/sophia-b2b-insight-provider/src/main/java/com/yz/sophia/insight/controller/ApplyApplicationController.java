@@ -7,11 +7,8 @@ import com.yz.sophia.insight.model.po.MultilevelMenu;
 import com.yz.sophia.insight.model.request.ApplyApplicationReq;
 import com.yz.sophia.insight.model.response.ApplyApplicationRelResp;
 import com.yz.sophia.insight.model.response.ApplyApplicationResp;
-import com.yz.sophia.insight.model.response.LegalInstrumentResp;
 import com.yz.sophia.insight.provider.ApplyApplicationProvider;
-import com.yz.sophia.insight.provider.LegalInstrumentProvider;
 import com.yz.sophia.insight.service.ApplyApplicationService;
-import com.yz.sophia.insight.service.LegalInstrumentService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
@@ -132,6 +129,37 @@ public class ApplyApplicationController extends BaseController implements ApplyA
             });
         } catch (Exception e) {
             log.info("菜单选择查询接口异常：e:"+e.getMessage());
+            e.printStackTrace();
+        }
+        return respData;
+    }
+
+    @Override
+    @ResponseBody
+    @ApiOperation(value = "编辑接口")
+    @RequestMapping(value="/edit_application",method = RequestMethod.POST)
+    public CommonResponse editApplication(@RequestBody
+                                              @Validated
+                                              @ApiParam(
+                                                      name="编辑接口请求对象",
+                                                      value="{\n" +
+                                                              "\"applicationCode\":\"314729405\",\n" +
+                                                              "\"applicationDescribe\": \"更改描述信息描述信息描述信息更改\",\n" +
+                                                              "\"applicationService\": \"2|3|5\",\n" +
+                                                              "\"menusCodeList\": [\"10022\",\"10023\",\"10024\"]\n" +
+                                                              "}",
+                                                      required=true)
+                                                      ApplyApplicationReq applyApplicationQo) {
+
+        CommonResponse respData = null;
+        try {
+            respData = super.visit(() -> {
+                Integer num = applyApplicationService.editApplication(applyApplicationQo);
+                log.info("编辑接口返回参数：num:"+num);
+                return num;
+            });
+        } catch (Exception e) {
+            log.info("编辑接口异常：e:"+e.getMessage());
             e.printStackTrace();
         }
         return respData;
