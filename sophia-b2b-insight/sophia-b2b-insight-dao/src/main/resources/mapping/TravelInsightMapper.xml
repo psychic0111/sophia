@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yz.sophia.insight.mapper.TravelInsightMapper" >
+  <resultMap id="BaseResultMap" type="com.yz.sophia.insight.model.po.TravelInsight" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="delay_tnum" property="delayTnum" jdbcType="INTEGER" />
+    <result column="extensive_delay" property="extensiveDelay" jdbcType="INTEGER" />
+    <result column="out_action_num" property="outActionNum" jdbcType="INTEGER" />
+    <result column="fut_delay_train" property="futDelayTrain" jdbcType="INTEGER" />
+    <result column="train_today_name" property="trainTodayName" jdbcType="VARCHAR" />
+    <result column="train_today_num" property="trainTodayNum" jdbcType="INTEGER" />
+    <result column="train_today_tnum" property="trainTodayTnum" jdbcType="VARCHAR" />
+    <result column="train_today_delay_date" property="trainTodayDelayDate" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, delay_tnum, extensive_delay, out_action_num, fut_delay_train, train_today_name, 
+    train_today_num, train_today_tnum, train_today_delay_date, create_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yz.sophia.insight.model.po.TravelInsightExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from travel_insight
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from travel_insight
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from travel_insight
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yz.sophia.insight.model.po.TravelInsightExample" >
+    delete from travel_insight
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yz.sophia.insight.model.po.TravelInsight" >
+    insert into travel_insight (id, delay_tnum, extensive_delay, 
+      out_action_num, fut_delay_train, train_today_name, 
+      train_today_num, train_today_tnum, train_today_delay_date, 
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{delayTnum,jdbcType=INTEGER}, #{extensiveDelay,jdbcType=INTEGER}, 
+      #{outActionNum,jdbcType=INTEGER}, #{futDelayTrain,jdbcType=INTEGER}, #{trainTodayName,jdbcType=VARCHAR}, 
+      #{trainTodayNum,jdbcType=INTEGER}, #{trainTodayTnum,jdbcType=VARCHAR}, #{trainTodayDelayDate,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yz.sophia.insight.model.po.TravelInsight" >
+    insert into travel_insight
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="delayTnum != null" >
+        delay_tnum,
+      </if>
+      <if test="extensiveDelay != null" >
+        extensive_delay,
+      </if>
+      <if test="outActionNum != null" >
+        out_action_num,
+      </if>
+      <if test="futDelayTrain != null" >
+        fut_delay_train,
+      </if>
+      <if test="trainTodayName != null" >
+        train_today_name,
+      </if>
+      <if test="trainTodayNum != null" >
+        train_today_num,
+      </if>
+      <if test="trainTodayTnum != null" >
+        train_today_tnum,
+      </if>
+      <if test="trainTodayDelayDate != null" >
+        train_today_delay_date,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="delayTnum != null" >
+        #{delayTnum,jdbcType=INTEGER},
+      </if>
+      <if test="extensiveDelay != null" >
+        #{extensiveDelay,jdbcType=INTEGER},
+      </if>
+      <if test="outActionNum != null" >
+        #{outActionNum,jdbcType=INTEGER},
+      </if>
+      <if test="futDelayTrain != null" >
+        #{futDelayTrain,jdbcType=INTEGER},
+      </if>
+      <if test="trainTodayName != null" >
+        #{trainTodayName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainTodayNum != null" >
+        #{trainTodayNum,jdbcType=INTEGER},
+      </if>
+      <if test="trainTodayTnum != null" >
+        #{trainTodayTnum,jdbcType=VARCHAR},
+      </if>
+      <if test="trainTodayDelayDate != null" >
+        #{trainTodayDelayDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yz.sophia.insight.model.po.TravelInsightExample" resultType="java.lang.Integer" >
+    select count(*) from travel_insight
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update travel_insight
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.delayTnum != null" >
+        delay_tnum = #{record.delayTnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.extensiveDelay != null" >
+        extensive_delay = #{record.extensiveDelay,jdbcType=INTEGER},
+      </if>
+      <if test="record.outActionNum != null" >
+        out_action_num = #{record.outActionNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.futDelayTrain != null" >
+        fut_delay_train = #{record.futDelayTrain,jdbcType=INTEGER},
+      </if>
+      <if test="record.trainTodayName != null" >
+        train_today_name = #{record.trainTodayName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainTodayNum != null" >
+        train_today_num = #{record.trainTodayNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.trainTodayTnum != null" >
+        train_today_tnum = #{record.trainTodayTnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainTodayDelayDate != null" >
+        train_today_delay_date = #{record.trainTodayDelayDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update travel_insight
+    set id = #{record.id,jdbcType=BIGINT},
+      delay_tnum = #{record.delayTnum,jdbcType=INTEGER},
+      extensive_delay = #{record.extensiveDelay,jdbcType=INTEGER},
+      out_action_num = #{record.outActionNum,jdbcType=INTEGER},
+      fut_delay_train = #{record.futDelayTrain,jdbcType=INTEGER},
+      train_today_name = #{record.trainTodayName,jdbcType=VARCHAR},
+      train_today_num = #{record.trainTodayNum,jdbcType=INTEGER},
+      train_today_tnum = #{record.trainTodayTnum,jdbcType=VARCHAR},
+      train_today_delay_date = #{record.trainTodayDelayDate,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yz.sophia.insight.model.po.TravelInsight" >
+    update travel_insight
+    <set >
+      <if test="delayTnum != null" >
+        delay_tnum = #{delayTnum,jdbcType=INTEGER},
+      </if>
+      <if test="extensiveDelay != null" >
+        extensive_delay = #{extensiveDelay,jdbcType=INTEGER},
+      </if>
+      <if test="outActionNum != null" >
+        out_action_num = #{outActionNum,jdbcType=INTEGER},
+      </if>
+      <if test="futDelayTrain != null" >
+        fut_delay_train = #{futDelayTrain,jdbcType=INTEGER},
+      </if>
+      <if test="trainTodayName != null" >
+        train_today_name = #{trainTodayName,jdbcType=VARCHAR},
+      </if>
+      <if test="trainTodayNum != null" >
+        train_today_num = #{trainTodayNum,jdbcType=INTEGER},
+      </if>
+      <if test="trainTodayTnum != null" >
+        train_today_tnum = #{trainTodayTnum,jdbcType=VARCHAR},
+      </if>
+      <if test="trainTodayDelayDate != null" >
+        train_today_delay_date = #{trainTodayDelayDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yz.sophia.insight.model.po.TravelInsight" >
+    update travel_insight
+    set delay_tnum = #{delayTnum,jdbcType=INTEGER},
+      extensive_delay = #{extensiveDelay,jdbcType=INTEGER},
+      out_action_num = #{outActionNum,jdbcType=INTEGER},
+      fut_delay_train = #{futDelayTrain,jdbcType=INTEGER},
+      train_today_name = #{trainTodayName,jdbcType=VARCHAR},
+      train_today_num = #{trainTodayNum,jdbcType=INTEGER},
+      train_today_tnum = #{trainTodayTnum,jdbcType=VARCHAR},
+      train_today_delay_date = #{trainTodayDelayDate,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
