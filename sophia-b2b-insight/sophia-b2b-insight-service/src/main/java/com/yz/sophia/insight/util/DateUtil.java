@@ -101,7 +101,7 @@ public class DateUtil {
 	 * 将短时间格式时间转换为字符串 yyyy-MM-dd
 	 * 
 	 * @param dateDate
-	 * @param k
+	 * @param
 	 * @return
 	 */
 	public static String dateToStr(Date dateDate) {
@@ -206,15 +206,18 @@ public class DateUtil {
 		String[] jj = null;
 		kk = st1.split(":");
 		jj = st2.split(":");
-		if (Integer.parseInt(kk[0]) < Integer.parseInt(jj[0]))
+		if (Integer.parseInt(kk[0]) < Integer.parseInt(jj[0])) {
 			return "0";
+		}
 		else {
 			double y = Double.parseDouble(kk[0]) + Double.parseDouble(kk[1]) / 60;
 			double u = Double.parseDouble(jj[0]) + Double.parseDouble(jj[1]) / 60;
-			if ((y - u) > 0)
+			if ((y - u) > 0) {
 				return y - u + "";
-			else
+			}
+			else {
 				return "0";
+			}
 		}
 	}
 
@@ -283,15 +286,19 @@ public class DateUtil {
 		GregorianCalendar gc = (GregorianCalendar) Calendar.getInstance();
 		gc.setTime(d);
 		int year = gc.get(Calendar.YEAR);
-		if ((year % 400) == 0)
+		if ((year % 400) == 0) {
 			return true;
+		}
 		else if ((year % 4) == 0) {
-			if ((year % 100) == 0)
+			if ((year % 100) == 0) {
 				return false;
-			else
+			}
+			else {
 				return true;
-		} else
+			}
+		} else {
 			return false;
+		}
 	}
 
 	/**
@@ -347,15 +354,18 @@ public class DateUtil {
 		cal2.setTime(date2);
 		int subYear = cal1.get(Calendar.YEAR) - cal2.get(Calendar.YEAR);
 		if (0 == subYear) {
-			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR))
+			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR)) {
 				return true;
+			}
 		} else if (1 == subYear && 11 == cal2.get(Calendar.MONTH)) {
 			// 如果12月的最后一周横跨来年第一周的话则最后一周即算做来年的第一周
-			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR))
+			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR)) {
 				return true;
+			}
 		} else if (-1 == subYear && 11 == cal1.get(Calendar.MONTH)) {
-			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR))
+			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR)) {
 				return true;
+			}
 		}
 		return false;
 	}
@@ -368,8 +378,9 @@ public class DateUtil {
 	public static String getSeqWeek() {
 		Calendar c = Calendar.getInstance(Locale.CHINA);
 		String week = Integer.toString(c.get(Calendar.WEEK_OF_YEAR));
-		if (week.length() == 1)
+		if (week.length() == 1) {
 			week = "0" + week;
+		}
 		String year = Integer.toString(c.get(Calendar.YEAR));
 		return year + week;
 	}
@@ -382,10 +393,12 @@ public class DateUtil {
 	 * @return
 	 */
 	public static long getDays(String date1, String date2) {
-		if (date1 == null || date1.equals(""))
+		if (date1 == null || date1.equals("")) {
 			return 0;
-		if (date2 == null || date2.equals(""))
+		}
+		if (date2 == null || date2.equals("")) {
 			return 0;
+		}
 		// 转换为标准时间
 		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = null;
@@ -401,14 +414,15 @@ public class DateUtil {
 
 	/**
 	 * 
-	 * @param args
+	 * @paramargs
 	 */
 	public static boolean RightDate(String date) {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		;
-		if (date == null)
+		if (date == null) {
 			return false;
+		}
 		if (date.length() > 10) {
 			sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		} else {
