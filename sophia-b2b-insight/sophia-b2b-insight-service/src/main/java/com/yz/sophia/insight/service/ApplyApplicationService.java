@@ -61,6 +61,9 @@ public class ApplyApplicationService {
         applyApplication.setCreateTime(timestamp);
         applyApplication.setUpdateTime(timestamp);
         int insertNum = applyApplicationMapper.insert(applyApplication);
+        if (insertNum <=0 ) {
+            throw new Exception("申请新增失败！");
+        }
         //2.新增ApplyApplicationRel关联表
         List<String> menusCodeList = applyApplicationQo.getMenusCodeList();
         if (menusCodeList == null) {
@@ -74,6 +77,9 @@ public class ApplyApplicationService {
             aaRelList.add(rel);
         }
         int insertBatchNum = applyApplicationRelMapper.insertBatch(aaRelList);
+        if (insertBatchNum <=0 ) {
+            throw new Exception("申请关联内容新增失败！");
+        }
         return insertNum;
     }
 
@@ -248,4 +254,52 @@ public class ApplyApplicationService {
         return childList;
     }
 
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
+    public Integer editApplication(ApplyApplicationReq req) throws Exception {
+        //1.编辑ApplyApplication表
+        ApplyApplicationReq applyApplicationQo = BeanUtils.convert(ApplyApplicationReq.class, req);
+        log.info("录入接口入参，applyApplicationQo：" + applyApplicationQo.toString());
+        if (applyApplicationQo.getApplicationDescribe() == null || applyApplicationQo.getApplicationService()==null
+        && applyApplicationQo.getMenusCodeList()==null && applyApplicationQo.getMenusCodeList().size() == 0
+        && applyApplicationQo.getApplicationCode() == null ) {
+        throw new Exception("applicationDescribe|applicationService|menusCodeList|applicationCode不可为空！");
+        }
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String applicationCode = applyApplicationQo.getApplicationCode();
+        ApplyApplicationExample example = new ApplyApplicationExample();
+        ApplyApplicationExample.Criteria criteria = example.createCriteria();
+        criteria.andApplicationCodeEqualTo(applicationCode);
+        ApplyApplication applyApplication = new ApplyApplication();
+        applyApplication.setApplicationService(applyApplicationQo.getApplicationService());
+        applyApplication.setApplicationDescribe(applyApplicationQo.getApplicationDescribe());
+        applyApplication.setUpdateTime(timestamp);
+        int updateNum = applyApplicationMapper.updateByExampleSelective(applyApplication,example);
+        if (updateNum <=0 ) {
+            throw new Exception("申请更新失败！");
+        }
+        //2.编辑ApplyApplicationRel关联表（先删除，后新增）
+        ApplyApplicationRelExample exampleRel = new ApplyApplicationRelExample();
+        ApplyApplicationRelExample.Criteria criteriaRel = exampleRel.createCriteria();
+        criteriaRel.andApplicationCodeEqualTo(applyApplicationQo.getApplicationCode());
+        int delNum = applyApplicationRelMapper.deleteByExample(exampleRel);
+        if (delNum <= 0) {
+            throw new Exception("更新关联内容失败");
+        }
+        List<String> menusCodeList = applyApplicationQo.getMenusCodeList();
+        if (menusCodeList == null) {
+            throw new Exception("menusCodeList不能为空！");
+        }
+        List<ApplyApplicationRel> aaRelList = new ArrayList<>();
+        for (String menusCode: menusCodeList) {
+            ApplyApplicationRel rel = new ApplyApplicationRel();
+            rel.setMenusCode(menusCode);
+            rel.setApplicationCode(applicationCode);
+            aaRelList.add(rel);
+        }
+        int insertBatchNum = applyApplicationRelMapper.insertBatch(aaRelList);
+        if (insertBatchNum <=0 ) {
+            throw new Exception("申请更新关联内容失败！");
+        }
+        return updateNum;
+    }
 }

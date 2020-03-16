@@ -50,4 +50,8 @@ public interface ApplyApplicationProvider {
 	@GetMapping("/getMultilevelMenu")
 	@ApiOperation("菜单选择查询接口")
 	CommonResponse<List<MultilevelMenu>> getMultilevelMenu(@RequestParam("menusRank") Integer menusRank , @RequestParam("parentMenusCode") String parentMenusCode);
+
+	@PostMapping("/editApplication")
+	@ApiOperation("编辑接口")
+	CommonResponse editApplication(@RequestBody ApplyApplicationReq applyApplicationQo);
 }
