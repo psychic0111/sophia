@@ -2,6 +2,7 @@ package com.yz.sophia.ai.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yz.sophia.ai.utils.LYHttpAsrTool;
+import com.yz.sophia.ai.utils.LYHttpTTSTool;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,7 +17,7 @@ public class LingYunVoiceService {
 
 
     public Object LYHttpSend(MultipartFile files) {
-        String result=null;
+        String result = null;
         LYHttpAsrTool httpTool = new LYHttpAsrTool();
         try {
             byte[] voiceData = files.getBytes();
@@ -37,5 +38,10 @@ public class LingYunVoiceService {
         }
         JSONObject resultJson = JSONObject.parseObject(result);
         return resultJson;
+    }
+
+    public byte[] LYHttpTTSSend(String text, String capKey) {
+        LYHttpTTSTool lyHttpTTSTool = new LYHttpTTSTool();
+        return lyHttpTTSTool.sendPost(text, capKey);
     }
 }

@@ -4,6 +4,7 @@ import com.yz.sophia.ai.provider.LingYunVoiceProvider;
 import com.yz.sophia.ai.service.LingYunVoiceService;
 import com.yz.sophia.business.api.entity.CommonResponse;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,16 @@ public class LingYunVoiceController extends BaseController implements LingYunVoi
     public CommonResponse<Object> getASR(MultipartFile files) {
         return super.visit(() -> {
             return lingYunVoiceService.LYHttpSend(files);
+        });
+    }
+
+    @Override
+    @GetMapping("/tts")
+    @ApiOperation("上传文字返回语音合成文件")
+    public CommonResponse<Object> getTTS(@ApiParam(name = "text", value = "待合成文本", defaultValue = "你好，世界", required = true) String text,
+                                         @ApiParam(name = "capKey", value = "合成语言", defaultValue = "tts.cloud.wangjing", required = true) String capKey) {
+        return super.visit(() -> {
+            return lingYunVoiceService.LYHttpTTSSend(text, capKey);
         });
     }
 }
