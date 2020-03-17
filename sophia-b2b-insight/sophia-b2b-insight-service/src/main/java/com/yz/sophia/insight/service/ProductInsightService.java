@@ -29,7 +29,8 @@ public class ProductInsightService {
     public List<String> listProductStores(String plateform){
         ProductInsightExample example = new ProductInsightExample();
         ProductInsightExample.Criteria criteria = example.createCriteria();
-        List<String> list = productInsightMapper.selectPlateForm();
+        criteria.andProductPlatformEqualTo(plateform);
+        List<String> list = productInsightMapper.selectStoreByExample(example);
         return list;
     }
 
