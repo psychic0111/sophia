@@ -3,6 +3,7 @@ package com.yz.sophia.stargaze.service;
 import com.yz.sophia.stargaze.dao.PoiAreaMapper;
 import com.yz.sophia.stargaze.model.po.PoiArea;
 import com.yz.sophia.stargaze.model.po.PoiAreaExample;
+import com.yz.sophia.stargaze.model.response.POIProvinceDetailResp;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,14 @@ public class POIAreaService {
         if(limitCount != null && limitCount > 0){
             return poiAreaList.subList(0, limitCount - 1);
         }
+        return poiAreaList;
+    }
+
+    public List<POIProvinceDetailResp> countProvincePoins(){
+        PoiAreaExample example = new PoiAreaExample();
+        PoiAreaExample.Criteria criteria = example.createCriteria();
+        List<POIProvinceDetailResp> poiAreaList = poiAreaMapper.countProvincePoints(example);
+
         return poiAreaList;
     }
 }
