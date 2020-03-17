@@ -12,6 +12,7 @@ import lombok.val;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
@@ -22,6 +23,7 @@ import org.springframework.context.annotation.ComponentScan;
 //@EnableDubboConfiguration
 @MapperScan(basePackages = "com.yz.sophia.ai.dao")
 @ComponentScan(basePackages = "com.yz.sophia.ai")
+@EnableConfigurationProperties
 public class Application {
     public static void main(String[] args) {
         /**

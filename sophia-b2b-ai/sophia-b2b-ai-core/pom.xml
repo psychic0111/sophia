@@ -53,6 +53,13 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>easyexcel</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>hcicloud</groupId>
+			<artifactId>hcicloud</artifactId>
+			<version>5.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/ext-lib/hcicloud-5.0.jar</systemPath>
+		</dependency>
 		<!--永辉原有dubbo兼容使用的几个包-->
 		<!--<dependency>-->
 			<!--<groupId>com.alibaba.spring.boot</groupId>-->

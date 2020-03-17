@@ -1,0 +1,673 @@
+ <?xml version="1.0" encoding="utf-8"?>
+<rules name="名片条目分类规则" ruleNum="4"><!--实际是rulePriorityNum,与rulePriority配对使用，rulePriority取值的作用：0-词头；1-关键内容；2-常见词汇；3-补充规则；ruleNum及其以上（特点是rulePriority大于等于ruleNum）-其他辅助关键词：4-去除冒号之前的内容；5-去除前导的一些内容-->
+  <!--特殊字符（均为全角）说明：'？'通配符；'！'间隔符；如果只有一个关键词那么最后可以不加'！'，否则每个关键词后都要加'！'，不然会漏掉最后一个关键词-->
+  <!--string和keychar区别：1.string只要匹配上一个就算匹配上，keychar可能需要匹配多个；2.string如果某个关键词匹配上了但是遇到一些匹配条件没符合，即使后面还有关键词能符合也会被跳过，keychar则会尝试所有的那个匹配项-->
+
+  <object id="0" name="UKN" class="0"><!--最后无法分类的-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="4" matchLoc="start">:！</word><!--去除一下冒号-->
+    </keywords>
+  </object>
+
+  <!--优先级1的条目-->
+  <!--===============================================================姓名===============================================================-->
+  <object id="1" name="NAM" class="10"><!--姓名（限定必须是首字，用于孤立的姓名）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">姓名:！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1" resultMinLen="3" resultMaxLen="5" matchLoc="startAbs">姓名！</word>
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="4" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">林！森！原！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="5" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">佐藤！铃木！高桥！田中！渡边！伊藤！山本！中村！小林！星野！加藤！吉田！山田！山口！松元！松本！井上！木村！清水！山崎！中岛！泽田！阿部！桥本！山下！石川！前田！小川！藤田！冈田！后藤！石井！村上！近藤！坂本！远藤！青木！藤井！西村！福田！太田！三浦！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="5" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">藤原！冈本！松田！中川！中野！原田！小野！田村！竹内！金子！和田！中山！石田！上田！森田！小岛！柴田！宫崎！酒井！工藤！横山！宫本！内田！高木！安藤！岛田！谷口！大野！高田！丸山！今井！河野！藤本！村田！武田！上野！杉山！增田！小山！大冢！平野！菅原！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="5" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">松井！千叶！岩崎！樱井！木下！野口！松尾！菊地！野村！新井！渡部！樱田！丰田！本田！松下！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="5" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">长谷川！大久保！佐佐木！</word>   
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="4" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">林！森！原！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="5" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">佐藤！鈴木！高橋！田中！渡邊！伊藤！山本！中村！小林！星野！加藤！吉田！山田！山口！松本！松本！井上！木村！清水！山崎！中島！澤田！阿部！橋本！山下！石川！前田！小川！藤田！岡田！後藤！石井！村上！近藤！阪本！遠藤！青木！藤井！西村！福田！太田！三浦！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="5" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">藤原！岡本！松田！中川！中野！原田！小野！田村！竹內！金子！和田！中山！石田！上田！森田！小島！柴田！宮崎！酒井！工藤！橫山！宮本！內田！高木！安藤！島田！穀口！大野！高田！丸山！今井！河野！藤本！村田！武田！上野！杉山！增田！小山！大塚！平野！菅原！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="5" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">松井！千葉！岩崎！櫻井！木下！野口！松尾！菊地！野村！新井！渡部！櫻田！豐田！本田！松下！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="5" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">長穀川！大久保！佐佐木！</word>      
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">李！王！张！刘！陈！杨！黄！吴！赵！周！徐！孙！马！朱！胡！林！郭！何！高！罗！郑！梁！谢！宋！唐！许！邓！冯！韩！曹！曾！彭！萧！蔡！潘！田！董！袁！于！余！叶！蒋！杜！苏！魏！程！吕！丁！沈！任！姚！卢！傅！钟！姜！崔！谭！廖！范！汪！陆！金！石！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">戴！贾！韦！夏！邱！方！侯！邹！熊！孟！秦！白！江！阎！薛！尹！段！雷！黎！史！龙！陶！贺！顾！毛！郝！龚！邵！万！钱！严！赖！覃！洪！武！莫！孔！汤！向！常！温！康！施！文！牛！樊！葛！邢！安！齐！易！乔！伍！庞！颜！倪！庄！聂！章！鲁！岳！翟！殷！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">詹！申！欧！耿！关！兰！焦！俞！左！柳！甘！祝！包！宁！尚！符！舒！阮！柯！纪！梅！童！凌！毕！单！季！裴！霍！涂！成！苗！谷！盛！曲！翁！冉！骆！蓝！路！游！辛！靳！管！柴！蒙！鲍！华！喻！祁！蒲！房！滕！屈！饶！解！牟！艾！尤！阳！时！穆！农！司！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">卓！古！吉！缪！简！车！项！连！芦！麦！褚！娄！窦！戚！岑！景！党！宫！费！卜！冷！晏！席！卫！米！柏！宗！瞿！桂！全！佟！应！臧！闵！苟！邬！边！卞！姬！师！和！仇！栾！隋！商！刁！沙！荣！巫！寇！桑！郎！甄！丛！仲！虞！敖！巩！明！佘！池！查！麻！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">苑！迟！邝！官！封！谈！匡！鞠！惠！荆！乐！冀！郁！胥！南！班！储！原！栗！燕！楚！鄢！劳！谌！奚！皮！粟！冼！蔺！楼！盘！满！闻！位！厉！伊！仝！区！郜！海！阚！花！权！强！帅！屠！豆！朴！盖！练！廉！禹！井！祖！漆！巴！丰！支！卿！国！狄！平！计！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">索！宣！晋！相！初！门！云！容！敬！来！扈！晁！芮！都！普！阙！浦！戈！伏！鹿！薄！邸！雍！辜！羊！阿！乌！母！裘！亓！修！邰！赫！杭！况！那！宿！鲜！印！逯！隆！茹！诸！战！慕！危！玉！银！亢！嵇！公！哈！湛！宾！戎！勾！茅！利！於！呼！居！揭！干！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">但！尉！冶！斯！元！束！檀！衣！信！展！阴！昝！智！幸！奉！植！衡！富！尧！闭！由！闫！代！黑！肖！卡！付！乜！户！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="4" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">欧阳！太史！端木！上官！司马！东方！独孤！南宫！万俟！闻人！夏侯！诸葛！尉迟！公羊！赫连！澹台！皇甫！宗政！濮阳！公冶！太叔！申屠！公孙！慕容！仲孙！钟离！长孙！宇文！司徒！鲜于！司空！闾丘！子车！亓官！司寇！巫马！公西！颛孙！壤驷！公良！漆雕！乐正！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="4" resultConfiThresh="40" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">宰父！谷梁！拓跋！夹谷！轩辕！令狐！段干！百里！呼延！东郭！南门！羊舌！微生！公户！公玉！公仪！梁丘！公仲！公上！公门！公山！公坚！左丘！公伯！西门！公祖！第五！公乘！贯丘！公皙！南荣！东里！东宫！仲长！子书！子桑！即墨！达奚！褚师！吴铭！</word>
+
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">李！王！張！劉！陳！楊！黃！吳！趙！周！徐！孫！馬！朱！胡！林！郭！何！高！羅！鄭！梁！謝！宋！唐！許！鄧！馮！韓！曹！曾！彭！蕭！蔡！潘！田！董！袁！於！餘！葉！蔣！杜！蘇！魏！程！呂！丁！沈！任！姚！盧！傅！鐘！薑！崔！譚！廖！範！汪！陸！金！石！</word> 
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">戴！賈！韋！夏！邱！方！侯！鄒！熊！孟！秦！白！江！閻！薛！尹！段！雷！黎！史！龍！陶！賀！顧！毛！郝！龔！邵！萬！錢！嚴！賴！覃！洪！武！莫！孔！湯！向！常！溫！康！施！文！牛！樊！葛！邢！安！齊！易！喬！伍！龐！顏！倪！莊！聶！章！魯！嶽！翟！殷！</word>   
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">詹！申！歐！耿！關！蘭！焦！俞！左！柳！甘！祝！包！寧！尚！符！舒！阮！柯！紀！梅！童！淩！畢！單！季！裴！霍！塗！成！苗！穀！盛！曲！翁！冉！駱！藍！路！遊！辛！靳！管！柴！蒙！鮑！華！喻！祁！蒲！房！滕！屈！饒！解！牟！艾！尤！陽！時！穆！農！司！</word>    
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">卓！古！吉！繆！簡！車！項！連！蘆！麥！褚！婁！竇！戚！岑！景！黨！宮！費！蔔！冷！晏！席！衛！米！柏！宗！瞿！桂！全！佟！應！臧！閔！苟！鄔！邊！卞！姬！師！和！仇！欒！隋！商！刁！沙！榮！巫！寇！桑！郎！甄！叢！仲！虞！敖！鞏！明！佘！池！查！麻！</word>      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">苑！遲！鄺！官！封！談！匡！鞠！惠！荊！樂！冀！鬱！胥！南！班！儲！原！栗！燕！楚！鄢！勞！諶！奚！皮！粟！冼！藺！樓！盤！滿！聞！位！厲！伊！仝！區！郜！海！闞！花！權！強！帥！屠！豆！樸！蓋！練！廉！禹！井！祖！漆！巴！豐！支！卿！國！狄！平！計！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">索！宣！晉！相！初！門！雲！容！敬！來！扈！晁！芮！都！普！闕！浦！戈！伏！鹿！薄！邸！雍！辜！羊！阿！烏！母！裘！亓！修！邰！赫！杭！況！那！宿！鮮！印！逯！隆！茹！諸！戰！慕！危！玉！銀！亢！嵇！公！哈！湛！賓！戎！勾！茅！利！於！呼！居！揭！幹！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="3" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">但！尉！冶！斯！元！束！檀！衣！信！展！陰！昝！智！幸！奉！植！衡！富！堯！閉！由！閆！代！黑！肖！卡！付！乜！户！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="4" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">歐陽！太史！端木！上官！司馬！東方！獨孤！南宮！萬俟！聞人！夏侯！諸葛！尉遲！公羊！赫連！澹台！皇甫！宗政！濮陽！公冶！太叔！申屠！公孫！慕容！仲孫！鐘離！長孫！宇文！司徒！鮮於！司空！閭丘！子車！亓官！司寇！巫馬！公西！顓孫！壤駟！公良！漆雕！樂正！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="3" resultMaxLen="4" resultConfiThresh="30" matchLoc="startAbs" matchScript="chinese" matchMinCount="1">宰父！谷梁！拓跋！夾穀！軒轅！令狐！段幹！百里！呼延！東郭！南門！羊舌！微生！公戶！公玉！公儀！梁丘！公仲！公上！公門！公山！公堅！左丘！公伯！西門！公祖！第五！公乘！貫丘！公皙！南榮！東裡！東宮！仲長！子書！子桑！即墨！達奚！褚師！吳銘！</word> 
+    </keywords>
+  </object>
+  <object id="1" name="NAM" class="10"><!--姓名（考虑的是姓名+英文名/TIT）-->
+    <keywords type="singleKey">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">李！王！张！刘！陈！杨！黄！吴！赵！周！徐！孙！马！朱！胡！林！郭！何！高！罗！郑！梁！谢！宋！唐！许！邓！冯！韩！曹！曾！彭！萧！蔡！潘！田！董！袁！于！余！叶！蒋！杜！苏！魏！程！吕！丁！沈！任！姚！卢！傅！钟！姜！崔！谭！廖！范！汪！陆！金！石！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">戴！贾！韦！夏！邱！方！侯！邹！熊！孟！秦！白！江！阎！薛！尹！段！雷！黎！史！龙！陶！贺！顾！毛！郝！龚！邵！万！钱！严！赖！覃！洪！武！莫！孔！汤！向！常！温！康！施！文！牛！樊！葛！邢！安！齐！易！乔！伍！庞！颜！倪！庄！聂！章！鲁！岳！翟！殷！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">詹！申！欧！耿！关！兰！焦！俞！左！柳！甘！祝！包！宁！尚！符！舒！阮！柯！纪！梅！童！凌！毕！单！季！裴！霍！涂！成！苗！谷！盛！曲！翁！冉！骆！蓝！路！游！辛！靳！管！柴！蒙！鲍！华！喻！祁！蒲！房！滕！屈！饶！解！牟！艾！尤！阳！时！穆！农！司！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">卓！古！吉！缪！简！车！项！连！芦！麦！褚！娄！窦！戚！岑！景！党！宫！费！卜！冷！晏！席！卫！米！柏！宗！瞿！桂！全！佟！应！臧！闵！苟！邬！边！卞！姬！师！和！仇！栾！隋！商！刁！沙！荣！巫！寇！桑！郎！甄！丛！仲！虞！敖！巩！明！佘！池！查！麻！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">苑！迟！邝！官！封！谈！匡！鞠！惠！荆！乐！冀！郁！胥！南！班！储！原！栗！燕！楚！鄢！劳！谌！奚！皮！粟！冼！蔺！楼！盘！满！闻！位！厉！伊！仝！区！郜！海！阚！花！权！强！帅！屠！豆！朴！盖！练！廉！禹！井！祖！漆！巴！丰！支！卿！国！狄！平！计！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">索！宣！晋！相！初！门！云！容！敬！来！扈！晁！芮！都！普！阙！浦！戈！伏！鹿！薄！邸！雍！辜！羊！阿！乌！母！裘！亓！修！邰！赫！杭！况！那！宿！鲜！印！逯！隆！茹！诸！战！慕！危！玉！银！亢！嵇！公！哈！湛！宾！戎！勾！茅！利！於！呼！居！揭！干！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">但！尉！冶！斯！元！束！檀！衣！信！展！阴！昝！智！幸！奉！植！衡！富！尧！闭！由！闫！代！黑！肖！卡！付！乜！户！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">欧阳！太史！端木！上官！司马！东方！独孤！南宫！万俟！闻人！夏侯！诸葛！尉迟！公羊！赫连！澹台！皇甫！宗政！濮阳！公冶！太叔！申屠！公孙！慕容！仲孙！钟离！长孙！宇文！司徒！鲜于！司空！闾丘！子车！亓官！司寇！巫马！公西！颛孙！壤驷！公良！漆雕！乐正！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">宰父！谷梁！拓跋！夹谷！轩辕！令狐！段干！百里！呼延！东郭！南门！羊舌！微生！公户！公玉！公仪！梁丘！公仲！公上！公门！公山！公坚！左丘！公伯！西门！公祖！第五！公乘！贯丘！公皙！南荣！东里！东宫！仲长！子书！子桑！即墨！达奚！褚师！吴铭！</word>
+
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">李！王！張！劉！陳！楊！黃！吳！趙！周！徐！孫！馬！朱！胡！林！郭！何！高！羅！鄭！梁！謝！宋！唐！許！鄧！馮！韓！曹！曾！彭！蕭！蔡！潘！田！董！袁！於！餘！葉！蔣！杜！蘇！魏！程！呂！丁！沈！任！姚！盧！傅！鐘！薑！崔！譚！廖！範！汪！陸！金！石！</word> 
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">戴！賈！韋！夏！邱！方！侯！鄒！熊！孟！秦！白！江！閻！薛！尹！段！雷！黎！史！龍！陶！賀！顧！毛！郝！龔！邵！萬！錢！嚴！賴！覃！洪！武！莫！孔！湯！向！常！溫！康！施！文！牛！樊！葛！邢！安！齊！易！喬！伍！龐！顏！倪！莊！聶！章！魯！嶽！翟！殷！</word>   
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">詹！申！歐！耿！關！蘭！焦！俞！左！柳！甘！祝！包！寧！尚！符！舒！阮！柯！紀！梅！童！淩！畢！單！季！裴！霍！塗！成！苗！穀！盛！曲！翁！冉！駱！藍！路！遊！辛！靳！管！柴！蒙！鮑！華！喻！祁！蒲！房！滕！屈！饒！解！牟！艾！尤！陽！時！穆！農！司！</word>    
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">卓！古！吉！繆！簡！車！項！連！蘆！麥！褚！婁！竇！戚！岑！景！黨！宮！費！蔔！冷！晏！席！衛！米！柏！宗！瞿！桂！全！佟！應！臧！閔！苟！鄔！邊！卞！姬！師！和！仇！欒！隋！商！刁！沙！榮！巫！寇！桑！郎！甄！叢！仲！虞！敖！鞏！明！佘！池！查！麻！</word>      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">苑！遲！鄺！官！封！談！匡！鞠！惠！荊！樂！冀！鬱！胥！南！班！儲！原！栗！燕！楚！鄢！勞！諶！奚！皮！粟！冼！藺！樓！盤！滿！聞！位！厲！伊！仝！區！郜！海！闞！花！權！強！帥！屠！豆！樸！蓋！練！廉！禹！井！祖！漆！巴！豐！支！卿！國！狄！平！計！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">索！宣！晉！相！初！門！雲！容！敬！來！扈！晁！芮！都！普！闕！浦！戈！伏！鹿！薄！邸！雍！辜！羊！阿！烏！母！裘！亓！修！邰！赫！杭！況！那！宿！鮮！印！逯！隆！茹！諸！戰！慕！危！玉！銀！亢！嵇！公！哈！湛！賓！戎！勾！茅！利！於！呼！居！揭！幹！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="2" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">但！尉！冶！斯！元！束！檀！衣！信！展！陰！昝！智！幸！奉！植！衡！富！堯！閉！由！閆！代！黑！肖！卡！付！乜！户！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">歐陽！太史！端木！上官！司馬！東方！獨孤！南宮！萬俟！聞人！夏侯！諸葛！尉遲！公羊！赫連！澹台！皇甫！宗政！濮陽！公冶！太叔！申屠！公孫！慕容！仲孫！鐘離！長孫！宇文！司徒！鮮於！司空！閭丘！子車！亓官！司寇！巫馬！公西！顓孫！壤駟！公良！漆雕！樂正！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">宰父！谷梁！拓跋！夾穀！軒轅！令狐！段幹！百里！呼延！東郭！南門！羊舌！微生！公戶！公玉！公儀！梁丘！公仲！公上！公門！公山！公堅！左丘！公伯！西門！公祖！第五！公乘！貫丘！公皙！南榮！東裡！東宮！仲長！子書！子桑！即墨！達奚！褚師！吳銘！</word> 
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">林！森！原！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">佐藤！铃木！高桥！田中！渡边！伊藤！山本！中村！小林！星野！加藤！吉田！山田！山口！松元！松本！井上！木村！清水！山崎！中岛！泽田！阿部！桥本！山下！石川！前田！小川！藤田！冈田！后藤！石井！村上！近藤！坂本！远藤！青木！藤井！西村！福田！太田！三浦！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">藤原！冈本！松田！中川！中野！原田！小野！田村！竹内！金子！和田！中山！石田！上田！森田！小岛！柴田！宫崎！酒井！工藤！横山！宫本！内田！高木！安藤！岛田！谷口！大野！高田！丸山！今井！河野！藤本！村田！武田！上野！杉山！增田！小山！大冢！平野！菅原！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">松井！千叶！岩崎！樱井！木下！野口！松尾！菊地！野村！新井！渡部！樱田！丰田！本田！松下！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">长谷川！大久保！佐佐木！</word> 
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">林！森！原！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">佐藤！鈴木！高橋！田中！渡邊！伊藤！山本！中村！小林！星野！加藤！吉田！山田！山口！松本！松本！井上！木村！清水！山崎！中島！澤田！阿部！橋本！山下！石川！前田！小川！藤田！岡田！後藤！石井！村上！近藤！阪本！遠藤！青木！藤井！西村！福田！太田！三浦！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">藤原！岡本！松田！中川！中野！原田！小野！田村！竹內！金子！和田！中山！石田！上田！森田！小島！柴田！宮崎！酒井！工藤！橫山！宮本！內田！高木！安藤！島田！穀口！大野！高田！丸山！今井！河野！藤本！村田！武田！上野！杉山！增田！小山！大塚！平野！菅原！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">松井！千葉！岩崎！櫻井！木下！野口！松尾！菊地！野村！新井！渡部！櫻田！豐田！本田！松下！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="8" resultConfiThresh="30" matchLoc="start" matchScript="chinese" matchMinCount="1">長穀川！大久保！佐佐木！</word>        
+    </keywords>
+  </object> 
+  <object id="1" name="NAM" class="11"><!--姓名Nickname-->
+    <keywords type="singleKey">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="3" resultMaxLen="16" resultConfiThresh="30" matchLoc="none" matchScript="none" matchMinCount="1">Daisy！Jacky！Robert！David！Kevin！Lisa！Sally！Karen！Kalen！Denny！Joy！Hanson！Sherry！Lisa！Sylvia！Michelle！Mike！Helen！Bill！Spanky！Simon！Hicks！Vivian！Jason！Oliver！William！Holly！Claire！Justin！Gary！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="4" resultMaxLen="16" resultConfiThresh="30" matchLoc="none" matchScript="none" matchMinCount="1">Li！Lee！Wang！Zhang！Liu！Chen！Huang！Wu！Zhao！Zhou！Xu！Sun！Ma！Zhu！Hu！Lin！Guo！He！Gao！Luo！Zheng！Liang！Xie！Song！Tang！Xu！Deng！Feng！Han！Cao！Zeng！Peng！Xiao！Cai！Pan！Tian！Dong！Yuan！Yu！Ye！Jiang！Du！Su！Wei！Cheng！Lv！Ding！Shen！Ren！Yao！Lu！Fu！Zhong！Jiang！Cui！Tan！Liao！Fan！Lu！Jin！Shi！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="4" resultMaxLen="16" resultConfiThresh="30" matchLoc="none" matchScript="none" matchMinCount="1">Dai！Jia！Wei！Xia！Qiu！Fang！Hou！Zou！Xiong！Meng！Qin！Bai！Jiang！Yan！Xue！Yin！Duan！Lei！Li！Shi！Long！Tao！He！Gu！Mao！Hao！Gong！Shao！Wang！Qian！Yan！Lai！Qin！Hong！Wu！Mo！Kong！Tang！Xiang！Chang！Wen！Kang！Shi！Wen！Niu！Fan！Ge！Xing！An！Qi！Yi！Qiao！Wu！Pan！Yan！Ni！Zhuang！Nie！Zhang！Lu！Yue！Zhai！Yin！</word>
+    </keywords>
+  </object>
+  <!--===============================================================公司/组织===============================================================-->
+  <object id="2" name="ORG" class="20"><!--公司/组织(单关键词)-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">有限公司！？限公司！有？公司！有限？司！有限公？！责任公司！株式会社！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">有限公司！？限公司！有？公司！有限？司！有限公？！責任公司！株式會社！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchLoc="endAbs">集团！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchLoc="endAbs">集團！</word>
+    </keywords>
+  </object>
+  <object id="2" name="ORG" class="20"><!--公司/组织(多关键词1)-->
+    <keywords type="multiKey" keywordMinMatches="3">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">捷通华声！捷通投资！捷通聚力！捷通软件！昆仑亿发！新浪！搜狐！网易！奇虎！百度！阿里巴巴！腾讯！京东！苏宁！华为！小米！中兴！锤子！魅族！一加！联想！搜狗！滴滴！美团！摩拜！合合信息！厦门云脉！文通！汉王！易道博识！微模式！电信！移动！联通！威盛！高通！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">国际！亚洲！远东！东方！中国！国家！华夏！华北！东北！华中！华南！西南！西北！中南！北京！上海！天津！重庆！河北！山西！内蒙古！辽宁！吉林！黑龙江！江苏！浙江！安徽！福建！江西！山东！河南！湖北！湖南！广东！广西！海南！四川！贵州！云南！西藏！陕西！甘肃！青海！宁夏！新疆！香港！澳门！台湾！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">石家庄！太原！呼和浩特！沈阳！长春！哈尔滨！南京！杭州！合肥！福州！南昌！济南！郑州！武汉！长沙！广州！南宁！海口！贵阳！成都！昆明！拉萨！西安！兰州！西宁！银川！乌鲁木齐！大连！青岛！苏州！厦门！深圳！</word><!--省会或省会之外的知名城市-->
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">通讯！化工！化学！材料！贸易！工贸！农化！农业！农资！食品！气象！生物！环保！服饰！服装！印染！制衣！鞋业！纺织！药品！创投！保险！金融！基金！投资！证券！资本！信息！机电！车辆！汽车！玩具！吉他！钢琴！设备！电脑！家俬！仪器！机械！软件！数码！工具！网络！语音！电子！光电！展览！咨询！顾问！塑料！包装！印刷！租赁！物流！运输！货运！建筑！地产！娱乐！电影！系统！智能！科技！技术！工程！工业！钢铁！带钢！轴承！五金！电镀！制造！管理！实业！代理！经纪！新闻！广告！外包！服务！劳务！种子！种苗！化肥！肥料！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">自动化！进出口！日用品！化学品！危险品！房地产！微电子！计算机！机器视觉！劳保用品！质量认证！质量监督！质量检验！植物病理！</word>      
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">发展！股份！有限！责任！合伙！连锁！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchLoc="endAbs">公司！集团！企业！分公司！子公司！办事处！商场！商行！琴行！支行！银行！基地！酒店！饭店！大学！学校！学院！协会！学会！联盟！总局！基金会！研究所！研究院！委员会！专卖店！加盟店！旗舰店！科学院！工程院！博物馆！气象局！气象台！电视台！印花厂！制片厂！广播电台！科技园！旅行社！出版社！工作室！俱乐部！人民政府！株式会社！连锁机构！艺术中心！培训中心！运营中心！人民广播电？！</word>      
+    </keywords>
+  </object>
+  <object id="2" name="ORG" class="20"><!--公司/组织(多关键词2，用于长度较短情况)-->
+    <keywords type="multiKey" keywordMinMatches="2">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="startAbs">国际！亚洲！远东！东方！中国！国家！华夏！华北！东北！华中！华南！西南！西北！中南！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="startAbs">北京！上海！天津！重庆！石家庄！太原！呼和浩特！沈阳！长春！哈尔滨！南京！杭州！合肥！福州！南昌！济南！郑州！武汉！长沙！广州！南宁！海口！贵阳！成都！昆明！拉萨！西安！兰州！西宁！银川！乌鲁木齐！大连！青岛！苏州！厦门！深圳！</word><!--全是城市（包括直辖市）-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2">通讯！化工！化学！材料！贸易！工贸！农化！农业！农资！食品！气象！生物！环保！服饰！服装！印染！制衣！鞋业！纺织！药品！创投！保险！金融！基金！投资！证券！资本！信息！机电！车辆！汽车！玩具！吉他！钢琴！设备！电脑！家俬！仪器！机械！软件！数码！工具！网络！语音！电子！光电！展览！咨询！顾问！塑料！包装！印刷！租赁！物流！运输！货运！建筑！地产！娱乐！电影！系统！智能！科技！技术！工程！工业！钢铁！带钢！轴承！五金！电镀！制造！管理！实业！代理！经纪！新闻！广告！外包！服务！劳务！种子！种苗！化肥！肥料！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2">自动化！进出口！日用品！化学品！危险品！房地产！微电子！计算机！机器视觉！劳保用品！质量认证！质量监督！质量检验！植物病理！</word>      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2">发展！股份！有限！责任！合伙！连锁！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="end">公司！集团！企业！分公司！子公司！办事处！商场！商行！琴行！支行！银行！基地！酒店！饭店！大学！学校！学院！协会！学会！联盟！总局！基金会！研究所！研究院！委员会！专卖店！加盟店！旗舰店！科学院！工程院！博物馆！气象局！气象台！电视台！印花厂！制片厂！广播电台！科技园！旅行社！出版社！工作室！俱乐部！人民政府！株式会社！连锁机构！艺术中心！培训中心！运营中心！人民广播电？！</word>      
+    </keywords>
+  </object>
+  <object id="2" name="ORG" class="20"><!--公司/组织（单关键词，用于公司/组织的最后判定）-->
+    <keywords type="singleKey">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3" matchLoc="endAbs">公司！集团！企业！分公司！子公司！办事处！商行！琴行！支行！银行！基地！酒店！饭店！大学！学校！学院！协会！学会！联盟！总局！基金会！研究所！研究院！委员会！专卖店！加盟店！旗舰店！科学院！工程院！博物馆！气象局！气象台！电视台！印花厂！制片厂！广播电台！科技园！旅行社！出版社！工作室！俱乐部！人民政府！株式会社！连锁机构！艺术中心！培训中心！运营中心！人民广播电？！</word>      
+    </keywords>
+  </object>
+  <object id="2" name="ORG" class="20"><!--公司/组织（用户结果归一化，多行关键词会逐个处理，去除前面多余的一个字）-->
+    <keywords type="singleKey">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="5" matchLoc="startAbs">国际！亚洲！远东！东方！中国！国家！华夏！华北！东北！华中！华南！西南！西北！中南！北京！上海！天津！重庆！河北！山西！内蒙古！辽宁！吉林！黑龙江！江苏！浙江！安徽！福建！江西！山东！河南！湖北！湖南！广东！广西！海南！四川！贵州！云南！西藏！陕西！甘肃！青海！宁夏！新疆！香港！澳门！台湾！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="5" matchLoc="startAbs">石家庄！太原！呼和浩特！沈阳！长春！哈尔滨！南京！杭州！合肥！福州！南昌！济南！郑州！武汉！长沙！广州！南宁！海口！贵阳！成都！昆明！拉萨！西安！兰州！西宁！银川！乌鲁木齐！大连！青岛！苏州！太仓！厦门！深圳！</word><!--省会或省会之外的知名城市-->    
+    </keywords>
+  </object>  
+  <object id="2" name="ORG" class="21"><!--公司/组织-英文(单关键词)-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="end">company limited！companylimited！company ？im？？ed！company limit！companylimit！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="end">co.,ltd.！co..ltd.！co,ltd.！co.ltd.！co.,ltd！co..ltd！co., ltd！co,ltd！co.ltd！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="end">c0.,ltd.！c0..ltd.！c0,ltd.！c0.ltd.！c0.,ltd！c0..ltd！c0., ltd！c0,ltd！c0.ltd！</word><!--字母o识别成了零的情况-->
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="endAbs">group！technologies！</word>
+    </keywords>
+  </object>
+  <object id="2" name="ORG" class="21"><!--公司/组织-英文(多关键词)-->
+    <keywords type="multiKey" keywordMinMatches="3">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" >International！Global！World！China！Sino！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" >Beijing！Shanghai！Tianjin！Chongqing！Hebei！Shanxi！Neimenggu！Liaoning！Jilin！Heilongjiang！Jiangsu！Zhejiang！Anhui！Fujian！Jiangxi！Shandong！Henan！Hubei！Hunan！Guangdong！Guangxi！Hainan！Sichuan！Guizhou！Yunnan！Tibet！Shaanxi！Gangsu！Qinghai！Ningxia！Xinjiang！Hongkong！Macao！Taiwan！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" >Shijiazhuan！Taiyuan！Hohhot！Shenyang！Changchun！Harbin！Nanjing！Jinan！Zhengzhou！Wuhan！Changsha！Guangzhou！Nanning！Haikou！Guiyang！Chengdu！Kunming！Lhasa！Xian！Lanzhou！Yinchuan！Urmqi！Dalian！Qingdao！Suzhou！Xiamen！Shenzhen！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" >technologies！technology！tech.！digital！telecom！communication！chemical！logistic！freight！oversea！shipping！marine！import！export！trade！trading！lease！leasing！bank！system！industrial！industry！infomation！info！securities！investment！software！consulting！steel！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" >limited！holdings！partnership！chain！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="end">co.！ltd.！inc.！corporation！company！group！agency！branch！bank！hotel！college！university！school！association！alliance！foundation！research！academy！committee！store！shop！bureau！museum！station！studio！press！club！government！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="endAbs">co.,ltd.！co..ltd.！co,ltd.！co.ltd.！co.,ltd！co..ltd！co., ltd！co,ltd！co.ltd！co.,？td！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="endAbs">c0.,ltd.！c0..ltd.！c0,ltd.！c0.ltd.！c0.,ltd！c0..ltd！c0., ltd！c0,ltd！c0.ltd！c0.,？td！</word><!--字母o识别成了零的情况-->
+    </keywords>
+  </object>
+  <!--===============================================================头衔===============================================================-->
+  <object id="3" name="TIT" class="30"><!--头衔-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">职称:！</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">董事长！创始人！创办人！合伙人！公司？伙人！理事长！执行董事！副总裁！总裁！首席执行官！首席运营官！首席财务官！副总经理！总经理！常务副总！副？事长！副总！董事长助理！董事会秘书！总裁助理！总？理</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">销售总监！销售经理！销售主管！销售专员！销售工程师！销售代理！销售代表！业务总监！业务经理！业务主管！业务专员！业务主办！区域经理！区域主管！中心总监！销售代？！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">市场总监！市场经理！市场专员！采购总监！采购经理！财务总监！财务经理！人资总监！人资经理！客服主管！客服经理！客服代表！客户经理！外贸经理！内容经理！总监助理！经理助理！？级经理！业务？理！大？户经理！特別助理！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">产品总监！产品经理！产品工程师！产品专员！产品助理！项目总监！项目经理！项目主管！项？经理！项目？理！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">研究院院长！首席科学？！研究科学家！科学家！研究员！研究工程师！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">首席技术官！首席架构师！总工程师！技术总监！技术经理！开发总监！开发经理！研发总监！研发经理！研发工程师！软件工程师！硬件工程师！算法工程师！技术支持！生产经理！品控经理！品控主管！高级采购！采购工程师！？术总监！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">党委书记！党支部书记！人大代表！秘书长！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">院士！博士生导师！教授！博导！教师！老师！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">副总监！副经理！副主任！副？长！工程师！工艺师！制板师！业务员！开发员！设计师！发型师！咨询师！摄影师！负责人！制片人！牵头人！经纪人！召集人！管理人！总策划！会计师！农艺师！首席执教！医药代表！海外拓展！保荐代表人！</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="2">主席！董事！主任！顾问！委员！理事！总编！采编！编辑！教练！导演！翻译！记者！策划！监制！美术！监理！鼓手！总监！经理！担当！代表！农化！助理！主管！专员！销售！业务！秘书！导游！技师！买手！采购！裁缝！客服！司机！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="2">台长！会长！机长！店长！厂长！院长！校长！区长！处长！组长！省长！部长！厅长！局长！县长！科长！镇长！乡长！村长！</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" resultMinLen="2" resultMaxLen="4">總經理！副總經理！經理！業務！業務代表！業務代理！業務委託！</word>
+        
+      <word matchMethod="string" matchValueType="inline" rulePriority="2" matchLoc="endAbs">主席！董事！主任！顾问！委员！理事！总编！采编！编辑！教练！导演！翻译！记者！策划！监制！美术！监理！鼓手！总监！经理！担当！代表！助理！主管！专员！销售！业务！秘书！导游！技师！买手！采购！裁缝！客服！司机！</word>   
+      <word matchMethod="string" matchValueType="inline" rulePriority="2" matchLoc="endAbs">台长！会长！机长！店长！厂长！院长！校长！区长！处长！组长！省长！部长！厅长！局长！县长！科长！镇长！乡长！村长！</word>
+    </keywords>
+  </object>
+  <object id="3" name="TIT" class="31"><!--头衔-英文(单关键词)-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="all">CEO！COO！CTO！CFO！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="all">CE0！C00！CT0！CF0！</word><!--O(ou)识别成了0(零)-->
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="all">Co-Founder！Founder！Founding！Partner！Chairman！Vice-President！President！Executive！Officer！Manager！Director！Sales！Professor！Registrar！Supervisor！</word>
+    </keywords>
+  </object>
+  <object id="3" name="TIT" class="31"><!--头衔-英文(多关键词)-->
+    <keywords type="multiKey" keywordMinMatches="2">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="none">senior！general！gereral！chief！major！vice！business！managing！development！program！project！product！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="none">co-Founder！Founder！Chairman！Vice-President！President！Executive！Officer！Manager！Mianager！Director！Sales！Professor！Registrar！Supervisor！Founding Partner！</word>   
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="none">engineer！teacher！assistant！consultant！auditor！editor！designer！！merchandiser！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="none" matchLoc="none">V.P.！VP！vP！G.M.！GM！</word>
+    </keywords>
+  </object>  
+  <!--===============================================================手机===============================================================-->
+  <object id="4" name="CEL" class="40"><!--手机-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">手机(Mobile)！手提电话！手机号码！移动电话！行动电话！动电话！手机！手机号！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">手機(Mobile)！手提電話！手機號碼！移動電話！行動電話！動電話！手機！手機号！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">Mobile！Mobil！</word>
+       
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">手机:！手提:！手机+！手机(！手机/！手机86！中国携带:！[手机]！[手机】！？手机]！[手机！(手机)！I手机！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">手機:！手提:！手機+！手機(！手機/！手機86！中國攜帶:！[手機]！[手機】！？手機]！[手機！(手機)！I手機！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">Cellphone:！CellPhone:！Phone:！Cell:！CELL:！CEL/！Mobile:！Mcbile:！Moble:！Mobil:！Mobie:！MOBILE:！MOBlLE:！MOB1LE:！Mob？:！Mob:！M0b:！Mob/！MOB/！</word>
+
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">动电话！平机:！三机:！:机:！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">M:！MT/！Movil y！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">obil？:！MB:！MP:！C.P.！C.P:！M.B:！M.P.:！M.P:！H.P.:！HP:！H.P:！H/P:！ M:！</word>
+      <word matchMethod="string" matchValueType="inlineBefore" rulePriority="0">:手机！</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">+861！+86-1！86-1！</word>
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="11" resultMaxLen="11" matchLoc="startAbs">133！149！153！173！177！180！181！189！199！</word><!--中国电信-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="11" resultMaxLen="11" matchLoc="startAbs">130！131！132！155！156！145！175！176！185！186！166！</word><!--中国联通-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="11" resultMaxLen="11" matchLoc="startAbs">134！135！136！137！138！139！147！150！151！152！157！158！159！173！177！178！182！183！184！187！188！198！</word><!--中国移动-->
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="10" resultMaxLen="17" matchLoc="start">133！149！153！173！177！180！181！189！199！</word><!--中国电信-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="10" resultMaxLen="17" matchLoc="start">130！131！132！155！156！145！175！176！185！186！166！</word><!--中国联通-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="10" resultMaxLen="17" matchLoc="start">134！135！136！137！138！139！147！150！151！152！157！158！159！173！177！178！182！183！184！187！188！198！</word><!--中国移动-->
+
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="10" resultMaxLen="33" matchLoc="start">133！149！153！173！177！180！181！189！199！</word><!--中国电信-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="10" resultMaxLen="33" matchLoc="start">130！131！132！155！156！145！175！176！185！186！166！</word><!--中国联通-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="10" resultMaxLen="33" matchLoc="start">134！135！136！137！138！139！147！150！151！152！157！158！159！173！177！178！182！183！184！187！188！198！</word><!--中国移动-->
+           
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="2" matchMinCount="11" matchMaxCount="11">0123456789</word>
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="2" matchMinCount="13" matchMaxCount="13">0123456789-</word>
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="2" matchMinCount="13" matchMaxCount="13">0123456789.</word>
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3" resultMinLen="11" resultMaxLen="33" matchLoc="start">133！149！153！173！177！180！181！189！199！</word><!--中国电信-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3" resultMinLen="11" resultMaxLen="33" matchLoc="start">130！131！132！155！156！145！175！176！185！186！166！</word><!--中国联通-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3" resultMinLen="11" resultMaxLen="33" matchLoc="start">134！135！136！137！138！139！147！150！151！152！157！158！159！173！177！178！182！183！184！187！188！198！</word><!--中国移动-->
+    
+      <!--<word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="3" matchMinCount="11" matchMaxCount="11" >0123456789</word>-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3">M:！</word>
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="3" matchLoc="startAbs">M.！M！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3">？机:！</word>
+    </keywords>
+  </object>
+  <object id="4" name="CEL" class="40"><!--手机（用户结果归一化，多行关键词会逐个处理）-->
+    <keywords type="multiKey" keywordMinMatches="3">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1">机:！机！M:！M！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" resultMinLen="11" resultMaxLen="55">130！131！132！133！134！135！136！137！138！139！145！147！149！150！151！152！153！155！156！157！158！159！166！173！175！176！177！178！180！181！182！183！184！185！186！187！188！189！198！199！</word>
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="1" resultMinLen="11" resultMaxLen="55" matchMinCount="11" matchMaxCount="11">0123456789</word>
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="1" resultMinLen="11" resultMaxLen="55" matchMinCount="22" matchMaxCount="22">0123456789</word>
+    </keywords>
+  </object>   
+  <object id="4" name="CEL" class="40"><!--手机（用户结果归一化，多行关键词会逐个处理）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="4" matchLoc="start">:！</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="5" matchLoc="startAbs" resultMinLen="14">(0086)-！(0086) ！(0086)！+(86)-！+(86) ！+(86)！(+86)-！(+86) ！(+86)！(86)-！(86) ！(86)！(86-！(86！0086(！0086-！0086 ！0086！+86(！+86-！+86 ！+86！086-！086 ！086！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="5" matchLoc="startAbs" resultMinLen="14">86-！86 ！86(！</word><!--区分度不好，单独放一行-->
+    </keywords>
+  </object> 
+  <!--===============================================================电话===============================================================-->
+  <object id="5" name="TEL" class="59"><!--400电话-->
+    <keywords type="singleKey">
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">全国24小时免费服务热线！全国统一服务热线！全国统一客服！客户热线！客服热线！客服:！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">400-！800-！</word>
+    </keywords>
+  </object>    
+  <object id="5" name="TEL" class="50"><!--电话-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">电话(TEL)！电话(Tel)！电话(TEL！电话(Tel！电话(TE！电话(te！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">電話(TEL)！電話(Tel)！電話(TEL！電話(Tel！電話(TE！電話(te！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">Phone！Office！office！offce！</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">公司电话:！直线:！电话:！固话:！总机:！座机:！专线:！电话/！[电话]！[电话1！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">公司電話:！直線:！電話:！固話:！總機:！座機:！專線:！電話/！[電話]！[電話1！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">Tel:！T el:！Tel :！Tel0！TEL:！TEL/！TE1/！</word>
+      
+      <word matchMethod="string" matchValueType="inlineBefore" rulePriority="0">:电话！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">专钱:！专钱+！直钱:！直钱+！直？:！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">分机:！</word>
+
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">电话！总机！座机！直线！话:！T:(！电电话！Tel(电话！</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">+86)！+86(！+86-！+86 ！86-！(86)！(86！0086-！</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">+86！</word>
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0086！+86！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">010！021！022！023！</word><!--四个直辖市-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">024！0411！0412！0413！0414！0415！0416！0417！0418！0419！0410！</word><!--辽宁省-->   
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">025！0516！0518！0517！0527！0515！0514！0513！0511！0519！0510！0512！0520！</word><!--江苏省-->      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">027！0714！0710！0719！0717！0724！0712！0713！0718！0716！</word><!--湖北省-->     
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">028！0812！0838！0816！0813！0832！0833！0830！0831！</word><!--四川省-->      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">029！0919！0917！0913！0914！</word><!--陕西省-->      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">020！0755！0756！0754！0751！0752！0769！0760！0757！0759！</word><!--广东省-->       
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0311！0310！0319！0312！0313！0314！0315！0335！0317！0316！0318！</word><!--河北省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0351！0352！0353！0355！0349！0354！0358！0357！0359！</word><!--山西省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0371！0378！0379！0373！0393！0370！0377！0394！0396！0391！</word><!--河南省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0471！0472！0476！0479！0470！0475！0477！0482！</word><!--内蒙古自治区-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0431！0423！0434！0437！0435！0439！0436！0433！0440！</word><!--吉林省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0451！0452！0459！0458！0453！0454！0455！0457！0456！</word><!--黑龙江省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0571！0574！0573！0572！0575！0579！0570！0580！0577！0576！</word><!--浙江省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0551！0554！0552！0555！0556！0559！0550！0557！0565！0563！</word><!--安徽省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0591！0592！0598！0594！0595！0596！0599！0593！0597！</word><!--福建省--> 
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0531！0532！0533！0536！0535！0631！0537！0633！0534！0530！0539！</word><!--山东省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0731！0733！0732！0734！0730！0736！0735！0737！0746！0745！0744！</word><!--湖南省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0771！0772！0773！0774！0779！0777！</word><!--广西自治区-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0791！0798！0790！0792！0701！0793！0795！0794！0796！0797！</word><!--江西省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0898！0899！0890！</word><!--海南省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0851！0852！0853！0858！</word><!--贵州省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0871！0870！0874！0877！0879！0888！0873！0878！</word><!--云南省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0891！0892！08018！08059！0897！</word><!--西藏自治区-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0931！0935！0938！0933！0937！0937！</word><!--甘肃省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0971！0972！0979！0975！</word><!--青海省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0951！0952！0953！0954！</word><!--宁夏自治区-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0991！0990！0995！0998！0908！0996！</word><!--新疆自治区-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">00852！00853！00886！</word><!--港澳台-->
+      
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="2" matchMinCount="8" matchMaxCount="8">0123456789</word>
+      
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="3" matchLoc="startAbs">T:！T.！T/！T！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3">电？:！电话！分机！转！话:！話:！</word>
+    </keywords>
+  </object>
+  <object id="5" name="TEL" class="50"><!--电话（用户结果归一化，多行关键词会逐个处理）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="4" matchLoc="start">:！</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="5" matchLoc="startAbs" resultMinLen="11">(0086)-！(0086) ！(0086)！+(86)-！+(86) ！+(86)！(+86)-！(+86) ！(+86)！(86)-！(86) ！(86)！(86-！(86！0086(！0086-！0086 ！0086！+86(！+86-！+86 ！+86！086-！086 ！086！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="5" matchLoc="startAbs" resultMinLen="11">86-！86 ！86！</word><!--区分度不好，单独放一行-->
+    </keywords>
+  </object>
+  <!--===============================================================邮箱===============================================================-->
+  <object id="6" name="EMA" class="60"><!--邮箱-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">邮箱(Mailbox)！</word>
+      <word matchMethod="string" matchValueType="inlineBefore" rulePriority="0">:电子邮？！</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">电子邮件！电子邮箱！服务邮箱！[邮箱]！？邮箱]！邮件:！邮箱！电邮！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">電子郵件！電子郵箱！服务郵箱！[郵箱]！？郵箱]！郵件:！郵箱！電郵！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">E-mail:！E-Mail:！E-mail！E-Mail！e-mail:！e-mail！Email！Email:！email:！email！EMAIL:！E-MAIL:！E-MAIL/！E-MAIL！mail:！E-mil:！Emai:！</word>
+
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">箱:！？箱:！</word>
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">E-meil！</word>
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="0" matchLoc="start" resultMinLen="20" resultMaxLen="40"> E:！</word>
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="9" matchMinCount="2">@！.c！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" resultMinLen="9" matchMinCount="2">@！.C！</word>
+
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3">E:！mail:！</word>
+    </keywords>
+  </object>
+  <object id="6" name="EMA" class="60"><!--邮箱（多关键词）-->
+    <keywords type="multiKey" keywordMinMatches="3">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">E:！mail:！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">@</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">cn！CN！com！COM！org！ORG！edu！EDU！gov！GOV！net！NET！me！ME！ai！AI！link！cc！</word>
+    </keywords>
+  </object>    
+  <object id="6" name="EMA" class="60"><!--邮箱（多关键词）-->
+    <keywords type="multiKey" keywordMinMatches="2">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">@！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">cn！CN！com！COM！org！ORG！edu！EDU！gov！GOV！net！NET！me！ME！ai！AI！link！cc！</word>
+    </keywords>
+  </object>   
+  <object id="6" name="EMA" class="60"><!--邮箱（用户结果归一化，多行关键词会逐个处理）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="4" matchLoc="start">:！</word>
+    </keywords>
+  </object>
+ 
+  
+  <!--优先级2的条目-->
+  <!--===============================================================部门===============================================================-->
+  <object id="7" name="DEP" class="70"><!--部门-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">行政部！运营部！运营部！管理部！开发部！研发部！研究部！技术部！运维部！市场部！业务部！产品部！营销部！销售部！事业部！财务部！客服部！采购部！商品部！贸易部！生产部！战略部！设计部！创意部！创新部！工程部！投资部！法务部！事业群！人力资源部！生产计划部！知识产权部！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">行政部！運營部！營運部！管理部！開發部！研發部！研究部！技術部！運維部！市場部！業務部！產品部！營銷部！銷售部！事業部！財務部！客服部！採購部！商品部！貿易部！生產部！戰略部！設計部！創意部！創新部！工程部！投資部！法務部！事業群！人力資源部！生產計劃部！知識產權部！</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">产品中心！设计中心！运营中心！经营中心！技术中心！研发中心！动力中心！研究中心！测试中心！支持中心！管理中心！企划中心！拓展中心！采购中心！商品中心！物流中心！生产中心！市场中心！产业中心！电商中心！咨询中心！检验中心！营销中心！安全中心！呼叫中心！创新中心！销？服务中心！光学薄膜中心！防伪中心！工程学院！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">事业？部！商业？？部！开发？部！开发？组！贸易？部！销售？部！服务？部！业务？？部！业务？部！生产？部！品质？？部！行业？部！支持？组！招商？局！投资？？部！发展战？部！平台？业部！？？部门！项目？部！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">产品线！运维室！教研室！研究室！办公室！实验室！开发室！业务室！招生办！秘书处！推广处！联络处！办事处！代表处！分理处！开发处！事务所！营业所！营业厅！工厂店！采供科！采购组！主材组！设计标准组！应用方案处！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">外销部！分销部！招商部！营业部！经营部！原药部！化工部！控制部！商务部！支持部！规划部！服装部！发展部！面料部！工艺部！摄影部！金融部！服务部！网络部！申报部！物流部！农化部！审查部！IT部！进出口部！植物营养部！过程分析部！产业促进部！质量检验部！售后服务部！海运出口部！品牌宣传部！作物保护部！战略合作部！综合资源部！评估审查部！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">发射台！海运部！品类集合馆！大宗商品事业部！业务发展及产品市场！年度商业计划与执行部！</word>
+    </keywords>
+  </object>
+  <object id="7" name="DEP" class="70"><!--部门-英文(单关键词)-->
+    <keywords type="singleKey">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3" matchLoc="endAbs">事业群！部门！中心！部！局！厅！科！处！室！组！</word>
+    </keywords>
+  </object>    
+  <object id="7" name="DEP" class="71"><!--部门-英文(单关键词)-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="endAbs">department！dept.！unit！</word>
+    </keywords>
+  </object>
+  <object id="7" name="DEP" class="71"><!--部门-英文(多关键词)-->
+    <keywords type="multiKey" keywordMinMatches="2">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="none">management！manage！marketing！market！business！sales！customer！service！consumer！division！commercial！excecutive！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchScript="english" matchLoc="none">department！dept.！unit！marketing！agency！</word>
+    </keywords>
+  </object>
+  <object id="7" name="DEP" class="71"><!--部门-英文(单关键词)-->
+    <keywords type="singleKey">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3" matchScript="english" matchLoc="endAbs">department！dept.！unit！</word>
+    </keywords>
+  </object>  
+  <!--===============================================================地址===============================================================-->
+  <object id="8" name="ADR" class="80"><!--地址（单关键词）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">公司地址:！工厂地址:！地址:！地点:！基地:！总部:！分部:！地址/！公司:！厂址:！办公室:！[地址]！(地址]！地址]！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">公司地址:！工廠地址:！地址:！地點:！基地:！總部:！分部:！地址/！公司:！廠址:！辦公室:！[地址]！(地址]！地址]！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">Add:！ADD:！ADD/！</word>
+
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">地址！基地！總部！分部！厂址！工地址！北址:！城址:！</word>
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">AOO:！A00:！A00/！</word>
+    </keywords>
+  </object>
+  <object id="8" name="ADR" class="80"><!--地址（多关键词1，用于地址的主行）-->
+    <keywords type="multiKey" keywordMinMatches="3">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">中国！北京！上海！天津！重庆！河北！山西！内蒙古！辽宁！吉林！黑龙江！江苏！浙江！安徽！福建！江西！山东！河南！湖北！湖南！广东！广西！海南！四川！贵州！云南！西藏！陕西！甘肃！青海！宁夏！新疆！香港！澳门！台湾！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">石家庄！太原！呼和浩特！沈阳！长春！哈尔滨！南京！杭州！合肥！福州！南昌！济南！郑州！武汉！长沙！广州！南宁！海口！贵阳！成都！昆明！拉萨！西安！兰州！西宁！银川！乌鲁木齐！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">朝阳区！海淀区！东城区！西城区！宣武区！崇文区！丰台区！大兴区！昌平区！顺义区！延庆区！平谷区！石景山区！通州区！黄浦区！徐汇区！长宁区！静安区！普陀区！虹口区！杨浦区！闵行区！宝山区！嘉定区！浦东新区！金山区！松江区！青浦区！奉贤区！崇明区！廊坊！保定！大同！鄂尔多斯！大连！徐州！扬州！苏州！无锡！镇江！台州！厦门！赣州！青岛！烟台！洛阳！安阳！衡阳！岳阳！株洲！汕头！东莞！深圳！珠海！中山！佛山！惠州！北海！桂林！海口！遵义！大理！林芝！台南！高雄！台中！基隆！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">中关村！电脑城！电子城！影视城！经贸城！科技城！商品城！服装城！软件园！数字园！产业园！工业园！化工园！科技园！创业园！创意园！商务园！游乐园！集聚区！开发区！高新区！商业区！商务区！贸易区！自贸区！经济区！保护区！生态区！名胜区！风景区！奥特莱斯！经济特区！研发基地！生产基地！养殖基地！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" matchMinCount="2">省！市！县！区！镇！村！街！路！道！院！园！城！里！弄！段！苑！栋！幢！座！塔！厦！楼！层！号！室！门！房！厅！坊！场！档！馆！铺！舍！庙！屯！山！岭！江！河！湖！海！湾！沟！口！中心！单元！寓所！邮局！信箱！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" matchMinCount="3">0！1！2！3！4！5！6！7！8！9！零！一！二！三！四！五！六！七！八！九！十！A！B！C！D！E！F！G！H！东！西！南！北！中！</word>
+    </keywords>
+  </object>
+  <object id="8" name="ADR" class="80"><!--地址（多关键词2，用于地址的折行）-->
+    <keywords type="multiKey" keywordMinMatches="2">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2">中关村！电脑城！电子城！影视城！经贸城！科技城！商品城！服装城！软件园！数字园！产业园！工业园！化工园！科技园！创业园！创意园！商务园！游乐园！集聚区！开发区！高新区！商业区！商务区！贸易区！自贸区！经济区！保护区！生态区！名胜区！风景区！奥特莱斯！经济特区！研发基地！生产基地！养殖基地！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchMinCount="2">省！市！县！区！镇！村！街！路！道！院！园！城！里！弄！段！苑！栋！幢！座！塔！厦！楼！层！号！室！门！房！厅！坊！场！档！馆！铺！舍！庙！屯！山！岭！江！河！湖！海！湾！沟！口！中心！单元！寓所！邮局！信箱！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchMinCount="2">0！1！2！3！4！5！6！7！8！9！零！一！二！三！四！五！六！七！八！九！十！A！B！C！D！E！F！G！H！东！西！南！北！中！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="endAbs">座！楼！层！号！室！门！房！厅！坊！场！档！馆！铺！舍！大厦！房间！门面！</word>     
+    </keywords>
+  </object>
+  <object id="8" name="ADR" class="80"><!--地址（多关键词3，用于地址的最后判定）-->
+    <keywords type="multiKey" keywordMinMatches="2">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3" matchMinCount="2">省！市！县！区！镇！村！街！路！道！院！园！城！里！弄！段！苑！栋！幢！座！塔！厦！楼！层！号！室！门！房！厅！坊！场！档！馆！铺！舍！庙！屯！山！岭！江！河！湖！海！湾！沟！口！中心！单元！寓所！邮局！信箱！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3" matchMinCount="2">0！1！2！3！4！5！6！7！8！9！零！一！二！三！四！五！六！七！八！九！十！A！B！C！D！E！F！G！H！东！西！南！北！中！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3" matchLoc="endAbs">座！楼！层！号！室！门！房！厅！坊！场！档！馆！铺！舍！大厦！房间！门面！</word>
+    </keywords>
+  </object>
+  <object id="8" name="ADR" class="80"><!--地址（用户结果归一化，多行关键词会逐个处理）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="4" matchLoc="start">:！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="5" matchLoc="startAbs">国际！亚洲！远东！东方！中国！国家！华夏！华北！东北！华中！华南！西南！西北！中南！北京！上海！天津！重庆！河北！山西！内蒙古！辽宁！吉林！黑龙江！江苏！浙江！安徽！福建！江西！山东！河南！湖北！湖南！广东！广西！海南！四川！贵州！云南！西藏！陕西！甘肃！青海！宁夏！新疆！香港！澳门！台湾！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="5" matchLoc="startAbs">石家庄！太原！呼和浩特！沈阳！长春！哈尔滨！南京！杭州！合肥！福州！南昌！济南！郑州！武汉！长沙！广州！南宁！海口！贵阳！成都！昆明！拉萨！西安！兰州！西宁！银川！乌鲁木齐！大连！青岛！苏州！太仓！厦门！深圳！</word><!--省会或省会之外的知名城市-->       
+    </keywords>
+  </object>
+  <object id="8" name="ADR" class="80"><!--地址（用户结果归一化，多行关键词会逐个处理）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="4" matchLoc="start">:！</word>
+    </keywords>
+  </object>   
+  <object id="8" name="ADR" class="81"><!--地址-英文-->  
+    <keywords type="multiKey" keywordMinMatches="3">
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" matchScript="english" matchMinCount="1">P.R.China！P.R.C！China！Sino！CN！USA！US！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" matchScript="english" matchMinCount="1">Beijing！Shanghai！Tianjin！Chongqing！Hebei！Shanxi！Neimenggu！Liaoning！Jilin！Heilongjiang！Jiangsu！Zhejiang！Anhui！Fujian！Jiangxi！Shandong！Henan！Hubei！Hunan！Guangdong！Guangxi！Hainan！Sichuan！Guizhou！Yunnan！Tibet！Shaanxi！Gangsu！Qinghai！Ningxia！Xinjiang！Hongkong！Macao！Taiwan！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" matchScript="english" matchMinCount="1">Shijiazhuan！Taiyuan！Hohhot！Shenyang！Changchun！Harbin！Nanjing！Jinan！Zhengzhou！Wuhan！Changsha！Guangzhou！Nanning！Haikou！Guiyang！Chengdu！Kunming！Lhasa！Xian！Lanzhou！Yinchuan！Urmqi！Dalian！Qingdao！Suzhou！Xiamen！Shenzhen！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" matchScript="english" matchMinCount="2">Province！City！Country！District！Area！Village！Town！Road！Street！Plaza！Tower！Building！Mansion！Park！Garden！Center！Unit！Block！Floor！Room！House！Rd.！No.！Suite！Box！Office！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="1" matchScript="english" matchMinCount="3">0！1！2！3！4！5！6！7！8！9！Zero！One！Two！Three！Four！Five！Six！Seven！Eight！Nine！Ten！A！B！C！D！E！F！G！H！East！West！South！North！Middle！</word>
+    </keywords>
+  </object>
+ 
+  
+  <!--===============================================================邮编===============================================================-->
+  <object id="9" name="ZIP" class="90"><!--邮编（单关键词）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">邮政编码！邮政编？！邮编！？编:！[邮编]！[邮编1！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">郵政編碼！郵政編？！郵編！？編:！[郵編]！[郵編1！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">ZipCode！Zipcode！ZIPCODE！ZIP:！ZIP :！Zip:！P.C.！P.C:！P.c.！</word>
+
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="1" matchMinCount="6" matchMaxCount="6" matchLoc="all">0123456789</word><!--孤立的邮编-->
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="1" matchMinCount="6" matchMaxCount="6" resultMinLen="6" resultMaxLen="9">0123456789</word><!--词头识别错误的邮编-->
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="2" matchMinCount="6" matchMaxCount="6" matchLoc="end">0123456789</word><!--接在地址后面的邮编-->
+    </keywords>
+  </object>
+  <object id="9" name="ZIP" class="90"><!--邮编（多关键词）--> 
+    <keywords type="multiKey" keywordMinMatches="2">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">邮？:！郵？:！China！P.R.C.！</word>
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="1" matchMinCount="6" matchMaxCount="6">0123456789</word>
+    </keywords>
+  </object>
+  <object id="9" name="ZIP" class="90"><!--邮编（用户结果归一化，多行关键词会逐个处理）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="4" matchLoc="start">:！</word>
+    </keywords>
+  </object>   
+  <!--===============================================================社交===============================================================-->
+  <object id="10" name="IMP" class="100"><!--社交-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">企业QQ:！企业00:！微信？WeChat！微信？weChat！微信？Wechat！微信？QQ！微信(QQ)！微信(Q)！微信？Q0！微信？0Q！微信？00！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">微信:！微博:！博客:！QQ群:！微信号！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">微信:！微博:！博客:！QQ群:！微信号！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchScript="english" >wechat:！Wechat:！WeChat:！QQ:！Q Q:！00:！MSN:！msn:！weibo:！Weibo:！WeiBo:！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchScript="english" >Facebook:！facebook:！SKYPE:！Skype:！Skype :！skype:！Instagram:！instagram:！Twitter:！twitter:！Whatsapp:！WhatsApp:！whatsapp:！</word>
+     
+      <word matchMethod="string" matchValueType="inlineBefore" rulePriority="0" matchLoc="endAbs">(同微信)！</word>
+      
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">QQ :！0 0:！00 :！oo:！0Q:！oQ:！QO:！Q0:！Qo:！00号:！？0号:！00群:！Q群:！o群:！0群:！Wechet:！wechet:！</word>
+      
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">QQ！Q Q！部门官博</word>
+    </keywords>
+  </object>
+  <object id="10" name="IMP" class="100"><!--社交（用户结果归一化，多行关键词会逐个处理）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="4" matchLoc="start">:！</word>
+    </keywords>
+  </object>    
+  <!--===============================================================传真===============================================================-->
+  <object id="11" name="FAX" class="110"><!--传真-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">传真(FAX)！传真(Fax)！传真(FAX！Fax(传真)！[传真]！(传真]！[传真1！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">傳真(FAX)！傳真(Fax)！傳真(FAX！Fax(傳真)！[傳真]！(傳真]！[传真1！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">Fax！</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">传真:！传真+！传真(！传真/！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">傳真:！？真:！傳？:！博？:！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">Fax:！FAX:！FAX/！</word>
+      
+      <word matchMethod="string" matchValueType="inlineBefore" rulePriority="0" matchLoc="endAbs">:传？！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0" matchLoc="startAbs">真:！传真！</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">+86)！+86(！+86-！+86 ！86-！(86)！(86！0086-！</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">+86！</word>
+            
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0086！+86！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">010！021！022！023！</word><!--四个直辖市-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">024！0411！0412！0413！0414！0415！0416！0417！0418！0419！0410！</word><!--辽宁省-->   
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">025！0516！0518！0517！0527！0515！0514！0513！0511！0519！0510！0512！0520！</word><!--江苏省-->      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">027！0714！0710！0719！0717！0724！0712！0713！0718！0716！</word><!--湖北省-->     
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">028！0812！0838！0816！0813！0832！0833！0830！0831！</word><!--四川省-->      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">029！0919！0917！0913！0914！</word><!--陕西省-->      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">020！0755！0756！0754！0751！0752！0769！0760！0757！0759！</word><!--广东省-->       
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0311！0310！0319！0312！0313！0314！0315！0335！0317！0316！0318！</word><!--河北省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0351！0352！0353！0355！0349！0354！0358！0357！0359！</word><!--山西省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0371！0378！0379！0373！0393！0370！0377！0394！0396！0391！</word><!--河南省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0471！0472！0476！0479！0470！0475！0477！0482！</word><!--内蒙古自治区-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0431！0423！0434！0437！0435！0439！0436！0433！0440！</word><!--吉林省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0451！0452！0459！0458！0453！0454！0455！0457！0456！</word><!--黑龙江省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0571！0574！0573！0572！0575！0579！0570！0580！0577！0576！</word><!--浙江省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0551！0554！0552！0555！0556！0559！0550！0557！0565！0563！</word><!--安徽省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0591！0592！0598！0594！0595！0596！0599！0593！0597！</word><!--福建省--> 
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0531！0532！0533！0536！0535！0631！0537！0633！0534！0530！0539！</word><!--山东省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0731！0733！0732！0734！0730！0736！0735！0737！0746！0745！0744！</word><!--湖南省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0771！0772！0773！0774！0779！0777！</word><!--广西自治区-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0791！0798！0790！0792！0701！0793！0795！0794！0796！0797！</word><!--江西省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0898！0899！0890！</word><!--海南省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0851！0852！0853！0858！</word><!--贵州省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0871！0870！0874！0877！0879！0888！0873！0878！</word><!--云南省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0891！0892！08018！08059！0897！</word><!--西藏自治区-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0931！0935！0938！0933！0937！0937！</word><!--甘肃省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0971！0972！0979！0975！</word><!--青海省-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0951！0952！0953！0954！</word><!--宁夏自治区-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">0991！0990！0995！0998！0908！0996！</word><!--新疆自治区-->
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="2" matchLoc="start">00852！00853！00886！</word><!--港澳台-->
+      
+      <word matchMethod="regexp" matchValueType="inline" matchFunc="continueChars" rulePriority="2" matchMinCount="8" matchMaxCount="8">0123456789</word>
+      
+      <word matchMethod="keychar" matchValueType="inlineAfter" rulePriority="3" matchLoc="startAbs">F:！F.！F/！F！</word>
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3">传真！真:！</word>
+    </keywords>
+  </object>
+  <object id="11" name="FAX" class="110"><!--传真（用户结果归一化，多行关键词会逐个处理）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="4" matchLoc="start">:！</word>
+
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="5" matchLoc="startAbs" resultMinLen="11">(0086)-！(0086) ！(0086)！+(86)-！+(86) ！+(86)！(+86)-！(+86) ！(+86)！(86)-！(86) ！(86)！(86-！(86！0086(！0086-！0086 ！0086！+86(！+86-！+86 ！+86！086-！086 ！086！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="5" matchLoc="startAbs" resultMinLen="11">86-！86 ！86！</word><!--区分度不好，单独放一行-->
+    </keywords>
+  </object>   
+  <!--===============================================================网址===============================================================-->
+  <object id="12" name="URL" class="120"><!--网址-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">网址(Web site)！网址(Website)！网址(website)！网址(WEBSITE)！网址/Web！</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">网络地址！公司网址！公司主页！公司网页！官方网站！公司官网！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">網絡地址！公司網址！公司主頁！公司網頁！</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">网址:！主页:！网页:！网站:！官网:！[网址]！(网址]！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">網址:！主頁:！網頁:！網站:！官網:！[網址]！(網址]！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">Website:！URL:！</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">灵云:！灵云官网:！网tt:！</word> 
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">ttp://！TTP://！p://！P://！http:！Http:！HTTP:！http！HTTP！H？tp:！</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">://w！//ww！www.！</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">.cn！.CN！.com！.COM！.org！.ORG！.edu！.EDU！.gov！.GOV！.net！.NET！.me！.ME！.ai！.AI！</word>
+
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="3">www.！WWW.！</word>
+    </keywords>
+  </object>
+  <object id="12" name="URL" class="120"><!--网址（用户结果归一化，多行关键词会逐个处理）-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="4" matchLoc="start">:！</word>
+      
+      <word matchMethod="keychar" matchValueType="inline" rulePriority="5" matchLoc="start">www.！WWW.！</word>
+    </keywords>
+  </object>
+  
+  
+  <!--优先级3的条目-->
+  <!--===============================================================学历===============================================================-->  
+  <object id="13" name="EDU" class="130"><!--学历-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">院士！院土！会士！会土！博士！博土！硕士！硕土！博士后！工商管理硕士！工程硕士！长江学者！</word>
+    </keywords>
+  </object>
+  <object id="13" name="EDU" class="131"><!--学历-英文-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchLoc="all">MBA！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchLoc="all">Ph.D.！PH.D.！Ph.D！PH.D！</word>
+    </keywords>
+  </object>  
+  <!--===============================================================股票代码===============================================================-->
+  <object id="14" name="STC" class="140"><!--股票代码-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">股票代码！股票代号！股票编号！股票编码！股份代码！股份代号！股份编号！股份编码！股权代码！股？代码！股权代号！股权编号！股权编码！证券代码！交易代码！统一编号！？票代码:！溧代码1！第一股:！大数据第一股！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchLoc="startAbs">？？股份！</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">纳斯达克！纽交所！港交所！上交所！</word>
+    </keywords>
+  </object>
+  <!--===============================================================企业代码===============================================================-->
+  <object id="15" name="COD" class="150"><!--企业代码-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">信用代码！注册号:！税号:！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">統一代碼！統一編碼！統編:！</word>
+    </keywords>
+  </object>
+  
+  
+  <!--优先级4的条目-->
+  <!--===============================================================企业账户===============================================================-->  
+  <object id="16" name="ACC" class="160"><!--企业账户-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">开户行！开户:！</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">账号:！帐号:！斯号:！</word>
+    </keywords>
+  </object>
+  <!--===============================================================企业备忘===============================================================-->  
+  <object id="17" name="MEM" class="170"><!--企业备忘-->
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inline" rulePriority="1" matchLoc="endAbs" resultMinLen="7">供应商！提供商！赞助商！合作伙伴！合作品牌！服务专家！旗下企业！合作企业！所属企业！成员企业！认证企业！集团成员！</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">领导者！领航者！专注于！上市公司！第一品牌！专业品牌！专业厂商！驰名商标！中华老字号！第一股！中国第一！</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">灵云科技！源自清华！服务全球！</word><!--捷通华声-->
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">科技塑造！完美展示！</word><!--昆仑亿发-->
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">一切皆有可能！让改变发生！网？上京东！百度一下！优雅是一种态度！</word><!--其他知名企业或知名口号-->
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">Everything is impossible！Think Different！</word><!--其他知名企业或知名口号-->
+    </keywords>
+  </object>
+  <!--===============================================================企业图标===============================================================-->
+  <object id="18" name="LOG" class="180"><!--企业图标-->
+    <keywords type="singleKey">
+      <word matchMethod="none" matchValueType="inline" rulePriority="0"> </word>
+    </keywords>
+  </object> 
+  
+  
+  <!--优先级5的条目-->
+  <!--===============================================================二维码===============================================================-->
+  <object id="19" name="BAC" class="190"><!--二维码-->
+    <keywords type="singleKey">
+      <word matchMethod="none" matchValueType="inline" rulePriority="0"> </word>
+    </keywords>
+  </object>
+  <!--===============================================================头像===============================================================-->
+  <object id="20" name="IMG" class="200"><!--头像-->
+    <keywords type="singleKey">
+      <word matchMethod="none" matchValueType="inline" rulePriority="0"> </word>
+    </keywords>
+  </object>
+  
+</rules>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules name="营业执照" ruleNum="4"><!--实际是rulePriorityNum, 0:主关键词；1-主关键词badcase；2-辅助关键词搜索；3-特殊规则-->
+  <object id="1" name="号码" >
+    <keywords type="singleKey">
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">注册号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">注？号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">册号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">注号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">统一社会信用代码</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">社会信用代码</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">信用代码</word>
+  <!--<word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">代码</word>--><!--跟“税务登记代码”冲突-->
+
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？州号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？川号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？朋号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？册导</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">信？代？</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">沪号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">机号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">磌号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">州号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">朋号</word>
+
+      <word matchMethod="string" matchValueType="inlineBefore" rulePriority="2">(1/1)</word>
+      <word matchMethod="keychar" matchValueType="inline" matchMinCount="6" rulePriority="2">0123456789</word>
+
+      <word matchMethod="string" matchValueType="bottom" rulePriority="2">编？</word>
+    </keywords>
+  </object>
+  <object id="2" name="名称">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">名称</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">名沵</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？称</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">名？</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">称</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">快餐</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">小吃</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">房地产经纪</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">货运代理</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">床上用品</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">电？商务</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">餐饮服务有限</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">食品有限公司</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">科技</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">股份</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">有限公司</word>
+      
+      <word matchMethod="string" matchValueType="bottom" rulePriority="2">注册号</word>
+      <word matchMethod="string" matchValueType="bottom" rulePriority="2">信用代码</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="3">经营部</word>
+      <word matchMethod="keychar" matchValueType="inline" matchMinCount="1" rulePriority="3">商行店铺厂馆坊房</word>
+    </keywords>
+  </object>
+  <object id="3" name="类型">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">类型</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？型</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">英塑</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">个休？商？</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">个体</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">个体户</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">？商户</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">自然人</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">目然人</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">有限公司</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">责任公司</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">有？？任公司</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">其他股份有限公司</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">分支机构</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">中外合资</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">外商投资企业法人独资</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">自然人投资或控股</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">外商投资企业法人独资</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">自然人独资</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">自然人投资或控股</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">自然人投资或控股的法人独资</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">法人独资</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">台港澳法人独资</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">外国法人独资</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">国内合资</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">台港澳与境内合作</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">自然人控股</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">自然人独资</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="2">类？</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="2">型</word>
+    </keywords>
+  </object>
+  <object id="5" name="姓名">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">姓名</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">经营者姓名</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">？营者</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">经？者</word>    
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">代表</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">负责人</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">投资人</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">资人</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">经营？？名</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">定代表</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">经？宿</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">经者</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">营者</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">省者</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">经营禔</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">经鰼鬬</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">经乭著</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">经嵩誓</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">营者者</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">经营青</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">经岁若</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">营著姐喜</word>
+      
+      <word matchMethod="keychar" matchValueType="inline" matchMinCount="1" resultMaxLen="6" rulePriority="2">李王陈刘张汤朱魏胡余高陆蔡</word>
+
+    </keywords>
+  </object>
+  <object id="6" name="注册资本">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">注册资本</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">资本</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">资壹</word>
+    </keywords>
+  </object>
+  <object id="7" name="组成形式">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">组成形式</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">？成形式</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">组？形式</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">组成？式</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">组成？形式</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">组成形？</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">组成式</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">成形式</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？组成子</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">塑虚亚建</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">真风尹有</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">丑民形式</word>   
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？桟形式</word>   
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">鉏？形过</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">鉏成？？</word>      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">绍就删式</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">个人经营</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">合伙经营</word>
+      
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">？人经营</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">个人经？</word>
+    </keywords>    
+  </object>
+  <object id="8" name="注册或成立日期">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">成立日期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">成？日期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">？立日期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">注册日期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">注？日期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">注？？期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">注册？期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">？册日期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">成立？？</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？册口期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？册日明</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？朋？期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">注州日？</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">浊册口期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">注册日？期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">汪卌期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">立日湖</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">工？？日期</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">执照有效期:</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="2">日期</word>
+      <word matchMethod="keychar" matchValueType="inline" matchMinCount="3" resultMaxLen="15" rulePriority="2">20二零年月日</word>
+    </keywords>
+  </object>
+  <object id="9" name="营业期限">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">营业期限</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">期限</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">有效期至</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="0">日至20</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="0">日至长期</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="1">至20</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？？明限</word>
+    </keywords>
+  </object>
+  <object id="11" name="发证日期">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">发证日期</word>
+
+      <word matchMethod="string" matchValueType="inline" resultMaxLen="13" rulePriority="3">20？？年</word>
+      <word matchMethod="keychar" matchValueType="inline" matchMinCount="3" resultMaxLen="13" rulePriority="3">20二零年月日</word>
+    </keywords>
+  </object>
+  <object id="12" name="编号">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">执照编号</word>
+
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">编号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">编话</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">编亏</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">税务？记证号:</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">杭筹暨记证号:</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">？？？记证号</word>
+
+      <word matchMethod="keychar" matchValueType="inline" matchMinCount="7" rulePriority="3">0123456789</word>
+    </keywords>
+  </object>
+  <object id="13" name="组织机构证号">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">组织机构代码证书:</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">组织机构代码证书</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">组织机构代码证号:</word>     
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">组织机构代码证号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">组织机构证号:</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">组织机构证号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">机构代码</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">？织机构代码</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">？织？构代？</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">红物4手</word>
+    </keywords>
+  </object>
+  <object id="14" name="税务登记证号">
+    <keywords type="singleKey" >  
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">税务登记证号:</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">税务登记证号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">税务登记证:</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">税务登记证</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">纳税人识别号:</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">纳税人识别号</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">税务登记代码:</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">税务登记代码</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="0">登记号(国税)</word>
+
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">城城@1昭</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="1">分i:</word>      
+    </keywords>
+  </object>
+  <object id="15" name="二维码"><!--barcode类型也可以先通过文本获得大致定位-->
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inline" rulePriority="0">登记机关</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="0">登？机关</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="0">登记？关</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="0">登记机？</word>
+      <word matchMethod="string" matchValueType="inline" rulePriority="0">？记机关</word>
+    </keywords>
+  </object>    
+  <!--两个要合并多行的条目放到后面识别-->
+  <object id="4" name="住所">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="0">经营场所</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="0">场所</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="0">住所</word>
+
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="1">？营场所</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="1">经？场所</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="1">经营？所</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="1">经？？所</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="0">经营场？</word>
+      
+      <word matchMethod="keychar" matchValueType="inline" matchMinCount="3" rulePriority="2">省市县区镇街路村道栋幢厦楼层号室房场铺园舍韩</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="2">住</word>
+      <word matchMethod="string" matchValueType="inlineAfter" rulePriority="2">所</word>
+    </keywords>
+  </object>
+  <object id="10" name="经营范围">
+    <keywords type="singleKey" >
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="0">经营范围及方式</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="0">？及方式</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="0">经营范围</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="0">经营范？</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="0">范围</word>
+      
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="1">经？落？</word>
+      <word matchMethod="string" matchValueType="inlineAfterBottomNeibor" rulePriority="1">营范？</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">许可经营项目</word>    
+      <word matchMethod="string" matchValueType="inline" rulePriority="2">依法须经批准</word>
+
+      <word matchMethod="string" matchValueType="inline" rulePriority="3">？？服务</word>
+    </keywords>
+  </object>
+</rules>
+  
+
