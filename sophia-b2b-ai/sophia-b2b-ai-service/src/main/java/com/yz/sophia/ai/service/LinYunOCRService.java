@@ -242,7 +242,7 @@ public class LinYunOCRService {
 
         postMethod.setRequestHeader("x-task-config",taskConfig.toString());
         postMethod.setRequestHeader("x-session-key",getXsessionkey(nowDate, developerkey));
-        postMethod.setRequestHeader("x-result-format", "json");
+        postMethod.setRequestHeader("x-result-format", "xml");
         postMethod.setRequestBody(bInputStream);
         httpClient.executeMethod(postMethod);
         byte[] responseBody=postMethod.getResponseBody();

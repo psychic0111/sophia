@@ -1,6 +1,5 @@
 package com.yz.sophia.ai.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.yz.sophia.ai.model.enums.OCRFunctionEnum;
 import com.yz.sophia.ai.model.enums.OCRTemplateEnum;
 import com.yz.sophia.ai.model.response.HciOCRResp;
@@ -57,8 +56,7 @@ public class LingYunOCRController extends BaseController implements LingYunOCRPr
                 String ns = needScore ? "yes" : "no";
                 byte[] byteResult = linYunOCRService.distinguishByHttp(capKey, templateType, ns, null, files.getInputStream());
                 String result = new String(byteResult, "utf-8");
-                JSONObject jsonObject = JSONObject.parseObject(result);
-                String s = jsonObject.toJSONString();
+                log.info("灵云接口返回：{}", result);
                 return result;
             } catch (Exception e) {
                 e.printStackTrace();
