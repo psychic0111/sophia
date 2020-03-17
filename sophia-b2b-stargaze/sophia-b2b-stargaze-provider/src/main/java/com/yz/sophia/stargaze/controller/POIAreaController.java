@@ -2,6 +2,7 @@ package com.yz.sophia.stargaze.controller;
 
 import com.yz.sophia.business.api.entity.CommonResponse;
 import com.yz.sophia.stargaze.model.po.PoiArea;
+import com.yz.sophia.stargaze.model.response.POIProvinceDetailResp;
 import com.yz.sophia.stargaze.provider.POIAreaProvider;
 import com.yz.sophia.stargaze.service.POIAreaService;
 import io.swagger.annotations.ApiOperation;
@@ -24,6 +25,25 @@ public class POIAreaController extends BaseController implements POIAreaProvider
 
     @Autowired
     private POIAreaService poiAreaService;
+
+    @Override
+    @ResponseBody
+    @ApiOperation("查询所有省范围下监测点数量")
+    @RequestMapping(value="/countProvincesPoints",method = RequestMethod.GET)
+    public CommonResponse<List<POIProvinceDetailResp>> countProvincesPoints() {
+        CommonResponse<List<POIProvinceDetailResp>> respData = new CommonResponse<>();
+
+        try {
+            respData = super.visit(() -> {
+                List<POIProvinceDetailResp> poiAreaList = poiAreaService.countProvincePoins();
+                return poiAreaList;
+            });
+        } catch (Exception e) {
+            log.info("检索所有省下的监测点：e:"+e.getMessage());
+            e.printStackTrace();
+        }
+        return respData;
+    }
 
     @Override
     @ResponseBody
