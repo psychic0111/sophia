@@ -8,8 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +25,31 @@ import java.util.List;
 @RequestMapping("/product")
 public interface ProductInsightProvider {
 
-	@GetMapping("/listProductInsight")
+	@RequestMapping(
+			value = {"/queryPlateForm"},
+			method = {RequestMethod.GET},
+			produces = {"application/json;charset=UTF-8"}
+	)
+	@ApiOperation(
+			value = "查询所有平台",
+			notes = "查询所有平台"
+	)
+	@ResponseBody
+	CommonResponse<List<String>> queryPlateForm();
+
+	@RequestMapping(
+            value = {"/queryStore"},
+            method = {RequestMethod.GET},
+            produces = {"application/json;charset=UTF-8"}
+    )
+    @ApiOperation(
+            value = "查询平台下的店铺",
+            notes = "查询平台下的店铺"
+    )
+    @ResponseBody
+    CommonResponse<List<String>> queryStoreByPlateForm(@ApiParam(name = "platForm", value = "平台", defaultValue = "苏宁", required = true) @RequestParam(name = "platForm", required = true) String platForm);
+
+    @GetMapping("/listProductInsight")
 	@ApiOperation("检索品牌数据")
 	CommonResponse<Page<ProductInsight>> listProductInsight(@ApiParam(name = "productCategory", value = "品类", defaultValue = "手机", required = false) String productCategory,
                                                             @ApiParam(name = "productBrand", value = "品牌", defaultValue = "华为", required = false) String productBrand,
