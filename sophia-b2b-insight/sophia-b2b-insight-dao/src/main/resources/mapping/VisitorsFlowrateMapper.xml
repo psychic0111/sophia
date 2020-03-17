@@ -3,7 +3,7 @@
 <mapper namespace="com.yz.sophia.insight.dao.VisitorsFlowrateMapper">
   <resultMap id="BaseResultMap" type="com.yz.sophia.insight.model.po.VisitorsFlowrate">
     <constructor>
-      <arg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="scenic_spot" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="traffic_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="zero" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -61,6 +61,35 @@
       </foreach>
     </where>
   </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List">
     id, scenic_spot, traffic_date, zero, one, two, three, four, five, six, seven, eight, 
     nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, 
@@ -71,9 +100,9 @@
     <if test="distinct">
       distinct
     </if>
-    'false' as QUERYID,
+    'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from Visitors_flowrate
+    from visitors_flowrate
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -81,8 +110,24 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from visitors_flowrate
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from visitors_flowrate
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yz.sophia.insight.model.po.VisitorsFlowrateExample">
+    delete from visitors_flowrate
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
   <insert id="insert" parameterType="com.yz.sophia.insight.model.po.VisitorsFlowrate">
-    insert into Visitors_flowrate (id, scenic_spot, traffic_date, 
+    insert into visitors_flowrate (id, scenic_spot, traffic_date, 
       zero, one, two, three, 
       four, five, six, seven, 
       eight, nine, ten, eleven, 
@@ -102,7 +147,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.yz.sophia.insight.model.po.VisitorsFlowrate">
-    insert into Visitors_flowrate
+    insert into visitors_flowrate
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -270,4 +315,246 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.yz.sophia.insight.model.po.VisitorsFlowrateExample" resultType="java.lang.Long">
+    select count(*) from visitors_flowrate
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update visitors_flowrate
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.scenicSpot != null">
+        scenic_spot = #{record.scenicSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trafficDate != null">
+        traffic_date = #{record.trafficDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zero != null">
+        zero = #{record.zero,jdbcType=VARCHAR},
+      </if>
+      <if test="record.one != null">
+        one = #{record.one,jdbcType=VARCHAR},
+      </if>
+      <if test="record.two != null">
+        two = #{record.two,jdbcType=VARCHAR},
+      </if>
+      <if test="record.three != null">
+        three = #{record.three,jdbcType=VARCHAR},
+      </if>
+      <if test="record.four != null">
+        four = #{record.four,jdbcType=VARCHAR},
+      </if>
+      <if test="record.five != null">
+        five = #{record.five,jdbcType=VARCHAR},
+      </if>
+      <if test="record.six != null">
+        six = #{record.six,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seven != null">
+        seven = #{record.seven,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eight != null">
+        eight = #{record.eight,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nine != null">
+        nine = #{record.nine,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ten != null">
+        ten = #{record.ten,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eleven != null">
+        eleven = #{record.eleven,jdbcType=VARCHAR},
+      </if>
+      <if test="record.twelve != null">
+        twelve = #{record.twelve,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thirteen != null">
+        thirteen = #{record.thirteen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fourteen != null">
+        fourteen = #{record.fourteen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fifteen != null">
+        fifteen = #{record.fifteen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sixteen != null">
+        sixteen = #{record.sixteen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seventeen != null">
+        seventeen = #{record.seventeen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eighteen != null">
+        eighteen = #{record.eighteen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nineteen != null">
+        nineteen = #{record.nineteen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.twenty != null">
+        twenty = #{record.twenty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.twentyOne != null">
+        twenty-one = #{record.twentyOne,jdbcType=VARCHAR},
+      </if>
+      <if test="record.twentyTwo != null">
+        twenty-two = #{record.twentyTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.twentyThree != null">
+        twenty-three = #{record.twentyThree,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update visitors_flowrate
+    set id = #{record.id,jdbcType=BIGINT},
+      scenic_spot = #{record.scenicSpot,jdbcType=VARCHAR},
+      traffic_date = #{record.trafficDate,jdbcType=TIMESTAMP},
+      zero = #{record.zero,jdbcType=VARCHAR},
+      one = #{record.one,jdbcType=VARCHAR},
+      two = #{record.two,jdbcType=VARCHAR},
+      three = #{record.three,jdbcType=VARCHAR},
+      four = #{record.four,jdbcType=VARCHAR},
+      five = #{record.five,jdbcType=VARCHAR},
+      six = #{record.six,jdbcType=VARCHAR},
+      seven = #{record.seven,jdbcType=VARCHAR},
+      eight = #{record.eight,jdbcType=VARCHAR},
+      nine = #{record.nine,jdbcType=VARCHAR},
+      ten = #{record.ten,jdbcType=VARCHAR},
+      eleven = #{record.eleven,jdbcType=VARCHAR},
+      twelve = #{record.twelve,jdbcType=VARCHAR},
+      thirteen = #{record.thirteen,jdbcType=VARCHAR},
+      fourteen = #{record.fourteen,jdbcType=VARCHAR},
+      fifteen = #{record.fifteen,jdbcType=VARCHAR},
+      sixteen = #{record.sixteen,jdbcType=VARCHAR},
+      seventeen = #{record.seventeen,jdbcType=VARCHAR},
+      eighteen = #{record.eighteen,jdbcType=VARCHAR},
+      nineteen = #{record.nineteen,jdbcType=VARCHAR},
+      twenty = #{record.twenty,jdbcType=VARCHAR},
+      twenty-one = #{record.twentyOne,jdbcType=VARCHAR},
+      twenty-two = #{record.twentyTwo,jdbcType=VARCHAR},
+      twenty-three = #{record.twentyThree,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yz.sophia.insight.model.po.VisitorsFlowrate">
+    update visitors_flowrate
+    <set>
+      <if test="scenicSpot != null">
+        scenic_spot = #{scenicSpot,jdbcType=VARCHAR},
+      </if>
+      <if test="trafficDate != null">
+        traffic_date = #{trafficDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zero != null">
+        zero = #{zero,jdbcType=VARCHAR},
+      </if>
+      <if test="one != null">
+        one = #{one,jdbcType=VARCHAR},
+      </if>
+      <if test="two != null">
+        two = #{two,jdbcType=VARCHAR},
+      </if>
+      <if test="three != null">
+        three = #{three,jdbcType=VARCHAR},
+      </if>
+      <if test="four != null">
+        four = #{four,jdbcType=VARCHAR},
+      </if>
+      <if test="five != null">
+        five = #{five,jdbcType=VARCHAR},
+      </if>
+      <if test="six != null">
+        six = #{six,jdbcType=VARCHAR},
+      </if>
+      <if test="seven != null">
+        seven = #{seven,jdbcType=VARCHAR},
+      </if>
+      <if test="eight != null">
+        eight = #{eight,jdbcType=VARCHAR},
+      </if>
+      <if test="nine != null">
+        nine = #{nine,jdbcType=VARCHAR},
+      </if>
+      <if test="ten != null">
+        ten = #{ten,jdbcType=VARCHAR},
+      </if>
+      <if test="eleven != null">
+        eleven = #{eleven,jdbcType=VARCHAR},
+      </if>
+      <if test="twelve != null">
+        twelve = #{twelve,jdbcType=VARCHAR},
+      </if>
+      <if test="thirteen != null">
+        thirteen = #{thirteen,jdbcType=VARCHAR},
+      </if>
+      <if test="fourteen != null">
+        fourteen = #{fourteen,jdbcType=VARCHAR},
+      </if>
+      <if test="fifteen != null">
+        fifteen = #{fifteen,jdbcType=VARCHAR},
+      </if>
+      <if test="sixteen != null">
+        sixteen = #{sixteen,jdbcType=VARCHAR},
+      </if>
+      <if test="seventeen != null">
+        seventeen = #{seventeen,jdbcType=VARCHAR},
+      </if>
+      <if test="eighteen != null">
+        eighteen = #{eighteen,jdbcType=VARCHAR},
+      </if>
+      <if test="nineteen != null">
+        nineteen = #{nineteen,jdbcType=VARCHAR},
+      </if>
+      <if test="twenty != null">
+        twenty = #{twenty,jdbcType=VARCHAR},
+      </if>
+      <if test="twentyOne != null">
+        twenty-one = #{twentyOne,jdbcType=VARCHAR},
+      </if>
+      <if test="twentyTwo != null">
+        twenty-two = #{twentyTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="twentyThree != null">
+        twenty-three = #{twentyThree,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yz.sophia.insight.model.po.VisitorsFlowrate">
+    update visitors_flowrate
+    set scenic_spot = #{scenicSpot,jdbcType=VARCHAR},
+      traffic_date = #{trafficDate,jdbcType=TIMESTAMP},
+      zero = #{zero,jdbcType=VARCHAR},
+      one = #{one,jdbcType=VARCHAR},
+      two = #{two,jdbcType=VARCHAR},
+      three = #{three,jdbcType=VARCHAR},
+      four = #{four,jdbcType=VARCHAR},
+      five = #{five,jdbcType=VARCHAR},
+      six = #{six,jdbcType=VARCHAR},
+      seven = #{seven,jdbcType=VARCHAR},
+      eight = #{eight,jdbcType=VARCHAR},
+      nine = #{nine,jdbcType=VARCHAR},
+      ten = #{ten,jdbcType=VARCHAR},
+      eleven = #{eleven,jdbcType=VARCHAR},
+      twelve = #{twelve,jdbcType=VARCHAR},
+      thirteen = #{thirteen,jdbcType=VARCHAR},
+      fourteen = #{fourteen,jdbcType=VARCHAR},
+      fifteen = #{fifteen,jdbcType=VARCHAR},
+      sixteen = #{sixteen,jdbcType=VARCHAR},
+      seventeen = #{seventeen,jdbcType=VARCHAR},
+      eighteen = #{eighteen,jdbcType=VARCHAR},
+      nineteen = #{nineteen,jdbcType=VARCHAR},
+      twenty = #{twenty,jdbcType=VARCHAR},
+      twenty-one = #{twentyOne,jdbcType=VARCHAR},
+      twenty-two = #{twentyTwo,jdbcType=VARCHAR},
+      twenty-three = #{twentyThree,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
 </mapper>

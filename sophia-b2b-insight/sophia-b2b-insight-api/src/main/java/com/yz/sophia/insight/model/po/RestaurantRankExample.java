@@ -305,132 +305,132 @@ public class RestaurantRankExample {
         }
 
         public Criteria andRestaurantBrandIsNull() {
-            addCriterion("restaurant__brand is null");
+            addCriterion("restaurant_brand is null");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandIsNotNull() {
-            addCriterion("restaurant__brand is not null");
+            addCriterion("restaurant_brand is not null");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandEqualTo(String value) {
-            addCriterion("restaurant__brand =", value, "restaurantBrand");
+            addCriterion("restaurant_brand =", value, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandNotEqualTo(String value) {
-            addCriterion("restaurant__brand <>", value, "restaurantBrand");
+            addCriterion("restaurant_brand <>", value, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandGreaterThan(String value) {
-            addCriterion("restaurant__brand >", value, "restaurantBrand");
+            addCriterion("restaurant_brand >", value, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandGreaterThanOrEqualTo(String value) {
-            addCriterion("restaurant__brand >=", value, "restaurantBrand");
+            addCriterion("restaurant_brand >=", value, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandLessThan(String value) {
-            addCriterion("restaurant__brand <", value, "restaurantBrand");
+            addCriterion("restaurant_brand <", value, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandLessThanOrEqualTo(String value) {
-            addCriterion("restaurant__brand <=", value, "restaurantBrand");
+            addCriterion("restaurant_brand <=", value, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandLike(String value) {
-            addCriterion("restaurant__brand like", value, "restaurantBrand");
+            addCriterion("restaurant_brand like", value, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandNotLike(String value) {
-            addCriterion("restaurant__brand not like", value, "restaurantBrand");
+            addCriterion("restaurant_brand not like", value, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandIn(List<String> values) {
-            addCriterion("restaurant__brand in", values, "restaurantBrand");
+            addCriterion("restaurant_brand in", values, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandNotIn(List<String> values) {
-            addCriterion("restaurant__brand not in", values, "restaurantBrand");
+            addCriterion("restaurant_brand not in", values, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandBetween(String value1, String value2) {
-            addCriterion("restaurant__brand between", value1, value2, "restaurantBrand");
+            addCriterion("restaurant_brand between", value1, value2, "restaurantBrand");
             return (Criteria) this;
         }
 
         public Criteria andRestaurantBrandNotBetween(String value1, String value2) {
-            addCriterion("restaurant__brand not between", value1, value2, "restaurantBrand");
+            addCriterion("restaurant_brand not between", value1, value2, "restaurantBrand");
             return (Criteria) this;
         }
 
-        public Criteria andRankIsNull() {
-            addCriterion("rank is null");
+        public Criteria andRankCountIsNull() {
+            addCriterion("rank_count is null");
             return (Criteria) this;
         }
 
-        public Criteria andRankIsNotNull() {
-            addCriterion("rank is not null");
+        public Criteria andRankCountIsNotNull() {
+            addCriterion("rank_count is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRankEqualTo(Integer value) {
-            addCriterion("rank =", value, "rank");
+        public Criteria andRankCountEqualTo(Integer value) {
+            addCriterion("rank_count =", value, "rankCount");
             return (Criteria) this;
         }
 
-        public Criteria andRankNotEqualTo(Integer value) {
-            addCriterion("rank <>", value, "rank");
+        public Criteria andRankCountNotEqualTo(Integer value) {
+            addCriterion("rank_count <>", value, "rankCount");
             return (Criteria) this;
         }
 
-        public Criteria andRankGreaterThan(Integer value) {
-            addCriterion("rank >", value, "rank");
+        public Criteria andRankCountGreaterThan(Integer value) {
+            addCriterion("rank_count >", value, "rankCount");
             return (Criteria) this;
         }
 
-        public Criteria andRankGreaterThanOrEqualTo(Integer value) {
-            addCriterion("rank >=", value, "rank");
+        public Criteria andRankCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("rank_count >=", value, "rankCount");
             return (Criteria) this;
         }
 
-        public Criteria andRankLessThan(Integer value) {
-            addCriterion("rank <", value, "rank");
+        public Criteria andRankCountLessThan(Integer value) {
+            addCriterion("rank_count <", value, "rankCount");
             return (Criteria) this;
         }
 
-        public Criteria andRankLessThanOrEqualTo(Integer value) {
-            addCriterion("rank <=", value, "rank");
+        public Criteria andRankCountLessThanOrEqualTo(Integer value) {
+            addCriterion("rank_count <=", value, "rankCount");
             return (Criteria) this;
         }
 
-        public Criteria andRankIn(List<Integer> values) {
-            addCriterion("rank in", values, "rank");
+        public Criteria andRankCountIn(List<Integer> values) {
+            addCriterion("rank_count in", values, "rankCount");
             return (Criteria) this;
         }
 
-        public Criteria andRankNotIn(List<Integer> values) {
-            addCriterion("rank not in", values, "rank");
+        public Criteria andRankCountNotIn(List<Integer> values) {
+            addCriterion("rank_count not in", values, "rankCount");
             return (Criteria) this;
         }
 
-        public Criteria andRankBetween(Integer value1, Integer value2) {
-            addCriterion("rank between", value1, value2, "rank");
+        public Criteria andRankCountBetween(Integer value1, Integer value2) {
+            addCriterion("rank_count between", value1, value2, "rankCount");
             return (Criteria) this;
         }
 
-        public Criteria andRankNotBetween(Integer value1, Integer value2) {
-            addCriterion("rank not between", value1, value2, "rank");
+        public Criteria andRankCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("rank_count not between", value1, value2, "rankCount");
             return (Criteria) this;
         }
 
@@ -981,6 +981,76 @@ public class RestaurantRankExample {
 
         public Criteria andRestaurantTypeNotBetween(String value1, String value2) {
             addCriterion("restaurant_type not between", value1, value2, "restaurantType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlIsNull() {
+            addCriterion("logo_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlIsNotNull() {
+            addCriterion("logo_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlEqualTo(String value) {
+            addCriterion("logo_url =", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlNotEqualTo(String value) {
+            addCriterion("logo_url <>", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlGreaterThan(String value) {
+            addCriterion("logo_url >", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("logo_url >=", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlLessThan(String value) {
+            addCriterion("logo_url <", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlLessThanOrEqualTo(String value) {
+            addCriterion("logo_url <=", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlLike(String value) {
+            addCriterion("logo_url like", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlNotLike(String value) {
+            addCriterion("logo_url not like", value, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlIn(List<String> values) {
+            addCriterion("logo_url in", values, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlNotIn(List<String> values) {
+            addCriterion("logo_url not in", values, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlBetween(String value1, String value2) {
+            addCriterion("logo_url between", value1, value2, "logoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogoUrlNotBetween(String value1, String value2) {
+            addCriterion("logo_url not between", value1, value2, "logoUrl");
             return (Criteria) this;
         }
     }

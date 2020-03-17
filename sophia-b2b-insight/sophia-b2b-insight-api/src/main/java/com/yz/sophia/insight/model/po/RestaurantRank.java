@@ -9,7 +9,7 @@ public class RestaurantRank {
 
     private String restaurantBrand;
 
-    private Integer rank;
+    private Integer rankCount;
 
     private Integer redListIndex;
 
@@ -27,12 +27,14 @@ public class RestaurantRank {
 
     private String restaurantType;
 
-    public RestaurantRank(Long id, String restaurantCategory, String restaurantClassify, String restaurantBrand, Integer rank, Integer redListIndex, String companyProfile, String website, String telephone, String companyName, String address, String businessScope, String restaurantType) {
+    private String logoUrl;
+
+    public RestaurantRank(Long id, String restaurantCategory, String restaurantClassify, String restaurantBrand, Integer rankCount, Integer redListIndex, String companyProfile, String website, String telephone, String companyName, String address, String businessScope, String restaurantType, String logoUrl) {
         this.id = id;
         this.restaurantCategory = restaurantCategory;
         this.restaurantClassify = restaurantClassify;
         this.restaurantBrand = restaurantBrand;
-        this.rank = rank;
+        this.rankCount = rankCount;
         this.redListIndex = redListIndex;
         this.companyProfile = companyProfile;
         this.website = website;
@@ -41,6 +43,7 @@ public class RestaurantRank {
         this.address = address;
         this.businessScope = businessScope;
         this.restaurantType = restaurantType;
+        this.logoUrl = logoUrl;
     }
 
     public RestaurantRank() {
@@ -79,12 +82,12 @@ public class RestaurantRank {
         this.restaurantBrand = restaurantBrand == null ? null : restaurantBrand.trim();
     }
 
-    public Integer getRank() {
-        return rank;
+    public Integer getRankCount() {
+        return rankCount;
     }
 
-    public void setRank(Integer rank) {
-        this.rank = rank;
+    public void setRankCount(Integer rankCount) {
+        this.rankCount = rankCount;
     }
 
     public Integer getRedListIndex() {
@@ -149,5 +152,13 @@ public class RestaurantRank {
 
     public void setRestaurantType(String restaurantType) {
         this.restaurantType = restaurantType == null ? null : restaurantType.trim();
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl == null ? null : logoUrl.trim();
     }
 }
