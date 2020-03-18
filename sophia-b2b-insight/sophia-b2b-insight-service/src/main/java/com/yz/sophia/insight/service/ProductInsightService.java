@@ -136,9 +136,9 @@ public class ProductInsightService {
                 criteria.andEvaluateDimensionFireEqualTo(evaluateDimension);
             }
         }
-        String orderField = "evaluate_time";
+        /*String orderField = "evaluate_time";
         String orderType = "asc";
-        example.setOrderByClause(orderField + " " + orderType);
+        example.setOrderByClause(orderField + " " + orderType);*/
 
         List<LineChartDataVo> dataList = null;
         if(timeUnit.equalsIgnoreCase(TimeUnit.DAYS.name())){

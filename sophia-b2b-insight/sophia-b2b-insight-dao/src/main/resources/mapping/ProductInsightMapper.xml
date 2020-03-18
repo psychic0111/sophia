@@ -140,9 +140,9 @@
       <if test="_parameter != null">
         <include refid="Example_Where_Clause"/>
       </if>
-        order by evaluate_time
       ) t
-    GROUP BY date_format(t.evaluate_time, '%Y-%m-%d') limit 30
+    GROUP BY date_format(t.evaluate_time, '%Y-%m-%d')
+    order by date_format(t.evaluate_time, '%Y-%m-%d') limit 30
   </select>
   <select id="lineChartByExampleHour" resultType="com.yz.sophia.insight.model.vo.LineChartDataVo" parameterType="com.yz.sophia.insight.model.po.ProductInsightExample" >
     SELECT date_format(t.evaluate_time, '%Y-%m-%d %H:00:00') axisX, count(*) axisY FROM (
@@ -155,9 +155,9 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause"/>
     </if>
-       order by evaluate_time
     ) t
     GROUP BY date_format(t.evaluate_time, '%Y-%m-%d %H:00:00')
+    order by date_format(t.evaluate_time, '%Y-%m-%d %H:00:00')
   </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yz.sophia.insight.model.po.ProductInsightExample" >
     <!--
