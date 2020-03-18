@@ -324,6 +324,76 @@ public class GeographicCityExample {
             return (Criteria) this;
         }
 
+        public Criteria andCityProvinceIsNull() {
+            addCriterion("city_province is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceIsNotNull() {
+            addCriterion("city_province is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceEqualTo(String value) {
+            addCriterion("city_province =", value, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceNotEqualTo(String value) {
+            addCriterion("city_province <>", value, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceGreaterThan(String value) {
+            addCriterion("city_province >", value, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceGreaterThanOrEqualTo(String value) {
+            addCriterion("city_province >=", value, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceLessThan(String value) {
+            addCriterion("city_province <", value, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceLessThanOrEqualTo(String value) {
+            addCriterion("city_province <=", value, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceLike(String value) {
+            addCriterion("city_province like", value, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceNotLike(String value) {
+            addCriterion("city_province not like", value, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceIn(List<String> values) {
+            addCriterion("city_province in", values, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceNotIn(List<String> values) {
+            addCriterion("city_province not in", values, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceBetween(String value1, String value2) {
+            addCriterion("city_province between", value1, value2, "cityProvince");
+            return (Criteria) this;
+        }
+
+        public Criteria andCityProvinceNotBetween(String value1, String value2) {
+            addCriterion("city_province not between", value1, value2, "cityProvince");
+            return (Criteria) this;
+        }
+
         public Criteria andCityNameIsNull() {
             addCriterion("city_name is null");
             return (Criteria) this;

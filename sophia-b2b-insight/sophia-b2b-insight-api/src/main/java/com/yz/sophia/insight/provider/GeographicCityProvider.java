@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,6 +27,6 @@ public interface GeographicCityProvider {
 	// 服务中方法的映射路径,确保参数一致
 	@GetMapping("/queryGeographicData")
 	@ApiOperation("获取地理统计数据")
-	CommonResponse<List<GeographicCityResp>> queryGeographicData();
+	CommonResponse<List<GeographicCityResp>> queryGeographicData(@RequestParam("cityId") String cityId, @RequestParam("cityProvince") String cityProvince);
 
 }

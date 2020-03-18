@@ -35,12 +35,15 @@ public class GeographicCityController extends BaseController implements Geograph
     @ResponseBody
     @ApiOperation(value = "获取地理统计数据")
     @RequestMapping(value="/query_geographic_data",method = RequestMethod.POST)
-    public CommonResponse<List<GeographicCityResp>> queryGeographicData() {
+    public CommonResponse<List<GeographicCityResp>> queryGeographicData(@ApiParam(name="cityId", value="城市id", defaultValue="10002", required=false)
+                                                                            @RequestParam(name = "cityId", required =false) String cityId,
+                                                                        @ApiParam(name="cityProvince", value="省份名称", defaultValue="河北省", required=false)
+                                                                            @RequestParam(name = "cityProvince", required =false) String cityProvince) {
         log.info("获取地理统计数据,start");
         CommonResponse<List<GeographicCityResp>> respData = null;
         try {
             respData = super.visit(() -> {
-                List<GeographicCityResp> bodyResp = geographicCityService.queryGeographicData();
+                List<GeographicCityResp> bodyResp = geographicCityService.queryGeographicData(cityId,cityProvince);
                 log.info("获取地理统计数据返回参数：bodyResp:"+ bodyResp);
                 return bodyResp;
             });

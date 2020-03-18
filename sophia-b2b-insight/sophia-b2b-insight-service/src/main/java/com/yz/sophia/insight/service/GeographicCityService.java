@@ -25,16 +25,23 @@ public class GeographicCityService {
     private GeographicCityRelMapper geographicCityRelMapper;
 
 
-    public List<GeographicCityResp> queryGeographicData() throws Exception{
+    public List<GeographicCityResp> queryGeographicData(String cityId,String cityProvince) throws Exception{
         List<GeographicCityResp> geograList = null;
         GeographicCityExample example = new GeographicCityExample();
+        GeographicCityExample.Criteria criteria = example.createCriteria();
+        if (StringUtils.isNotEmpty(cityId)) {
+            criteria.andCityIdEqualTo(cityId);
+        }
+        if (StringUtils.isNotEmpty(cityProvince)) {
+            criteria.andCityProvinceEqualTo(cityProvince);
+        }
         geograList = geographicCityMapper.selectListByExample(example);
         if (geograList != null && geograList.size()>0) {
             for (GeographicCityResp geogra:
                  geograList) {
-                String cityId = geogra.getCityId();
+                String cityId2 = geogra.getCityId();
                 GeographicCityRelExample exampleRel = new GeographicCityRelExample();
-                exampleRel.createCriteria().andCityIdEqualTo(cityId);
+                exampleRel.createCriteria().andCityIdEqualTo(cityId2);
                 List<GeographicCityRel> geographicCityRels = geographicCityRelMapper.selectByExample(exampleRel);
                 geogra.setGeographicCityRelList(geographicCityRels);
             }
