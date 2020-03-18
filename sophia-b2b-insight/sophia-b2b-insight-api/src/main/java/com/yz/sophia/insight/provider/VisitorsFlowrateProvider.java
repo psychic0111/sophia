@@ -34,4 +34,16 @@ public interface VisitorsFlowrateProvider {
 																			@ApiParam(name = "startDate", value = "开始时间", defaultValue = "", required = true) String startDate,
 																			@ApiParam(name = "endDate", value = "结束时间", defaultValue = "", required = true) String endDate);
 
+	@GetMapping("/getProvince")
+	@ApiOperation("获取所有省")
+	CommonResponse<List<String>> getProvince();
+
+	@GetMapping("/getCity")
+	@ApiOperation("根据省获取所有城市")
+	CommonResponse<List<String>> getCity(@ApiParam(name = "province", value = "省", defaultValue = "", required = true) String province);
+
+	@GetMapping("/getSpot")
+	@ApiOperation("根据城市获取所有地点")
+	CommonResponse<List<String>> getSpot(@ApiParam(name = "city", value = "市", defaultValue = "", required = true) String city);
+
 }

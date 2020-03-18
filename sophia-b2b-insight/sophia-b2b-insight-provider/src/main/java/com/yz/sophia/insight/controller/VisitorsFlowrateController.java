@@ -33,7 +33,31 @@ public class VisitorsFlowrateController extends BaseController implements Visito
     @RequestMapping(value="/get",method = RequestMethod.GET)
     @ApiOperation("根据开始时间结束时间与地点搜索旅游数据")
     public CommonResponse<List<VisitorsFlowrate>> getVisitorsFlowrateByDateAndSpot(String spot, String startDate, String endDate) {
+        List<String> str=visitorsFlowrateService.selectProvince();
+        List<String> ss=visitorsFlowrateService.selectCityByProvince("广东省");
+        List<String> st=visitorsFlowrateService.selectSpotByCity("深圳市");
         return super.visit(() -> {return visitorsFlowrateService.getVisitorsFlowrateByDateAndSpot(startDate,endDate,spot);
         });
+    }
+
+    @Override
+    @GetMapping("/getProvince")
+    @ApiOperation("获取所有省")
+    public CommonResponse<List<String>> getProvince() {
+        return super.visit(()->{return visitorsFlowrateService.selectProvince();});
+    }
+
+    @Override
+    @GetMapping("/getCity")
+    @ApiOperation("根据省获取所有城市")
+    public CommonResponse<List<String>> getCity(String province) {
+        return super.visit(()->{return visitorsFlowrateService.selectCityByProvince(province);});
+    }
+
+    @Override
+    @GetMapping("/getSpot")
+    @ApiOperation("根据城市获取所有地点")
+    public CommonResponse<List<String>> getSpot(String city) {
+        return super.visit(()->{return visitorsFlowrateService.selectSpotByCity(city);});
     }
 }

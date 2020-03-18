@@ -30,4 +30,19 @@ public interface RegionInsightMapper {
     int updateByPrimaryKeySelective(RegionInsight record);
 
     int updateByPrimaryKey(RegionInsight record);
+
+    /**
+     * 查询所有省
+     * */
+    List<String> selectProvince();
+
+    /**
+     * 根据省查询市
+     * */
+    List<String> selectCityByProvince(String province);
+
+    /**
+     * 根据市查询地点
+     * */
+    List<String> selectSpotByCity(String city);
 }

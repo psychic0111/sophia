@@ -1,5 +1,6 @@
 package com.yz.sophia.insight.service;
 
+import com.yz.sophia.insight.dao.RegionInsightMapper;
 import com.yz.sophia.insight.dao.VisitorsFlowrateMapper;
 import com.yz.sophia.insight.model.po.VisitorsFlowrate;
 import com.yz.sophia.insight.model.po.VisitorsFlowrateExample;
@@ -21,6 +22,9 @@ public class VisitorsFlowrateService {
     @Autowired
     VisitorsFlowrateMapper visitorsFlowrateMapper;
 
+    @Autowired
+    RegionInsightMapper regionInsightMapper;
+
     public List<VisitorsFlowrate> getVisitorsFlowrateByDateAndSpot(String startDate, String endDate, String spot) {
 
         VisitorsFlowrateExample ex = new VisitorsFlowrateExample();
@@ -28,6 +32,19 @@ public class VisitorsFlowrateService {
         ex.createCriteria().andTrafficDateBetween(strToDateLong(startDate), strToDateLong(endDate)).andScenicSpotEqualTo(spot);
         List<VisitorsFlowrate> list = visitorsFlowrateMapper.selectByExample(ex);
         return list;
+    }
+
+    public List<String> selectProvince() {
+        return regionInsightMapper.selectProvince();
+    }
+
+    public List<String> selectCityByProvince(String province){
+        return regionInsightMapper.selectCityByProvince(province);
+    }
+
+
+    public List<String> selectSpotByCity(String city){
+        return regionInsightMapper.selectSpotByCity(city);
     }
 
     public static Date strToDateLong(String strDate) {

@@ -87,7 +87,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from region_insight
     where id = #{id,jdbcType=BIGINT}
@@ -211,4 +211,25 @@
       region_id = #{regionId,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
+  <!--查询所有省-->
+  <select id="selectProvince" resultType="java.lang.String">
+    select distinct province
+    from region_insight
+  </select>
+
+  <!--根据省查市-->
+  <select id="selectCityByProvince" parameterType="java.lang.String" resultType="java.lang.String">
+    select distinct city
+    from region_insight
+    where province = #{province,jdbcType=VARCHAR}
+  </select>
+
+    <!--根据市查地点-->
+    <select id="selectSpotByCity" parameterType="java.lang.String" resultType="java.lang.String">
+    select distinct scenic_spot
+    from region_insight
+    where city = #{city,jdbcType=VARCHAR}
+  </select>
 </mapper>
