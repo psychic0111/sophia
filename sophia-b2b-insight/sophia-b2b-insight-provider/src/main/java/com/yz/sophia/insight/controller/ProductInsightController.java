@@ -33,6 +33,60 @@ public class ProductInsightController extends BaseController implements ProductI
 
     @Override
     @RequestMapping(
+            value = {"/queryPlateForm"},
+            method = {RequestMethod.GET},
+            produces = {"application/json;charset=UTF-8"}
+    )
+    @ApiOperation(
+            value = "查询所有平台",
+            notes = "查询所有平台"
+    )
+    @ResponseBody
+    public CommonResponse<List<String>> queryPlateForm() {
+        CommonResponse<List<String>> respData = new CommonResponse<List<String>>();
+        try {
+            respData = super.visit(() -> {
+
+                List<String> list = productInsightService.listProductPlateForms();
+
+                return list;
+            });
+        } catch (Exception e) {
+            log.info("查询品牌数据接口异常：e:"+e.getMessage());
+            e.printStackTrace();
+        }
+        return respData;
+    }
+
+    @Override
+    @RequestMapping(
+            value = {"/queryStore"},
+            method = {RequestMethod.GET},
+            produces = {"application/json;charset=UTF-8"}
+    )
+    @ApiOperation(
+            value = "查询平台下的店铺",
+            notes = "查询平台下的店铺"
+    )
+    @ResponseBody
+    public CommonResponse<List<String>> queryStoreByPlateForm(@ApiParam(name = "platForm", value = "平台", defaultValue = "苏宁", required = true) @RequestParam(name = "platForm", required = true) String platForm) {
+        CommonResponse<List<String>> respData = new CommonResponse<List<String>>();
+        try {
+            respData = super.visit(() -> {
+
+                List<String> list = productInsightService.listProductStores(platForm);
+
+                return list;
+            });
+        } catch (Exception e) {
+            log.info("查询平台下的店铺异常：e:"+e.getMessage());
+            e.printStackTrace();
+        }
+        return respData;
+    }
+
+    @Override
+    @RequestMapping(
             value = {"/listProductInsight"},
             method = {RequestMethod.GET},
             produces = {"application/json;charset=UTF-8"}

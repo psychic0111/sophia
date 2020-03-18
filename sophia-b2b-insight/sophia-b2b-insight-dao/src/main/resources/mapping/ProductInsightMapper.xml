@@ -97,6 +97,19 @@
     favorable_rate, evaluate_category, user_nick, evaluate_info, evaluate_time, evaluate_dimension_one, 
     evaluate_dimension_two, evaluate_dimension_three, evaluate_dimension_fire
   </sql>
+  <select id="selectPlateForm" resultType="string" parameterType="com.yz.sophia.insight.model.po.ProductInsightExample" >
+    select
+      distinct product_platform
+    from product_insight
+  </select>
+  <select id="selectStoreByExample" resultType="string" parameterType="com.yz.sophia.insight.model.po.ProductInsightExample" >
+    select
+      distinct product_store
+    from product_insight
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
   <select id="selectPageByExample" resultMap="BaseResultMap" parameterType="com.yz.sophia.insight.model.po.ProductInsightExample" >
     <!--
       WARNING - @mbggenerated

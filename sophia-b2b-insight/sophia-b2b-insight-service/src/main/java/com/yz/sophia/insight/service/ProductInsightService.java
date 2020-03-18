@@ -19,6 +19,21 @@ public class ProductInsightService {
     @Autowired
     private ProductInsightMapper productInsightMapper;
 
+    public List<String> listProductPlateForms(){
+        ProductInsightExample example = new ProductInsightExample();
+        ProductInsightExample.Criteria criteria = example.createCriteria();
+        List<String> list = productInsightMapper.selectPlateForm();
+        return list;
+    }
+
+    public List<String> listProductStores(String plateform){
+        ProductInsightExample example = new ProductInsightExample();
+        ProductInsightExample.Criteria criteria = example.createCriteria();
+        criteria.andProductPlatformEqualTo(plateform);
+        List<String> list = productInsightMapper.selectStoreByExample(example);
+        return list;
+    }
+
     public Page<ProductInsight> listProductInsight(String productCategory, String productBrand, String platForm, String productModel, String store, Integer evaluateCategory, String evaluateDimension, Date beginDate, Date endDate, String orderField, String orderType, Integer pageIndex, Integer pageSize){
         ProductInsightExample example = new ProductInsightExample();
         ProductInsightExample.Criteria criteria = example.createCriteria();
