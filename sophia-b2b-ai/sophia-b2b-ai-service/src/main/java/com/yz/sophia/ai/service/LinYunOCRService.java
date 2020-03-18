@@ -47,7 +47,7 @@ public class LinYunOCRService {
     private final String property="hkidcard";
     //指定访问平台的SdkVersion版本、
     private final String sdkversion="8.1";
-    private final String udid="101:1234567890";
+    //private final String udid="101:1234567890";
 
     //@PostConstruct
     private void initHci(){
