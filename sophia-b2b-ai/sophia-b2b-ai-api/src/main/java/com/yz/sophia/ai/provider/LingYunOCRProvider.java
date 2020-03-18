@@ -23,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Api("ai服务灵云OCR接口")
 @FeignClient(name = "sophia-b2b-ai-provider", path = "/api/lingyun/ocr")
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3601)
 @RequestMapping("/ocr")
 public interface LingYunOCRProvider {
 

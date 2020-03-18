@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
  * ai服务-灵云语音识别
  */
 @Slf4j
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3601)
 @RestController("/lingyun/ocr")
 public class LingYunOCRController extends BaseController implements LingYunOCRProvider {
 
