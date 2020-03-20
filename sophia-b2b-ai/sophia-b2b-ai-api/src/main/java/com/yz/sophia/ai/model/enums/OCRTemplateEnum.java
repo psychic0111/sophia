@@ -1,14 +1,14 @@
 package com.yz.sophia.ai.model.enums;
 
 public enum OCRTemplateEnum {
-    IDCARD_PERSON_SIDE("hkidcard ", 0, 0),
-    IDCARD_GOV_SIDE("hkidcard ", 0, 1),
+    IDCARD_PERSON_SIDE("idcard ", 0, 0),
+    IDCARD_GOV_SIDE("idcard ", 0, 1),
     VAT("vat", 0, 0),
     PCN("pcn", 0, 0),
     PID("pid", 0, 0),
     BL("bl", 0, 0),
-    DLC("dlc", 0, 0),
-    VLC("vlc", 0, 0);
+    DLC("dlcard", 0, 0),
+    VLC("vlcard", 0, 0);
 
     private String property;
     private int templateIndex;
