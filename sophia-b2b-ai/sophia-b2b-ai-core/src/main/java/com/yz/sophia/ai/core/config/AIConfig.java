@@ -11,11 +11,14 @@ import java.io.File;
 
 @Data
 @Component
-@ConfigurationProperties(prefix = "insight")
+@ConfigurationProperties(prefix = "ai")
 public class AIConfig {
 
     @Autowired
-    private ApiConfig api;
+    private LinYunApiConfig lyapi;
+
+    @Autowired
+    private FaceApiConfig faceapi;
 
     private InitParam initParam;
 

@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 /**
- * ai服务-灵云语音识别
+ * ai服务-灵云OCR识别
  */
 @Slf4j
 @CrossOrigin(origins = "*", maxAge = 3601)

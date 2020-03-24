@@ -1,15 +1,11 @@
 package com.yz.sophia.ai.core.listener;
 
-import com.sinovoice.hcicloudsdk.common.InitParam;
 import com.yz.sophia.ai.core.config.AIConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.system.ApplicationHome;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-
-import java.io.File;
 
 @Component
 @Slf4j
@@ -22,12 +18,12 @@ public class HCICloudInitListener implements ApplicationListener<ContextRefreshe
     public void onApplicationEvent(ContextRefreshedEvent event) {
         log.info("run HCICloudInitListener event!");
 
-        aiConfig.setInitParam(getInitParam());
+        //aiConfig.setInitParam(getInitParam());
 
-        log.info(aiConfig.getInitParam().getParam(InitParam.AuthParam.PARAM_KEY_CLOUD_URL));
+        //log.info(aiConfig.getInitParam().getParam(InitParam.AuthParam.PARAM_KEY_CLOUD_URL));
     }
 
-    private InitParam getInitParam() {
+    /*private InitParam getInitParam() {
 
         ApplicationHome h = new ApplicationHome(getClass());
         File jarF = h.getSource();
@@ -75,5 +71,5 @@ public class HCICloudInitListener implements ApplicationListener<ContextRefreshe
         initparam.addParam(InitParam.LogParam.PARAM_KEY_LOG_LEVEL, "5");
 
         return initparam;
-    }
+    }*/
 }

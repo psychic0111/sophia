@@ -4,10 +4,13 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * 灵云接口API配置
+ */
 @Data
 @Component
-@ConfigurationProperties(prefix = "api")
-public class ApiConfig {
+@ConfigurationProperties(prefix = "lyapi")
+public class LinYunApiConfig {
 
     private String appKey;
 
